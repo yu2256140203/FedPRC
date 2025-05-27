@@ -34,7 +34,10 @@ class server(fedavg.Server):
         self.server_importance_dicts = {name: [0.0] * module.out_channels for name, module in model().named_modules() 
         if 'conv' in name} #初始化每层的通道重要性
         #我并不需要在全局直接算出来当前的full_model_global_ranks，毕竟按照通道重要性合并完，再计算也一样
-
+        if Config().data.datasource == "CIFAR10" or Config().data.datasource == "CIFAR100":
+            self.input_sizes = [32,32]
+        else:
+            self.input_sizes = [64,64]
         
         self.channel_importance_dicts = [None for _ in range(Config().clients.total_clients)]#本地当前轮次全局重要性排名
         self.client_losses = []
@@ -45,7 +48,7 @@ class server(fedavg.Server):
 
         # self.current_linked_client_ids = None # 当前轮次的客户端id，但是有序的，按照通信顺序来的
         self.rates = [0 for _ in range(Config().clients.total_clients)]
-        self.init_mapping = get_channel_indices(model(),Config().parameters.hidden_size)
+        self.init_mapping = get_channel_indices(model(),Config().parameters.hidden_size,input_sizes=self.input_sizes)
         
         # 获取配置中的参数
         self.rates_values = Config().parameters.rates
@@ -69,13 +72,7 @@ class server(fedavg.Server):
             # 设置 rates
             self.rates[client_idx] = self.rates_values[group_index]
         for rate in self.rates_values:
-        #     prune_rates = [
-        #     [[rate, rate], [rate, rate]],  # layer1
-        #     [[rate, rate], [rate, rate]],  # layer2
-        #     [[rate, rate], [rate, rate]],  # layer3
-        #     [[rate, rate], [rate, rate]]   # layer4
-        # ]
-            self.random_mapping.append(get_channel_indices(self.model(),Config().parameters.hidden_size, rate))
+            self.random_mapping.append(get_channel_indices(self.model(),Config().parameters.hidden_size, rate,input_sizes=self.input_sizes))
 
 
 
@@ -147,9 +144,7 @@ class server(fedavg.Server):
         if self.current_round == 1:
             self.init_proxy()#初始化代理数据集
             #每轮随机
-            # self.random_mapping = []
-            # for rate1 in self.rates_values:
-            #     self.random_mapping.append(get_channel_indices(self.model(),Config().parameters.hidden_size, rate1))
+
             
             
             self.clients_mapping_indices[self.selected_client_id-1] = self.random_mapping[self.rates_values.index(rate)]
@@ -161,11 +156,7 @@ class server(fedavg.Server):
             
         else:
             client_full_model_global_rank = combine_importance(importance_dict=self.server_importance_dicts, hsn_outputs=self.current_hsn_output, device=self.device, conv_names=self.conv_names)
-            # binary_indices, global_threshold, sorted_positions, channels_info_sorted, total_param_val, target_keep = \
-            #     global_binarize_by_param_budget(client_full_model_global_rank, self.model(), target_param_keep_ratio=rate, device=self.device)
-            # masked_model.bin_threshold = global_threshold
-            # print(binary_indices)
-            # print("当前正在打印")
+
             
             pruned_mapping,binary_masks, probab_masks, binary_indices, channels_info_sorted, total_param, target_keep  =prune_mapping_with_global_threshold_and_binary_indices(initial_mapping=self.init_mapping,
             final_importance=client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device)
@@ -244,9 +235,6 @@ class server(fedavg.Server):
                 
                 # if self.probab_masks[payload["client_id"] - 1] is not None and idx == len(weights_received) - 1:
                 #     #如果是最后一项，释放掉计算图
-                #     self.update_hsn(self.deltas[0], self.probab_masks[payload["client_id"] - 1],save_graph=False)
-                # elif self.probab_masks[payload["client_id"] - 1] is not None:
-                #     self.update_hsn(self.deltas[0], self.probab_masks[payload["client_id"] - 1])
                 self.update_hsn(self.deltas[0], self.probab_masks[payload["client_id"] - 1])
                 break
 
@@ -310,63 +298,6 @@ class server(fedavg.Server):
         return super().customize_server_payload(payload)
     
 
-    # def update_hsn(self, deltas):
-    #     """
-    #     利用客户端更新的 deltas 构造代理损失，使得对模型参数的梯度正好等于 deltas，
-    #     然后利用整个计算图将该梯度传递回超网络。
-
-    #     注意：这里对 deltas 使用 detach()，把它当作常量。
-    #     """
-    #     deltas = deltas[0]
-    #     # 初始值不重要，但要确保后续加入的项参与梯度传递。
-    #     surrogate_loss = None
-    #     print(deltas)
-    #     for name, param in self.algorithm.model.named_parameters():
-    #         print(name)
-    #         if name in deltas:
-    #             # 检查 param 是否需要梯度
-    #             if param.requires_grad:
-    #                 term = torch.sum(param * deltas[name].detach())
-    #                 surrogate_loss = term if surrogate_loss is None else surrogate_loss + term
-    #             else:
-    #                 # 输出警告，说明该参数未开启梯度追踪
-    #                 print(f"Warning: {name} does not require grad.")
-
-    #     # if surrogate_loss is None:
-    #     #     raise ValueError("No matching model parameters found in deltas; surrogate loss is not computed.")
-
-    #     self.hyper_optimizer.zero_grad()
-    #     surrogate_loss.backward()
-    #     self.hyper_optimizer.step()
-    #     print("更新前的超网络输出",self.current_hsn_output)
-    #     print("更新后的超网络输出：", self.hsn())
-
-    #     self.current_hsn_output = self.hsn()
-    #     import time
-    #     time.sleep(60000)
-    # def update_hsn(self,deltas,binary_masks): 
-    #     deltas = deltas[0]
-    #     for name, param in self.algorithm.model.named_parameters(): 
-    #         if name in deltas: 
-    #             param.grad = deltas[name] # 直接使用 deltas 作为梯度 # 构造虚拟损失以触发梯度计算（确保 soft_mask 参与计算图） 
-    #     params = dict(self.algorithm.model.named_parameters())
-    #     dummy_loss = 0.0 
-    #     for key, value in binary_masks.items(): 
-    #         if not isinstance(value, torch.Tensor): 
-    #             value = torch.from_numpy(value) 
-    #         value.requires_grad = True # 确保 value 需要梯度 # 确保 params[key+".weight"] 是 PyTorch 张量 
-    #         if not isinstance(params[key+".weight"], torch.Tensor): 
-    #             params[key+".weight"] = torch.from_numpy(params[key+".weight"]) 
-    #         params[key+".weight"].requires_grad = True # 确保 params 需要梯度 # 
-    #         print(value) 
-    #         dummy_loss += torch.sum(params[key+".weight"] * value.view(-1, 1, 1, 1)) 
-    #     self.hyper_optimizer.zero_grad() 
-    #     dummy_loss.backward() # 触发反向传播 
-    #     self.hyper_optimizer.step() 
-    #     print(self.hsn())
-    #     print(self.current_hsn_output)
-    #     import time
-    #     time.sleep(6000)
     from typing import OrderedDict, List
     # 然后直接使用 OrderedDict[str, torch.Tensor]
 
@@ -382,9 +313,6 @@ class server(fedavg.Server):
         print(probab_masks["layer1.0.conv1"].grad_fn)
         #    full_state 为原始的客户端参数（通常为一个字典），binary_masks 为每层 mask
         # new_client_state = client_state_dict(self.algorithm.model, probab_masks)
-        # model = self.model()
-        # model.load_state_dict(new_client_state)
-        # model.cuda()
         model = MaskedResNet(base_model=self.algorithm.model,probab_masks=probab_masks)
         model.cuda()
         criterion = torch.nn.CrossEntropyLoss()
@@ -397,9 +325,6 @@ class server(fedavg.Server):
             images, labels = images.to("cuda:0"), labels.to("cuda:0")
             log_probs = model(images)
             loss = criterion(log_probs, labels) * Config().parameters.loss_rate[0]
-            # loss.backward(retain_graph=True)
-            # total_loss_for_backward += loss
-            # Predict_loss += loss.item()
             self.hyper_optimizer.zero_grad()
             if batch_idx != len(self.proxy_data_trainloader) - 1:
                 loss.backward(retain_graph=True)
@@ -408,8 +333,7 @@ class server(fedavg.Server):
             self.hyper_optimizer.step()
             images, labels = images.cpu(), labels.cpu()
             del log_probs,loss
-        # print(f"Predict_loss: {Predict_loss}")
-        # total_loss_for_backward = Config().parameters.loss_rate[0] * total_loss_for_backward + Config().parameters.loss_rate[1] * self.reg_loss
+
         _,self.reg_loss = self.hsn()
         self.hyper_optimizer.zero_grad()
         total_loss_for_backward = Config().parameters.loss_rate[1] * self.reg_loss
@@ -442,23 +366,6 @@ class server(fedavg.Server):
         users50 = int(num_users * round(client_hetero_ration[1] / sum(client_hetero_ration), 2))
         users100 = int(num_users * round(client_hetero_ration[2] / sum(client_hetero_ration), 2))
 
-        # if args.r == 0:
-        #     for i in range(users25):
-        #         clients.append((35, random.choice([5, 8, 10])))
-        #     for i in range(users50):
-        #         clients.append((60, random.choice([5, 8, 10])))
-        #     for i in range(users100):
-        #         clients.append((110, random.choice([5, 8, 10])))
-        #     return clients
-        # elif args.r == 1:
-        #     for i in range(users25):
-        #         clients.append((35, random.choice([0])))
-        #     for i in range(users50):
-        #         clients.append((60, random.choice([0])))
-        #     for i in range(users100):
-        #         clients.append((110, random.choice([0])))
-        #     return clients
-        # elif args.r == 2:
         for i in range(users25):
             clients.append((35, random.choice([10, 20, 30])))
         for i in range(users50):

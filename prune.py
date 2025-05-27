@@ -8,105 +8,14 @@ from torch.utils.data import DataLoader
 from plato.config import Config
 from channel_evaluation import st_round
 import random
-###############################################################
-# 1. 辅助函数：生成剪枝索引、裁剪状态字典、参数聚合
-###############################################################
-
-# def get_channel_indices(hidden_size, submodel_layer_prune_rates=None):
-    # """
-    # 根据剪枝率生成各层各 block 的通道索引映射。
-    
-    # 设计思路：
-    #   1. 每一层的原始输出通道数由 hidden_size[layer_idx] 给出。
-    #   2. 对于每个 block：
-    #      - conv1 的输出通道数 = ceil(hidden_size[layer_idx] * r1)，
-    #        从原始域 [0, hidden_size[layer_idx]-1] 中选择；对应 mapping 使用键
-    #        "{prefix}.conv1.weight" 为 (current_input, conv1_out)。
-    #      - 对应 conv1 后的 BN 层（命名为 bn1）也用 conv1_out 进行剪枝映射。
-    #      - conv2 的输出通道数 = ceil(hidden_size[layer_idx] * r2)，
-    #        从 conv1_out 域（长度为 ceil(hidden_size[layer_idx]*r1)）中选择；
-    #        mapping 键 "{prefix}.conv2.weight" 为 (conv1_out, conv2_out)。
-    #      - shortcut 的 mapping：输入为 current_input，输出为 conv2_out。
-    #   3. 同一层内，若有多个 block，则第一个 block 的输入由上一层输出提供，后续 block 的输入更新为前一 block 的 conv2_out。
-    # """
-    # mapping_indices = {}
-    # import numpy as np
-    # rng = np.random.default_rng(seed=1234)
-    # if submodel_layer_prune_rates == None:
-    #     submodel_layer_prune_rates = [
-    #     [[1,1], [1,1]],   # layer1
-    #     [[1,1], [1,1]],   # layer2
-    #     [[1,1], [1,1]],   # layer3
-    #     [[1,1], [1,1]]    # layer4
-    # ]
-
-    
-    
-    # layers = ['layer1', 'layer2', 'layer3', 'layer4']
-    # # 第一层的输入为原始通道 [0, hidden_size[0]-1]
-    # current_input = list(range(hidden_size[0]))
-    # mapping_indices["conv1.weight"] = (list(range(3)),list(range(64)))
-    # for layer_idx, layer_name in enumerate(layers):
-    #     original_out = hidden_size[layer_idx]  # 当前层原始输出通道数
-    #     block_rates = submodel_layer_prune_rates[layer_idx]
-        
-    #     for block_idx, rates in enumerate(block_rates):
-    #         r1, r2 = rates
-    #         prefix = f"{layer_name}.{block_idx}"
-            
-    #         # --- conv1 ---
-    #         # 基于原始输出通道数计算：用 ceil(original_out * r1)
-    #         num_conv1 = int(np.ceil(original_out * r1))
-    #         # 从 0 到 original_out-1 中随机抽取索引
-    #         conv1_out = sorted(rng.choice(original_out, num_conv1, replace=False).tolist())
-    #         mapping_indices[f"{prefix}.bn1.weight"] = current_input
-    #         mapping_indices[f"{prefix}.bn1.bias"]   = current_input
-    #         # 对 conv1.weight，输入侧为 current_input（上一层或前面 block 的输出），输出侧为 conv1_out
-    #         mapping_indices[f"{prefix}.conv1.weight"] = (current_input, conv1_out)
-    #         # BN 层（命名为 bn1）紧跟 conv1，这里也采用 conv1_out 作为剪枝结果
-
-            
-    #         # --- conv2 ---
-    #         # conv2 的输入为 conv1_out（经过 conv1 剪枝后的输出）
-    #         # conv2 的输出通道数：基于原始输出通道数，计算 ceil(original_out * r2)
-    #         num_conv2 = int(np.ceil(original_out * r2))
-
-    #         # 在 conv1_out 这个域中（长度为 num_conv1）抽取 conv2 输出索引
-    #         conv2_local_idx = sorted(rng.choice(len(conv1_out), num_conv2, replace=False).tolist())
-    #         conv2_out = [conv1_out[i] for i in conv2_local_idx]
-    #         mapping_indices[f"{prefix}.conv2.weight"] = (conv1_out, conv2_out)
-    #         # shortcut 映射：输入为 current_input（本 block 输入），输出为 conv2_out
-    #         # if 'layer1' not in  layer_name and '.1.' not in prefix:
-    #         mapping_indices[f"{prefix}.shortcut.weight"] = (current_input, conv2_out)
-    #         mapping_indices[f"{prefix}.bn2.weight"] = conv1_out
-    #         mapping_indices[f"{prefix}.bn2.bias"]   = conv1_out
-            
-    #         # 更新 current_input 为本 block 的输出，用于同层下一个 block
-    #         current_input = conv2_out
-        
-    #     # 层与层之间，下一层第一个 block 的输入即为这一层最后的 current_input
-    
-    # # 最后处理 bn4 和 linear 层：采用最后一层原始通道数，并按最后 block 的剪枝率计算
-    # original_final = hidden_size[-1]
-    # r_last = submodel_layer_prune_rates[-1][-1][1]  # 取最后一层最后 block 的 r2
-    # num_final = int(np.ceil(original_final * r_last))
-    # if num_final > len(current_input):
-    #     num_final = len(current_input)
-    # final_local_idx = sorted(rng.choice(len(current_input), num_final, replace=False).tolist())
-    # final_channels = [current_input[i] for i in final_local_idx]
-    # mapping_indices['bn4.weight'] = final_channels
-    # mapping_indices['bn4.bias']   = final_channels
-    # mapping_indices['linear.weight'] = final_channels  # 用于全连接层列方向的剪枝
-    # mapping_indices['linear.bias'] = final_channels
-    
-    
-    # return mapping_indices
 
 
-def get_channel_indices(model,hidden_size,submodel_layer_prune_rate=None):
+
+def get_channel_indices(model,hidden_size,submodel_layer_prune_rate=None,input_sizes=[32,32]):
     if submodel_layer_prune_rate == None:
         submodel_layer_prune_rate = 1
-    input_data = torch.randn(1,3,32,32)
+    
+    input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
     from utils.statistics import get_model_param_output_channels
     mapping_indices = dict()
     current_out = None
@@ -133,10 +42,10 @@ def get_channel_indices(model,hidden_size,submodel_layer_prune_rate=None):
             mapping_indices[key] = (current_out)
     return mapping_indices
         
-def get_channel_indices_unuse_hsn(model,submodel_layer_prune_rate=None,importance=None):
+def get_channel_indices_unuse_hsn(model,submodel_layer_prune_rate=None,importance=None,input_sizes=[32,32]):
     if submodel_layer_prune_rate == None:
         submodel_layer_prune_rate = 1
-    input_data = torch.randn(1,3,32,32)
+    input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
     from utils.statistics import get_model_param_output_channels
     mapping_indices = dict()
     current_out = None

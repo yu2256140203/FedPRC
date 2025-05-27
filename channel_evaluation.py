@@ -9,6 +9,7 @@ import resnet  # 请确保你的 resnet 模块中包含 resnet18 的定义
 import matplotlib.pyplot as plt
 import os
 import math
+from plato.config import Config
 
 # 如果 img 文件夹不存在则创建
 if not os.path.exists("img"):
@@ -41,11 +42,16 @@ class ChannelImportanceEvaluator:
         self.threshold = None
         self.current_orig = None
         self.current_binary = None
+        if Config().data.datasource == "CIFAR10" or Config().data.datasource == "CIFAR100":
+                self.target_size = (32, 32)
+        else:
+                self.target_size = (64, 64)
 
     def hook_fn(self, name):
         def _hook(module, inputs, output):
-            target_size = (32, 32)
-            up_out = F.interpolate(output, size=target_size, mode="bilinear", align_corners=False)
+            
+
+            up_out = F.interpolate(output, size=self.target_size, mode="bilinear", align_corners=False)
             binary_feat = (up_out > self.threshold).float()
             binary_orig = self.current_binary.expand_as(binary_feat)
             B, C, H, W = binary_feat.shape
@@ -64,37 +70,6 @@ class ChannelImportanceEvaluator:
                 self.score_dict[name]["count"] += 1
         return _hook
 
-    # def evaluate(self, data_loader, threshold=0.5):
-    #     self.threshold = threshold
-    #     hooks = []
-    #     for name, module in self.model.named_modules():
-    #         if isinstance(module, nn.Conv2d):
-    #             h = module.register_forward_hook(self.hook_fn(name))
-    #             hooks.append(h)
-    #     self.model.eval()
-    #     with torch.no_grad():
-    #         for x, _ in data_loader:
-    #             x = x.to(self.device)
-    #             self.current_orig = x.clone()
-    #             gray = x.mean(dim=1, keepdim=True)
-    #             self.current_binary = F.interpolate(gray, size=(32, 32), mode="bilinear", align_corners=False)
-    #             self.current_binary = (self.current_binary > threshold).float()
-    #             _ = self.model(x)
-    #     for h in hooks:
-    #         h.remove()
-    #     importance_dict = {}
-    #     for name, scores in self.score_dict.items():
-    #         count = scores["count"]
-    #         A_avg = scores["A_sum"] / count
-    #         B_avg = scores["B_sum"] / count
-    #         gamma = 0.2
-    #         A_transformed = torch.pow(A_avg, gamma)
-    #         B_transformed = torch.pow(B_avg, gamma)
-    #         norm_A = (A_transformed - A_transformed.min()) / (A_transformed.max() - A_transformed.min() + 1e-6)
-    #         norm_B = (B_transformed - B_transformed.min()) / (B_transformed.max() - B_transformed.min() + 1e-6)
-    #         importance = norm_A * norm_B
-    #         importance_dict[name] = importance.detach().cpu().numpy()
-    #     return importance_dict
     def evaluate(self, data_loader, threshold=0.5):
         self.threshold = threshold
         hooks = []
@@ -108,7 +83,7 @@ class ChannelImportanceEvaluator:
                 x = x.to(self.device)
                 self.current_orig = x.clone()
                 gray = x.mean(dim=1, keepdim=True)
-                self.current_binary = F.interpolate(gray, size=(32, 32), mode="bilinear", align_corners=False)
+                self.current_binary = F.interpolate(gray, size=self.target_size, mode="bilinear", align_corners=False)
                 self.current_binary = (self.current_binary > threshold).float()
                 _ = self.model(x)
         for h in hooks:
