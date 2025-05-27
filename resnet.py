@@ -8,6 +8,7 @@ import numpy as np
 import torch
 from torch import nn
 import torch.nn.functional as F
+from plato.config import Config
 
 def init_param(model):
     "Initialize the parameters of resnet."
@@ -187,7 +188,7 @@ class ResNet(nn.Module):
 # -----------------------------
 # 模型构造函数
 # -----------------------------
-def resnet18(layer_prune_rates=None, track=False):
+def resnet18(layer_prune_rates=None, track=False,classes_size=10):
     """ResNet18 with per-layer prune rates, using basic blocks.
        对于 ResNet18，每层 block 内剪枝率列表长度为 2。
        示例:
@@ -205,52 +206,58 @@ def resnet18(layer_prune_rates=None, track=False):
         [[1,1], [1,1]],   # layer3
         [[1,1], [1,1]]    # layer4
     ]
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
+
     data_shape = 3
-    classes_size = 10
     hidden_size = [64, 128, 256, 512]
     model = ResNet(data_shape, hidden_size, Block, [2, 2, 2, 2], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
 
-def resnet34(layer_prune_rates, track=False):
+def resnet34(layer_prune_rates, track=False,classes_size=10):
     """ResNet34 with per-layer prune rates, using basic blocks.
        对于 ResNet34，大层 block 数为 [3, 4, 6, 3].
     """
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
     data_shape = 3
-    classes_size = 10
     hidden_size = [64, 128, 256, 512]
     model = ResNet(data_shape, hidden_size, Block, [3, 4, 6, 3], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
 
-def resnet50(layer_prune_rates, track=False):
+def resnet50(layer_prune_rates, track=False,classes_size=10):
     """ResNet50 with per-layer prune rates, using Bottleneck blocks.
        对于 ResNet50，大层 block 数为 [3, 4, 6, 3]，每个 block 内剪枝率长度为 3.
     """
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
     data_shape = 3
-    classes_size = 10
     hidden_size = [64, 128, 256, 512]
     model = ResNet(data_shape, hidden_size, Bottleneck, [3, 4, 6, 3], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
 
-def resnet101(layer_prune_rates, track=False):
+def resnet101(layer_prune_rates, track=False,classes_size=10):
     """ResNet101 with per-layer prune rates, using Bottleneck blocks.
        大层 block 数为 [3, 4, 23, 3].
     """
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
     data_shape = 3
-    classes_size = 10
     hidden_size = [64, 128, 256, 512]
     model = ResNet(data_shape, hidden_size, Bottleneck, [3, 4, 23, 3], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
 
-def resnet152(layer_prune_rates, track=False):
+def resnet152(layer_prune_rates, track=False,classes_size=10):
     """ResNet152 with per-layer prune rates, using Bottleneck blocks.
        大层 block 数为 [3, 8, 36, 3].
     """
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
     data_shape = 3
-    classes_size = 10
     hidden_size = [64, 128, 256, 512]
     model = ResNet(data_shape, hidden_size, Bottleneck, [3, 8, 36, 3], classes_size, layer_prune_rates, track)
     model.apply(init_param)
