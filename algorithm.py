@@ -30,7 +30,6 @@ class FedPRC_algorithm(fedavg.Algorithm):
     #     return payload
     #分割子模型
     def sub_weights(self,payload,mapping_indices):
-        print(mapping_indices["conv1.weight"])
         sub_weights = self.get_local_parameters(weight=payload,mapping_indices=mapping_indices)
         
         # print(sub_weights["layer1.0.conv1.weight"].shape)

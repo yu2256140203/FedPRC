@@ -12,7 +12,7 @@ from types import SimpleNamespace
 import time
 import os
 import torch
-from channel_evaluation import combine_importance,HyperStructureNetwork,ChannelImportanceEvaluator,MaskedResNet,global_binarize_by_param_budget
+from channel_evaluation import combine_importance,HyperStructureNetwork,ChannelImportanceEvaluator
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from prune import prune_state_dict,reverse_prune_rates,get_channel_indices

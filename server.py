@@ -15,7 +15,7 @@ import random
 import torch
 import os
 from prune import get_channel_indices_unuse_hsn,client_state_dict,prune_state_dict,reverse_prune_rates,get_channel_indices,aggregate_submodel_states,prune_mapping_with_global_threshold_and_binary_indices
-from channel_evaluation import HyperStructureNetwork,combine_importance,global_binarize_by_param_budget,MaskedResNet
+from channel_evaluation import HyperStructureNetwork,combine_importance,MaskedResNet
 from torch.utils.data import Subset
 class server(fedavg.Server):
     """Federated Learning - Pruning for Resource-Constrained."""
@@ -103,7 +103,11 @@ class server(fedavg.Server):
             #初始的超网络输出：
             self.current_hsn_output,self.reg_loss = self.hsn()
             print(self.current_hsn_output)
-        self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=0.9)
+        if Config().parameters.momentum == 0:
+            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
+        else:
+            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
+
         #重新定义超网络优化器，探索重要性
         #希望初始超网络的输出能公平少一点随机，这样让初始的模型能有较好的性能
         self.acc = [0.0 for _ in range(Config().clients.total_clients)]#本地当前轮次全局重要性排名

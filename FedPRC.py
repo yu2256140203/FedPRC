@@ -11,6 +11,8 @@ def main():
 
     # 创建模型实例
     model = resnet.resnet18
+    if Config().parameters.model == "resnet34":
+        model = resnet.resnet34
 
 
     # 创建算法实例

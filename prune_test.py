@@ -193,13 +193,7 @@ def prune_mapping_with_global_threshold_and_binary_indices(initial_mapping, fina
             [[1, 1], [1, 1]],   # layer3
             [[1, 1], [1, 1]]    # layer4
         ]
-        if Config().parameters.model == "resnet34":
-            submodel_layer_prune_rates = [
-            [[1, 1], [1, 1], [1, 1]],   # layer1
-            [[1, 1], [1, 1], [1, 1], [1, 1]],   # layer2
-            [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]],   # layer3
-            [[1, 1], [1, 1], [1, 1]]    # layer4
-        ] 
+        
         # hidden_size 为每个阶段原始输出通道数（此处假设从 Config 中获得）
         hidden_size = Config().parameters.hidden_size  # 举例: [64, 128, 256, 512]
         # 第一层输入直接使用原始输入通道（比如图像通道数）
@@ -316,7 +310,36 @@ def prune_state_dict(full_state, mapping_indices):
     # print(full_state.keys())
     return new_state
 
-
+# def client_state_dict(full_state, binary_masks):
+#     new_state = {}
+#     for key, param in full_state.items():
+#         if key in binary_masks:
+#             binary_mask = binary_masks[key]  # 这里 binary_mask 为一个 tensor 且保留计算图
+#             # 根据层的类别决定如何进行 mask 乘法
+#             if 'conv' in key or 'shortcut' in key:
+#                 # 卷积层权重形状 [out_channels, in_channels, kH, kW]
+#                 # 假定 binary_mask 形状为 [out_channels]
+#                 binary_mask_expanded = binary_mask.view(-1, 1, 1, 1)
+#                 new_param = param * binary_mask_expanded
+#             elif key == 'linear.weight':
+#                 # 全连接层权重形状 [out_features, in_features]
+#                 # 假定 binary_mask 形状为 [out_features]
+#                 binary_mask_expanded = binary_mask.view(-1, 1)
+#                 new_param = param * binary_mask_expanded
+#             elif 'bn' in key:
+#                 # 对于 BatchNorm 层，通常保留参数不进行 mask 调整
+#                 new_param = param
+#             else:
+#                 # 对于其他层，尝试将 mask 扩展到参数张量维度
+#                 binary_mask_expanded = binary_mask
+#                 while binary_mask_expanded.dim() < param.dim():
+#                     binary_mask_expanded = binary_mask_expanded.unsqueeze(-1)
+#                 new_param = param * binary_mask_expanded
+#         else:
+#             # 如果该参数没有对应的 mask，则直接保留
+#             new_param = param
+#         new_state[key] = new_param
+#     return new_state
 from collections import OrderedDict
 
 def client_state_dict(model, binary_masks):
@@ -502,180 +525,6 @@ if __name__ == '__main__':
     
     num_epochs_full = 1  # 完整模型预训练 epoch 数（仅为演示）
     num_epochs_sub  = 1  # 子模型训练 epoch 数
-    from resnet import resnet18  # 假设 resnet18 定义中使用剪枝率配置构造网络
-    model = resnet18(full_layer_prune_rates, track=False).to(device) 
-    print("全模型参数量:", count_parameters(model))
-    print(model)
-    
-    for itr in range(5):
-        print("======================================")
-        print(f"【第 {itr+1} 次迭代】")
-        
-        # -------------------------------
-        # (1) 预训练完整模型
-        # -------------------------------
-
-        
-        optimizer = optim.Adam(model.parameters(), lr=0.001)
-        model.train()
-        for epoch in range(num_epochs_full):
-            total_loss = 0
-            for x, y in train_loader:
-                x, y = x.to(device), y.to(device)
-                optimizer.zero_grad()
-                outputs = model(x)
-                loss = criterion(outputs, y)
-                loss.backward()
-                optimizer.step()
-                total_loss += loss.item()
-            print(f"预训练 Epoch {epoch}: Loss {total_loss/len(train_loader):.4f}")
-        
-        # 测试预训练的完整模型
-        model.eval()
-        correct_full, total_full = 0, 0
-        with torch.no_grad():
-            for x, y in test_loader:
-                x, y = x.to(device), y.to(device)
-                outputs = model(x)
-                _, predicted = torch.max(outputs, 1)
-                total_full += y.size(0)
-                correct_full += (predicted == y).sum().item()
-        full_acc = 100 * correct_full / total_full
-        print(f"预训练全模型测试准确率: {full_acc:.2f}%")
-        
-        # 保存预训练全模型参数
-        full_state = model.state_dict()
-        # print(full_state.keys())
-        
-        # -------------------------------
-        # (2) 构造并训练子模型
-        # -------------------------------
-        # 根据子模型剪枝率计算剪枝索引，并裁剪出子模型参数
-        mapping_indices_sub1 = get_channel_indices(hidden_size, submodel1_prune_rates)
-        mapping_indices_sub2 = get_channel_indices(hidden_size, submodel2_prune_rates)
-        submodel1_state = prune_state_dict(full_state, mapping_indices_sub1)
-        submodel2_state = prune_state_dict(full_state, mapping_indices_sub2)
-
-        # 逆推出有效的剪枝率
-        reversed_prune_rates = reverse_prune_rates(mapping_indices_sub1, hidden_size)
-        # print("\n逆推出的 submodel1_prune_rates (基于保留通道比例):")
-        # for layer in reversed_prune_rates:
-            # print(layer)
-        
-        # 构造子模型，并加载裁剪后的参数
-        submodel1 = resnet18(submodel1_prune_rates, track=False).to(device)
-        # print(submodel1)
-        submodel2 = resnet18(submodel2_prune_rates, track=False).to(device)
-        # print(submodel2)
-        submodel1.load_state_dict(submodel1_state, strict=False)
-        submodel2.load_state_dict(submodel2_state, strict=False)
-        print("子模型1参数量:", count_parameters(submodel1))
-        print("子模型2参数量:", count_parameters(submodel2))
-        
-        # 数据集拆分：将训练集一分为二（索引前半部分给子模型1，后半部分给子模型2）
-        train_size = len(train_dataset)
-        indices = list(range(train_size))
-        split = train_size // 2
-        indices_sub1 = indices[:split]
-        indices_sub2 = indices[split:]
-        subtrain_loader1 = DataLoader(train_dataset, batch_size=32,
-                                      sampler=torch.utils.data.SubsetRandomSampler(indices_sub1))
-        subtrain_loader2 = DataLoader(train_dataset, batch_size=32,
-                                      sampler=torch.utils.data.SubsetRandomSampler(indices_sub2))
-        
-        optimizer1 = optim.Adam(submodel1.parameters(), lr=0.001)
-        optimizer2 = optim.Adam(submodel2.parameters(), lr=0.001)
-        
-        print("开始训练子模型1...")
-        submodel1.train()
-        for epoch in range(num_epochs_sub):
-            total_loss = 0
-            for x, y in subtrain_loader1:
-                x, y = x.to(device), y.to(device)
-                optimizer1.zero_grad()
-                outputs = submodel1(x)
-                loss = criterion(outputs, y)
-                loss.backward()
-                optimizer1.step()
-                total_loss += loss.item()
-            print(f"子模型1 Epoch {epoch}: Loss {total_loss/len(subtrain_loader1):.4f}")
-        
-        print("开始训练子模型2...")
-        submodel2.train()
-        for epoch in range(num_epochs_sub):
-            total_loss = 0
-            for x, y in subtrain_loader2:
-                x, y = x.to(device), y.to(device)
-                optimizer2.zero_grad()
-                outputs = submodel2(x)
-                loss = criterion(outputs, y)
-                loss.backward()
-                optimizer2.step()
-                total_loss += loss.item()
-            print(f"子模型2 Epoch {epoch}: Loss {total_loss/len(subtrain_loader2):.4f}")
-        
-        # 测试子模型
-        submodel1.eval()
-        correct_sub1, total_sub1 = 0, 0
-        with torch.no_grad():
-            for x, y in test_loader:
-                x, y = x.to(device), y.to(device)
-                outputs = submodel1(x)
-                _, predicted = torch.max(outputs, 1)
-                total_sub1 += y.size(0)
-                correct_sub1 += (predicted == y).sum().item()
-        sub1_acc = 100 * correct_sub1 / total_sub1
-        print(f"子模型1测试准确率: {sub1_acc:.2f}%")
-        
-        submodel2.eval()
-        correct_sub2, total_sub2 = 0, 0
-        with torch.no_grad():
-            for x, y in test_loader:
-                x, y = x.to(device), y.to(device)
-                outputs = submodel2(x)
-                _, predicted = torch.max(outputs, 1)
-                total_sub2 += y.size(0)
-                correct_sub2 += (predicted == y).sum().item()
-        sub2_acc = 100 * correct_sub2 / total_sub2
-        print(f"子模型2测试准确率: {sub2_acc:.2f}%")
-        
-        # -------------------------------
-        # (3) 聚合子模型参数并更新全模型
-        # -------------------------------
-        submodel1_state_trained = submodel1.state_dict()
-        submodel2_state_trained = submodel2.state_dict()
-        mapping_indices_list = [mapping_indices_sub1, mapping_indices_sub2]
-        sub_state_list = [submodel1_state_trained, submodel2_state_trained]
-        
-        aggregated_state = aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list)
-        model.load_state_dict(aggregated_state, strict=False)
-        
-        # 测试聚合后全模型
-        model.eval()
-        correct_agg, total_agg = 0, 0
-        with torch.no_grad():
-            for x, y in test_loader:
-                x, y = x.to(device), y.to(device)
-                outputs = model(x)
-                _, predicted = torch.max(outputs, 1)
-                total_agg += y.size(0)
-                correct_agg += (predicted == y).sum().item()
-        agg_acc = 100 * correct_agg / total_agg
-        print(f"聚合后全模型测试准确率: {agg_acc:.2f}%")
-        
-        # -------------------------------
-        # (4) 验证聚合是否成功
-        # 对一个测试 batch，比对聚合模型输出与两个子模型输出均值的平均差异
-        # -------------------------------
-        dataiter = iter(test_loader)
-        images, labels = next(dataiter)
-        images, labels = images.to(device), labels.to(device)
-        with torch.no_grad():
-            output_agg = model(images)
-            output_sub1 = submodel1(images)
-            output_sub2 = submodel2(images)
-            output_avg = (output_sub1 + output_sub2) / 2.0
-            diff = torch.abs(output_agg - output_avg).mean().item()
-        print(f"聚合模型与子模型均值输出的平均差异: {diff:.4f}")
-        
-        print("======================================\n")
+    from resnet import resnet18,resnet34  # 假设 resnet18 定义中使用剪枝率配置构造网络
+    model = resnet34(track=False).to(device)
+    print(model) 

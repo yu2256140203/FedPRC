@@ -11,7 +11,6 @@ import multiprocessing as mp
 import torch.nn as nn
 import time
 import copy
-from channel_evaluation import ChannelImportanceEvaluator,DataLoader,combine_importance,HyperStructureNetwork,MaskedResNet
 class FedPRC_trainer(basic.Trainer):
     def __init__(self, model=None, callbacks=None):
         super().__init__(model=model, callbacks=callbacks)

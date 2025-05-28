@@ -28,7 +28,7 @@ server:
 
 data:
     # The training and testing dataset
-    datasource: CIFAR100
+    datasource: CIFAR10
     random_seed: 1234
     # Number of samples in each partition
     partition_size: 500
@@ -88,8 +88,8 @@ parameters:
     ranks_round: 5 #重要性评价间隔
     proxy_data_rate: 0.2
     loss_rate: [1,1]
-    hsn_outputs: outputs/use_noiid_0.6.txt
+    hsn_outputs: hsn_outputs/Resnet34_CIFAR10/hsn_noiid_0.6_m_0.9.txt
     FlexFL_exp: False
     unuse_hsn: False
-    model: resnet18
+    model: resnet34
     momentum: 0.9

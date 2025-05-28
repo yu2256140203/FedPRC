@@ -215,7 +215,14 @@ def resnet18(layer_prune_rates=None, track=False,classes_size=10):
     model.apply(init_param)
     return model
 
-def resnet34(layer_prune_rates, track=False,classes_size=10):
+def resnet34(layer_prune_rates=None, track=False,classes_size=10):
+    if layer_prune_rates == None:
+        layer_prune_rates = [
+        [[1,1], [1,1], [1,1]],   # layer1
+        [[1,1], [1,1], [1,1], [1,1]],   # layer2
+        [[1,1], [1,1], [1,1], [1,1], [1,1], [1,1]],   # layer3
+        [[1,1], [1,1], [1,1]]    # layer4
+    ]
     """ResNet34 with per-layer prune rates, using basic blocks.
        对于 ResNet34，大层 block 数为 [3, 4, 6, 3].
     """

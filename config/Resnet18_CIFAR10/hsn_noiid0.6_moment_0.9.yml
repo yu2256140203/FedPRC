@@ -91,3 +91,5 @@ parameters:
     hsn_outputs: outputs/use_noiid_0.6.txt
     FlexFL_exp: False
     unuse_hsn: False
+    model: resnet18
+    momentum: 0.9

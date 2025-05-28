@@ -88,3 +88,5 @@ parameters:
     hsn_outputs: outputs/use_iid.txt
     FlexFL_exp: False
     unuse_hsn: False
+    model: resnet34
+    momentum: 0.9
