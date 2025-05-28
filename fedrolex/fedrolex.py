@@ -7,7 +7,7 @@ in FedRolex NIPS2022.
 
 """
 
-from resnet import resnet18
+from resnet import resnet18,resnet34
 from vit import ViT
 
 from fedrolex_client import Client
@@ -23,6 +23,8 @@ def main():
     """A Plato federated learning training session using the FedRolexFL algorithm."""
     if "resnet18" in Config().trainer.model_name:
         model = resnet18
+    elif "resnet34" in Config().trainer.model_name:
+        model = resnet34
     else:
         model = ViT
     server = Server(model=model, algorithm=Algorithm, trainer=ServerTrainer)
