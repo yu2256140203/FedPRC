@@ -14,8 +14,8 @@ import pickle
 import random
 import torch
 import os
-from prune import get_channel_indices_unuse_hsn,client_state_dict,prune_state_dict,reverse_prune_rates,get_channel_indices,aggregate_submodel_states,prune_mapping_with_global_threshold_and_binary_indices
-from channel_evaluation import HyperStructureNetwork,combine_importance,MaskedResNet
+from prune import get_channel_indices_unuse_hsn,client_state_dict,prune_state_dict,reverse_prune_rates,get_channel_indices,aggregate_submodel_states,prune_mapping_with_global_threshold_and_binary_indices,get_model_param_output_channels
+from channel_evaluation import HyperStructureNetwork,combine_importance,MaskedResNet,ChannelImportanceEvaluator
 from torch.utils.data import Subset
 class server(fedavg.Server):
     """Federated Learning - Pruning for Resource-Constrained."""
@@ -48,7 +48,9 @@ class server(fedavg.Server):
 
         # self.current_linked_client_ids = None # 当前轮次的客户端id，但是有序的，按照通信顺序来的
         self.rates = [0 for _ in range(Config().clients.total_clients)]
-        self.init_mapping = get_channel_indices(model(),Config().parameters.hidden_size,input_sizes=self.input_sizes)
+        self.modules_indices = get_model_param_output_channels(model)
+
+        self.init_mapping = get_channel_indices(modules_indices=self.modules_indices)
         
         # 获取配置中的参数
         self.rates_values = Config().parameters.rates
@@ -59,6 +61,7 @@ class server(fedavg.Server):
         total_clients = Config().clients.total_clients
         clients_per_group = total_clients // len(parameters_to_clients_ratio)
         self.deltas = None
+        
         #随机的三种mapping
         self.random_mapping = []
 
@@ -71,23 +74,31 @@ class server(fedavg.Server):
                 group_index = 2
             # 设置 rates
             self.rates[client_idx] = self.rates_values[group_index]
-        for rate in self.rates_values:
-            self.random_mapping.append(get_channel_indices(self.model(),Config().parameters.hidden_size, rate,input_sizes=self.input_sizes))
+        # for rate in self.rates_values:
+        #     self.random_mapping.append(get_channel_indices(self.model(),Config().parameters.hidden_size, rate,input_sizes=self.input_sizes))
 
 
 
         if Config().parameters.FlexFL_exp:
             self.rates = [0 for _ in range(Config().clients.total_clients)]
             self.clients_FLexFL_exp  = self.summon_clients(total_clients)
-
-
             
-
 
 
         self.train_model = None
         # self.conv_names = [i for i in model().state_dict().keys() if 'conv' in i and i != Config().parameters.first_layer]
-        self.conv_names = [name for name, module in model().named_modules()  if 'conv' in name and name != Config().parameters.first_layer] #初始化每层的通道重要性
+
+        conv_names = [
+            name for name, module in model().named_modules()
+            if (isinstance(module, torch.nn.Conv2d) or isinstance(module,torch.nn.Linear)) and "shortcut" not in name
+        ]
+        # if Config().parameters.model == "resnet18" or Config().parameters.model == "resnet34":
+        self.conv_names = conv_names[1:-1]        # elif Config().parameters.model == "vgg":
+        #     self.conv_names = conv_names[1:-3]
+        
+
+
+        
         num_layers = len(self.conv_names)
         # self.hsn = HyperStructureNetwork(num_layers=num_layers, d=16, gru_hidden_dim=16, h_dim=32, p=0.5, tau=1.0).cuda()
         self.hsn = HyperStructureNetwork(num_layers=num_layers, d=16, gru_hidden_dim=16, h_dim=32, p=0.5).cuda()
@@ -95,14 +106,22 @@ class server(fedavg.Server):
         self.current_hsn_output,self.reg_loss = self.hsn()
         # self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.01,momentum=0.9)
         self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
-
+        self.dict_modules = {}
+        for name, module in model().named_modules():
+            if isinstance(module, torch.nn.Conv2d):
+                self.dict_modules[name] = "conv"
+            elif isinstance(module,torch.nn.BatchNorm2d):
+                self.dict_modules[name] = "bn"
+            elif isinstance(module,torch.nn.Linear):
+                self.dict_modules[name] = "linear"
+        
         for i in range(30):
-            self.hyper_optimizer.zero_grad()
-            self.reg_loss.backward(retain_graph=True)  # 触发反向传播
-            self.hyper_optimizer.step()
-            #初始的超网络输出：
-            self.current_hsn_output,self.reg_loss = self.hsn()
-            print(self.current_hsn_output)
+                self.hyper_optimizer.zero_grad()
+                self.reg_loss.backward(retain_graph=True)  # 触发反向传播
+                self.hyper_optimizer.step()
+                #初始的超网络输出：
+                self.current_hsn_output,self.reg_loss = self.hsn()
+                print(self.current_hsn_output)
         if Config().parameters.momentum == 0:
             self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
         else:
@@ -113,6 +132,8 @@ class server(fedavg.Server):
         self.acc = [0.0 for _ in range(Config().clients.total_clients)]#本地当前轮次全局重要性排名
         self.proxy_data_trainloader = None
         self.proxy_data_testloader = None
+        self.client_data_sizes = [0 for _ in range(Config().clients.total_clients)]
+        
     def init_proxy(self):
         dataset_train, dataset_test = self.datasource.trainset, self.datasource.testset
         # Split 80% test dataset to proxy train dataset, 20% test dataset to proxy test dataset for getting APoZ
@@ -147,15 +168,16 @@ class server(fedavg.Server):
         
         if self.current_round == 1:
             self.init_proxy()#初始化代理数据集
-            #每轮随机
+            evaluator = ChannelImportanceEvaluator(self.algorithm.model, self.device)
+            server_importance_dicts = evaluator.evaluate(self.proxy_data_trainloader, threshold=0.5)
+            for name in self.conv_names:#保证只剪枝规定的层 VGG的多个线性层问题
+                self.server_importance_dicts[name] = server_importance_dicts[name]
 
-            
-            
-            self.clients_mapping_indices[self.selected_client_id-1] = self.random_mapping[self.rates_values.index(rate)]
+            self.clients_mapping_indices[self.selected_client_id-1] = get_channel_indices_unuse_hsn(model=self.model(),submodel_layer_prune_rate=rate,importance=self.server_importance_dicts,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1]
             # self.clients_mapping_indices[self.selected_client_id-1] = server_response["mapping_indices"]
         elif Config().parameters.unuse_hsn != None and Config().parameters.unuse_hsn == True:
-            self.clients_mapping_indices[self.selected_client_id-1] = get_channel_indices_unuse_hsn(model=self.model(),submodel_layer_prune_rate=rate,importance=self.server_importance_dicts)
+            self.clients_mapping_indices[self.selected_client_id-1] = get_channel_indices_unuse_hsn(model=self.model(),submodel_layer_prune_rate=rate,importance=self.server_importance_dicts,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1]
             
         else:
@@ -163,10 +185,11 @@ class server(fedavg.Server):
 
             
             pruned_mapping,binary_masks, probab_masks, binary_indices, channels_info_sorted, total_param, target_keep  =prune_mapping_with_global_threshold_and_binary_indices(initial_mapping=self.init_mapping,
-            final_importance=client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device)
+            final_importance=client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
             self.clients_mapping_indices[self.selected_client_id-1 ] = pruned_mapping
             self.probab_masks[self.selected_client_id-1 ] = probab_masks
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1 ]
+        server_response["prune_rates"] = reverse_prune_rates(server_response["mapping_indices"], dict_modules=self.dict_modules,modules_indices = self.modules_indices)
             
 
         
@@ -179,6 +202,7 @@ class server(fedavg.Server):
         # 更新当前获得的重要性
         for payload in weights_received:
             self.acc[payload["client_id"] - 1] = payload["acc"]
+            self.client_data_sizes[payload["client_id"]-1] = payload["data_size"]
         if weights_received[0]["channel_importance_dict"] is not None:
             for payload in weights_received:
                 for key,value in payload["channel_importance_dict"].items():
@@ -243,7 +267,7 @@ class server(fedavg.Server):
                 break
 
                     
-        
+        self.trainer.model.load_state_dict(global_parameters)
         return global_parameters
 
     def get_logged_items(self) -> dict:
@@ -313,8 +337,8 @@ class server(fedavg.Server):
         import torch.autograd
         torch.autograd.set_detect_anomaly(True)
 
-        print(probab_masks.keys())
-        print(probab_masks["layer1.0.conv1"].grad_fn)
+        # print(probab_masks.keys())
+        # print(probab_masks["layer1.0.conv1"].grad_fn)
         #    full_state 为原始的客户端参数（通常为一个字典），binary_masks 为每层 mask
         # new_client_state = client_state_dict(self.algorithm.model, probab_masks)
         model = MaskedResNet(base_model=self.algorithm.model,probab_masks=probab_masks)
@@ -327,7 +351,10 @@ class server(fedavg.Server):
         total_loss_for_backward = 0.0
         for batch_idx, (images, labels) in enumerate(self.proxy_data_trainloader):
             images, labels = images.to("cuda:0"), labels.to("cuda:0")
+            # print(images.shape)
             log_probs = model(images)
+            # print(log_probs.shape)
+            # print(labels.shape)
             loss = criterion(log_probs, labels) * Config().parameters.loss_rate[0]
             self.hyper_optimizer.zero_grad()
             if batch_idx != len(self.proxy_data_trainloader) - 1:
@@ -385,6 +412,75 @@ class server(fedavg.Server):
         else:
             model = 1
         return model
+    async def _process_reports(self):#找不到为什么服务端测试准确率一直不好使
+        """Process the client reports by aggregating their weights."""
+        weights_received = [update.payload for update in self.updates]
+
+        weights_received = self.weights_received(weights_received)
+        self.callback_handler.call_event("on_weights_received", self, weights_received)
+
+        # Extract the current model weights as the baseline
+        baseline_weights = self.algorithm.extract_weights()
+
+        if hasattr(self, "aggregate_weights"):
+            # Runs a server aggregation algorithm using weights rather than deltas
+            logging.info(
+                "[Server #%d] Aggregating model weights directly rather than weight deltas.",
+                os.getpid(),
+            )
+            updated_weights = await self.aggregate_weights(
+                self.updates, baseline_weights, weights_received
+            )
+
+            # Loads the new model weights
+            self.algorithm.load_weights(updated_weights)
+        else:
+            # Computes the weight deltas by comparing the weights received with
+            # the current global model weights
+            deltas_received = self.algorithm.compute_weight_deltas(
+                baseline_weights, weights_received
+            )
+            # Runs a framework-agnostic server aggregation algorithm, such as
+            # the federated averaging algorithm
+            logging.info("[Server #%d] Aggregating model weight deltas.", os.getpid())
+            deltas = await self.aggregate_deltas(self.updates, deltas_received)
+            # Updates the existing model weights from the provided deltas
+            updated_weights = self.algorithm.update_weights(deltas)
+            # Loads the new model weights
+            self.algorithm.load_weights(updated_weights)
+
+        # The model weights have already been aggregated, now calls the
+        # corresponding hook and callback
+        self.weights_aggregated(self.updates)
+        self.callback_handler.call_event("on_weights_aggregated", self, self.updates)
+
+        # Testing the global model accuracy
+        if hasattr(Config().server, "do_test") and not Config().server.do_test:
+            # Compute the average accuracy from client reports
+            self.accuracy, self.accuracy_std = self.get_accuracy_mean_std(self.updates)
+            logging.info(
+                "[%s] Average client accuracy: %.2f%%.", self, 100 * self.accuracy
+            )
+        else:
+            # Testing the updated model directly at the server
+            logging.info("[%s] Started model testing.", self)
+            self.accuracy = self.trainer.custom_server_test(self.testset)
+
+        if hasattr(Config().trainer, "target_perplexity"):
+            logging.info(
+                fonts.colourize(
+                    f"[{self}] Global model perplexity: {self.accuracy:.2f}\n"
+                )
+            )
+        else:
+            logging.info(
+                fonts.colourize(
+                    f"[{self}] Global model accuracy: {100 * self.accuracy:.2f}%\n"
+                )
+            )
+
+        self.clients_processed()
+        self.callback_handler.call_event("on_clients_processed", self)
 
 
 

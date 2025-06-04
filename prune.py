@@ -8,19 +8,19 @@ from torch.utils.data import DataLoader
 from plato.config import Config
 import random
 
+from utils.statistics import get_model_param_output_channels
 
-
-def get_channel_indices(model,hidden_size,submodel_layer_prune_rate=None,input_sizes=[32,32]):
+def get_channel_indices(submodel_layer_prune_rate=None, modules_indices=None):
     if submodel_layer_prune_rate == None:
         submodel_layer_prune_rate = 1
     
-    input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
-    from utils.statistics import get_model_param_output_channels
+    # input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
+    # from utils.statistics import get_model_param_output_channels
     mapping_indices = dict()
     current_out = None
     import numpy as np
     rng = np.random.default_rng(seed=1234)
-    modules_indices = get_model_param_output_channels(model,input_data)
+    # modules_indices = get_model_param_output_channels(model,input_data)
     for key,value in modules_indices.items():
         if "conv" in key and current_out == None:
             current_in  =  list(range(3))
@@ -41,37 +41,53 @@ def get_channel_indices(model,hidden_size,submodel_layer_prune_rate=None,input_s
             mapping_indices[key] = (current_out)
     return mapping_indices
         
-def get_channel_indices_unuse_hsn(model,submodel_layer_prune_rate=None,importance=None,input_sizes=[32,32]):
+def get_channel_indices_unuse_hsn(model,submodel_layer_prune_rate=None,importance=None,input_sizes=[32,32],dict_modules=None,modules_indices=None):
     if submodel_layer_prune_rate == None:
         submodel_layer_prune_rate = 1
-    input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
-    from utils.statistics import get_model_param_output_channels
+    # input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
+    
     mapping_indices = dict()
     current_out = None
-    modules_indices = get_model_param_output_channels(model,input_data)
+
+    
+    # modules_indices = get_model_param_output_channels(model,input_data)
     for key,value in modules_indices.items():
-        if "conv" in key and current_out == None:
+        if dict_modules[key.rsplit('.', 1)[0]] == "conv" and current_out == None:
             current_in  =  list(range(3))
             current_out =  list(range(value))
             mapping_indices[key] = (current_in,current_out)
-        elif "conv" in key and "short" not in key and "weight" in key:
+        elif dict_modules[key.rsplit('.', 1)[0]] == "conv" and "short" not in key and "weight" in key:
             last_current_in = current_in
             current_in = current_out
             # current_out = sorted(rng.choice(value, int(value * submodel_layer_prune_rate), replace=False).tolist())
             imp = importance[key.rsplit('.', 1)[0]]
             n = int(len(imp) * submodel_layer_prune_rate)
             current_out = sorted(sorted(range(len(imp)), key=lambda i: imp[i], reverse=True)[:n])
-            print(current_out)
-
             mapping_indices[key] = (current_in,current_out)
-        elif "batchnorm" in key or "bn" in key:
+        elif dict_modules[key.rsplit('.', 1)[0]] == "bn" or "batchnorm" in key or "bn" in key or "running_mean" in key or "running_var" in key:
             mapping_indices[key] = (current_out)
-        elif "linear.weight" in key:
-            mapping_indices[key] = (current_in)
+   
+        elif (dict_modules[key.rsplit('.', 1)[0]] == "linear" or "linear.weight" in key) and "weight" in key:
+            if key.rsplit('.', 1)[0] in importance:
+                current_in = current_out
+                imp = importance[key.rsplit('.', 1)[0]]
+                n = int(len(imp) * submodel_layer_prune_rate)
+                current_out = sorted(sorted(range(len(imp)), key=lambda i: imp[i], reverse=True)[:n])
+                mapping_indices[key] = (current_in,current_out)
+            else:
+                print(key)
+                current_in = current_out
+                mapping_indices[key] = (current_in,list(range(modules_indices[key])))
+                current_out = list(range(modules_indices[key]))
+            
         elif "short" in key:
             mapping_indices[key] = (last_current_in,current_out)
         else:
             mapping_indices[key] = (current_out)
+    # print(importance.keys())
+    # # print(mapping_indices.keys())
+    # import time
+    # time.sleep(6000)
     return mapping_indices
 
 
@@ -120,7 +136,7 @@ def compute_effective_total(pruned_mapping, state_dict):
     return total
 
 
-def prune_mapping_with_global_threshold_and_binary_indices(initial_mapping, final_importance, model, target_ratio=0.5, device='cpu'):
+def prune_mapping_with_global_threshold_and_binary_indices(initial_mapping, final_importance, model, target_ratio=0.5, device='cpu',dict_modules=None,modules_indices=None):
     """
     思路说明：
       1. 计算整个模型原始参数数 original_total。
@@ -150,6 +166,7 @@ def prune_mapping_with_global_threshold_and_binary_indices(initial_mapping, fina
     low_thr = min(all_importance)
     high_thr = max(all_importance)
     
+
     # 定义辅助函数：给定阈值 threshold，生成 binary_indices、binary_masks，同时计算 probab_masks 时保留梯度
     def compute_pruned_mapping(threshold):
         binary_indices = {}
@@ -182,58 +199,128 @@ def prune_mapping_with_global_threshold_and_binary_indices(initial_mapping, fina
             # loss.backward()
             # import time
             # time.sleep(60)
-        
+    
         # (G) 根据 binary_indices 更新 mapping
         pruned_mapping = copy.deepcopy(initial_mapping)
         # 以下假设模型架构包含 conv1 和 layer1-layer4，每层含若干 block
-        layers = ['layer1', 'layer2', 'layer3', 'layer4']
-        submodel_layer_prune_rates = [
-            [[1, 1], [1, 1]],   # layer1
-            [[1, 1], [1, 1]],   # layer2
-            [[1, 1], [1, 1]],   # layer3
-            [[1, 1], [1, 1]]    # layer4
-        ]
-        if Config().parameters.model == "resnet34":
-            submodel_layer_prune_rates = [
-            [[1, 1], [1, 1], [1, 1]],   # layer1
-            [[1, 1], [1, 1], [1, 1], [1, 1]],   # layer2
-            [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]],   # layer3
-            [[1, 1], [1, 1], [1, 1]]    # layer4
-        ] 
-        # hidden_size 为每个阶段原始输出通道数（此处假设从 Config 中获得）
-        hidden_size = Config().parameters.hidden_size  # 举例: [64, 128, 256, 512]
-        # 第一层输入直接使用原始输入通道（比如图像通道数）
-        current_input = list(range(hidden_size[0]))
-        pruned_mapping["conv1.weight"] = (list(range(3)), list(range(64)))
+        # layers = ['layer1', 'layer2', 'layer3', 'layer4']
+        # submodel_layer_prune_rates = [
+        #     [[1, 1], [1, 1]],   # layer1
+        #     [[1, 1], [1, 1]],   # layer2
+        #     [[1, 1], [1, 1]],   # layer3
+        #     [[1, 1], [1, 1]]    # layer4
+        # ]
+        # if Config().parameters.model == "resnet34":
+        #     submodel_layer_prune_rates = [
+        #     [[1, 1], [1, 1], [1, 1]],   # layer1
+        #     [[1, 1], [1, 1], [1, 1], [1, 1]],   # layer2
+        #     [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]],   # layer3
+        #     [[1, 1], [1, 1], [1, 1]]    # layer4
+        # ]
+        # if Config().parameters.model == "vgg":
+        #     submodel_layer_prune_rates = [1]*15
+        # # hidden_size 为每个阶段原始输出通道数（此处假设从 Config 中获得）
+        # hidden_size = Config().parameters.hidden_size  # 举例: [64, 128, 256, 512]
+        # # 第一层输入直接使用原始输入通道（比如图像通道数）
+        # current_input = list(range(hidden_size[0]))
+        # pruned_mapping["conv1.weight"] = (list(range(3)), list(range(64)))
         
-        # 根据 block 传播剪枝索引，依赖关系中“当前层的输出”由 binary_indices 决定
-        for layer_idx, layer_name in enumerate(layers):
-            original_out = hidden_size[layer_idx]  # 原始输出通道数
-            block_rates = submodel_layer_prune_rates[layer_idx]
-            for block_idx, rates in enumerate(block_rates):
-                r1, r2 = rates
-                prefix = f"{layer_name}.{block_idx}"
+
+
+        #     if submodel_layer_prune_rate == None:
+        # submodel_layer_prune_rate = 1
+    # input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
+    # from utils.statistics import get_model_param_output_channels
+    # mapping_indices = dict()
+    # current_out = None
+
+    
+    # modules_indices = get_model_param_output_channels(model,input_data)
+    # for key,value in modules_indices.items():
+    #     if dict_modules[key.rsplit('.', 1)[0]] == "conv" and current_out == None:
+    #         current_in  =  list(range(3))
+    #         current_out =  list(range(value))
+    #         mapping_indices[key] = (current_in,current_out)
+    #     elif dict_modules[key.rsplit('.', 1)[0]] == "conv" and "short" not in key and "weight" in key:
+    #         last_current_in = current_in
+    #         current_in = current_out
+    #         # current_out = sorted(rng.choice(value, int(value * submodel_layer_prune_rate), replace=False).tolist())
+    #         imp = importance[key.rsplit('.', 1)[0]]
+    #         n = int(len(imp) * submodel_layer_prune_rate)
+    #         current_out = sorted(sorted(range(len(imp)), key=lambda i: imp[i], reverse=True)[:n])
+    #         mapping_indices[key] = (current_in,current_out)
+    #     elif dict_modules[key.rsplit('.', 1)[0]] == "bn" or "batchnorm" in key or "bn" in key:
+    #         mapping_indices[key] = (current_out)
+    #     elif (dict_modules[key.rsplit('.', 1)[0]] == "linear" or "linear.weight" in key) and "weight" in key:
+    #         mapping_indices[key] = (current_in)
+    #     elif "short" in key:
+    #         mapping_indices[key] = (last_current_in,current_out)
+    #     else:
+    #         mapping_indices[key] = (current_out)
+    # return mapping_indices
+        # if Config.data.datasource == "CIFAR10" or Config.data.datasource == "CIFAR100":
+        #     input_sizes = [32,32]
+        # else:
+        #     input_sizes = [64,64]
+        # input_data = torch.randn(1,3,input_sizes[0],input_sizes[1])
+        # modules_indices = get_model_param_output_channels(model)
+        current_output = None
+        for key,value in state_dict.items():
+            if dict_modules[key.rsplit('.', 1)[0]] == "conv" and current_output == None:
+                current_input =  list(range(3))
+                current_output = list(range(modules_indices[key]))
+                pruned_mapping[key] = (current_input,current_output)
+            elif key.rsplit('.', 1)[0] in binary_indices.keys() and "weight" in key:
+                last_current_input = current_input
+                current_input  = current_output
+                current_output =  binary_indices.get(key.rsplit('.', 1)[0])
+                pruned_mapping[key] = (current_input,current_output)#卷积
+            elif key.rsplit('.', 1)[0] in binary_indices.keys() and "bias" in key:
+                pruned_mapping[key] = (current_output)#卷积偏置
+            elif dict_modules[key.rsplit('.', 1)[0]] == "linear" and "weight" in key:
+                if key.rsplit('.', 1)[0] in binary_indices:
+                    last_current_input = current_input
+                    current_input  = current_output
+                    current_output =  binary_indices.get(key.rsplit('.', 1)[0])
+                    pruned_mapping[key] = (current_input,current_output)#非分类器线性层
+                else:
+                    pruned_mapping[key] = (current_output, list(range(modules_indices[key])))
+                    current_output = list(range(modules_indices[key]))
+            elif "shortcut" in key:
+                pruned_mapping[key] = (last_current_input,current_output)#残差链接
+            else:
+                pruned_mapping[key] = (current_output)
+
+
+
+        # # 根据 block 传播剪枝索引，依赖关系中“当前层的输出”由 binary_indices 决定
+        # for layer_idx, layer_name in enumerate(layers):
+        #     original_out = hidden_size[layer_idx]  # 原始输出通道数
+        #     block_rates = submodel_layer_prune_rates[layer_idx]
+        #     for block_idx, rates in enumerate(block_rates):
+        #         r1, r2 = rates
+        #         prefix = f"{layer_name}.{block_idx}"
                 
-                # --- conv1：输入为 current_input，输出根据对应 final_importance 决定
-                conv1_out = binary_indices.get(f"{prefix}.conv1", current_input)
-                pruned_mapping[f"{prefix}.bn1.weight"] = current_input
-                pruned_mapping[f"{prefix}.bn1.bias"]   = current_input
-                pruned_mapping[f"{prefix}.conv1.weight"] = (current_input, conv1_out)
+        #         # --- conv1：输入为 current_input，输出根据对应 final_importance 决定
+        #         conv1_out = binary_indices.get(f"{prefix}.conv1", current_input)
+        #         pruned_mapping[f"{prefix}.bn1.weight"] = current_input
+        #         pruned_mapping[f"{prefix}.bn1.bias"]   = current_input
+        #         pruned_mapping[f"{prefix}.conv1.weight"] = (current_input, conv1_out)
                 
-                # --- conv2：输入为 conv1_out，输出由 f"{prefix}.conv2" 决定
-                conv2_out = binary_indices.get(f"{prefix}.conv2", conv1_out)
-                pruned_mapping[f"{prefix}.bn2.weight"] = conv1_out
-                pruned_mapping[f"{prefix}.bn2.bias"]   = conv1_out
-                pruned_mapping[f"{prefix}.conv2.weight"] = (conv1_out, conv2_out)
-                pruned_mapping[f"{prefix}.shortcut.weight"] = (current_input, conv2_out)
+        #         # --- conv2：输入为 conv1_out，输出由 f"{prefix}.conv2" 决定
+        #         conv2_out = binary_indices.get(f"{prefix}.conv2", conv1_out)
+        #         pruned_mapping[f"{prefix}.bn2.weight"] = conv1_out
+        #         pruned_mapping[f"{prefix}.bn2.bias"]   = conv1_out
+        #         pruned_mapping[f"{prefix}.conv2.weight"] = (conv1_out, conv2_out)
+        #         pruned_mapping[f"{prefix}.shortcut.weight"] = (current_input, conv2_out)
                 
-                # 更新 current_input 为本 block 的输出，供后续 block 使用
-                current_input = conv2_out
-            # 层间传递：下一层首个 block 的输入为当前层最后的 current_input
-        pruned_mapping['bn4.weight'] = current_input
-        pruned_mapping['bn4.bias']   = current_input
-        pruned_mapping['linear.weight'] = current_input  # 按列剪枝
-        pruned_mapping['linear.bias'] = current_input
+        #         # 更新 current_input 为本 block 的输出，供后续 block 使用
+        #         current_input = conv2_out
+        #     # 层间传递：下一层首个 block 的输入为当前层最后的 current_input
+        # pruned_mapping['bn4.weight'] = current_input
+        # pruned_mapping['bn4.bias']   = current_input
+        # pruned_mapping['linear.weight'] = current_input  # 按列剪枝
+        # pruned_mapping['linear.bias'] = current_input
         
         return pruned_mapping, binary_masks, binary_indices, probab_masks
 
@@ -290,23 +377,26 @@ def prune_state_dict(full_state, mapping_indices):
         if key in mapping_indices:
             mapping = mapping_indices[key]
             # print(key)
-            if 'conv' in key or 'shortcut' in key:
+            if isinstance(mapping , tuple):
                 # print("当前进入",key)
                 in_indices, out_indices = mapping
                 t_in = torch.tensor(in_indices, device=param.device, dtype=torch.long)
                 t_out = torch.tensor(out_indices, device=param.device, dtype=torch.long)
                 # 对于卷积权重（形状：[out_channels, in_channels, kH, kW]）：
-
+                # print(param.shape)
                 new_state[key] = param.index_select(0, t_out).index_select(1, t_in).clone()
-            elif key == 'linear.weight':
-                t_cols = torch.tensor(mapping, device=param.device, dtype=torch.long)
-                new_state[key] = param[:, t_cols].clone()
-            elif 'bn' in key:
+            # elif key == 'linear.weight':
+            #     t_cols = torch.tensor(mapping, device=param.device, dtype=torch.long)
+            #     new_state[key] = param[:, t_cols].clone()
+
+
+            elif isinstance(mapping,list) and "num_batches_tracked" not in key:
                 # print(key)
                 # print(param)
                 t_idx = torch.tensor(mapping, device=param.device, dtype=torch.long)
                 # print(t_idx)
                 new_state[key] = param.index_select(0, t_idx).clone()
+
             else:
                 new_state[key] = param.clone()
         else:
@@ -365,39 +455,45 @@ def restore_pruned_state(full_state, pruned_state, mapping_indices):
     restored_state = {}
     # print(mapping_indices.keys())
     for key, full_param in full_state.items():
-        if key in mapping_indices:
+        if key in mapping_indices and key in pruned_state.keys():
             # print(key)
             
             mapping = mapping_indices[key]
             restored_param = full_param.clone()
+            # restored_param = torch.zeros_like(full_param)
             sub_param = pruned_state[key]
+            # print(key)
+            # print((mapping))
             # if isinstance(mapping, tuple):
-            if 'conv' in key or 'shortcut' in key:
+            if isinstance(mapping,list) and len(mapping) == 2:
                 # 针对二维的参数，例如卷积层的 weight，mapping 格式为 (input_indices, output_indices)
                 in_idx, out_idx = mapping
                 in_idx_tensor = torch.tensor(in_idx, dtype=torch.long, device=full_param.device)
                 out_idx_tensor = torch.tensor(out_idx, dtype=torch.long, device=full_param.device)
                 # 假设参数 shape 为 (out_channels, in_channels, ...)，利用高级索引覆盖对应位置
                 restored_param[out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] = sub_param
-            elif isinstance(mapping, list):
-                # 针对一维参数或特殊二维参数（如 linear.weight 需要更新列）
+            elif "num_batches_tracked" in key:
+                pass
+            elif isinstance(mapping, list) and len(mapping) == 1:
+                
+                # # 针对一维参数或特殊二维参数（如 linear.weight 需要更新列）
                 idx_tensor = torch.tensor(mapping, dtype=torch.long, device=full_param.device)
-                # 对于 linear.weight, 需要更新的是列而不是行
-                if key.lower().startswith("linear") and "weight" in key:
-                    # full_param 的 shape 为 (num_classes, original_features)，子模型参数为 (num_classes, len(mapping))
-                    restored_param[:, idx_tensor] = sub_param
-                elif key.lower().startswith("linear") and "bias" in key:
-                    # 对于 linear.bias，不进行索引操作，直接使用子模型参数
-                    restored_param = sub_param.clone()
-                else:
-                    restored_param[idx_tensor] = sub_param
+                # # # 对于 linear.weight, 需要更新的是列而不是行
+                # if key.lower().startswith("linear") and "weight" in key:
+                #     # full_param 的 shape 为 (num_classes, original_features)，子模型参数为 (num_classes, len(mapping))
+                #     restored_param[:, idx_tensor] = sub_param
+                # elif key.lower().startswith("linear") and "bias" in key:
+                #     # 对于 linear.bias，不进行索引操作，直接使用子模型参数
+                #     restored_param = sub_param.clone()
+                # else:
+                restored_param[idx_tensor] = sub_param
             restored_state[key] = restored_param
         else:
             restored_state[key] = pruned_state[key] if key in pruned_state else full_param.clone()
     return restored_state
 
 
-def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list):
+def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,client_data_sizes):
     """
     聚合多个子模型参数。
     对于每个子模型，先调用 restore_pruned_state 将其参数恢复到与 full_state 相同的尺寸（缺失部分默认使用原始全模型参数）。
@@ -410,11 +506,15 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list):
         restored_states.append(restored_state)
     
     aggregated_state = {}
+    total_data = sum(client_data_sizes)
+    
     for key in full_state.keys():
-        # 对所有恢复后的状态对应 key 的参数逐元素求平均，确保形状一致
-        agg_param = sum(state[key] for state in restored_states) / len(restored_states)
+        # 使用各客户端的数据量作为权重进行加权平均
+        agg_param = sum((client_data_sizes[i] / total_data) * restored_states[i][key] 
+                        for i in range(len(restored_states)))
         aggregated_state[key] = agg_param
-    return aggregated_state,restored_states
+
+    return aggregated_state, restored_states
 
 
 
@@ -422,7 +522,7 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list):
 
 
 
-def reverse_prune_rates(mapping_indices, hidden_size):
+def reverse_prune_rates(mapping_indices, dict_modules ,modules_indices):
     """
     逆推出 submodel_prune_rates（仅针对子模型的卷积层部分），
     根据 mapping_indices 中每层每个 block 的保留通道数量恢复出有效剪枝率。
@@ -435,27 +535,78 @@ def reverse_prune_rates(mapping_indices, hidden_size):
     
     返回的数据结构为一个列表（按层顺序），每个元素为该层中各 block 的 [r1, r2] 列表。
     """
+    # submodel_prune_rates = []
+    # layers = ['layer1', 'layer2', 'layer3', 'layer4']
+    # for layer_idx, layer_name in enumerate(layers):
+    #     layer_prune_rates = []
+    #     block_idx = 0
+    #     while True:
+    #         key_conv1 = f"{layer_name}.{block_idx}.conv1.weight"
+    #         key_conv2 = f"{layer_name}.{block_idx}.conv2.weight"
+    #         if key_conv1 not in mapping_indices or key_conv2 not in mapping_indices:
+    #             break
+    #         # 对于 conv1，其映射格式为 (prev_input, conv1_out)
+    #         _, conv1_out = mapping_indices[key_conv1]
+    #         # 对于 conv2，其映射格式为 (conv1_out, conv2_out)
+    #         _, conv2_out = mapping_indices[key_conv2]
+    #         # 这里以原始层通道数（hidden_size[layer_idx]）作为基数
+    #         original_channels = hidden_size[layer_idx]
+    #         r1_eff = len(conv1_out) / original_channels
+    #         r2_eff = len(conv2_out) / original_channels
+    #         layer_prune_rates.append([r1_eff, r2_eff])
+    #         block_idx += 1
+    #     submodel_prune_rates.append(layer_prune_rates)
+    flatten_rates = []
+    for key,value in mapping_indices.items():
+        if dict_modules[key.rsplit('.', 1)[0]] == "conv" and "shortcut" not in key and "weight" in key:
+            _,out = value
+            flatten_rates.append(len(out) / modules_indices[key])
+        elif dict_modules[key.rsplit('.', 1)[0]] == "linear" and "weight" in  key:
+            _,out = value
+            flatten_rates.append(len(out) / modules_indices[key])
+    #第一层和最后一层不剪枝
+    flatten_rates = flatten_rates[1:-1]
     submodel_prune_rates = []
-    layers = ['layer1', 'layer2', 'layer3', 'layer4']
-    for layer_idx, layer_name in enumerate(layers):
-        layer_prune_rates = []
-        block_idx = 0
-        while True:
-            key_conv1 = f"{layer_name}.{block_idx}.conv1.weight"
-            key_conv2 = f"{layer_name}.{block_idx}.conv2.weight"
-            if key_conv1 not in mapping_indices or key_conv2 not in mapping_indices:
-                break
-            # 对于 conv1，其映射格式为 (prev_input, conv1_out)
-            _, conv1_out = mapping_indices[key_conv1]
-            # 对于 conv2，其映射格式为 (conv1_out, conv2_out)
-            _, conv2_out = mapping_indices[key_conv2]
-            # 这里以原始层通道数（hidden_size[layer_idx]）作为基数
-            original_channels = hidden_size[layer_idx]
-            r1_eff = len(conv1_out) / original_channels
-            r2_eff = len(conv2_out) / original_channels
-            layer_prune_rates.append([r1_eff, r2_eff])
-            block_idx += 1
-        submodel_prune_rates.append(layer_prune_rates)
+    if Config().parameters.model == "resnet18":
+
+        # 简单检查一下（如果不等于 16，再考虑别的情况）
+        if len(flatten_rates) != 16:
+            raise ValueError(f"预期 resnet18 应有 16 个 rate 值，但实际得到 {len(flatten_rates)} 个.")
+        index = 0
+        # resnet18 的 layer 顺序
+        for layer_idx in range(4):  # 四个 layer: layer1 ~ layer4
+            layer_rates = []
+            for block_idx in range(2):  # 每个 layer 有 2 个基本 block
+                r1 = flatten_rates[index]
+                r2 = flatten_rates[index + 1]
+                index += 2
+                layer_rates.append([r1, r2])
+            submodel_prune_rates.append(layer_rates)
+
+    
+    elif Config().parameters.model == "resnet34":
+        # ResNet34 每一层块数分别：layer1: 3, layer2: 4, layer3: 6, layer4: 3
+        # 每个 block 有两个 rate（conv1 和 conv2）
+        layer_block_nums = [3, 4, 6, 3]
+        idx = 0
+        for num_blocks in layer_block_nums:
+            current_layer = []
+            for _ in range(num_blocks):
+                # 从 flatten_rates 中顺序取出两个 rate 作为当前 block 的 [conv1_rate, conv2_rate]
+                current_layer.append([flatten_rates[idx], flatten_rates[idx + 1]])
+                idx += 2
+            submodel_prune_rates.append(current_layer)
+
+
+    elif Config().parameters.model == "vgg":
+        # 假设 flatten_rates 已经按照卷积层顺序排列，并且总数为15（对应 VGG15 的15层卷积层）
+        # 此时直接使用 flatten_rates 即可
+        submodel_prune_rates = flatten_rates
+        print("当前vgg",submodel_prune_rates)
+
+
+    elif Config().parameters.model == "mobileNetV2":
+        pass
     
     return submodel_prune_rates
 

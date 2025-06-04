@@ -16,97 +16,153 @@ if not os.path.exists("img"):
     os.makedirs("img")
 
 
-
-# 通道重要性评估模块 (使用 forward hook)
-
 class ChannelImportanceEvaluator:
     def __init__(self, model, device):
         self.model = model.to(device)
         self.device = device
-        self.score_dict = {}
+
+        # 用于存放卷积层的累计评分
+        # { layer_name: { "A_sum": Tensor(C), "B_sum": Tensor(C), "count": int } }
+        self.score_dict_conv = {}
+
+        # self.threshold 用于卷积层的二值化阈值
         self.threshold = None
+        # 当前批次输入的原图和二值化后的 mask，用于卷积 A_score 计算
         self.current_orig = None
         self.current_binary = None
-        if Config().data.datasource == "CIFAR10" or Config().data.datasource == "CIFAR100":
-                self.target_size = (32, 32)
+
+        if Config().data.datasource in ["CIFAR10", "CIFAR100"]:
+            self.target_size = (32, 32)
         else:
-                self.target_size = (64, 64)
+            self.target_size = (64, 64)
 
-    def hook_fn(self, name):
+    def hook_conv(self, name):
+        """
+        针对每个 nn.Conv2d 层的 forward hook。
+        计算 A_score（基于二值化后的 IoU）和 B_score（基于输出范数 / 上一层方差），
+        并把它们累加到 self.score_dict_conv[name] 中。
+        """
         def _hook(module, inputs, output):
-            
-
+            # output: Tensor, 形状 (B, C, H, W)
+            # 1) 先插值到 target_size，然后二值化
             up_out = F.interpolate(output, size=self.target_size, mode="bilinear", align_corners=False)
-            binary_feat = (up_out > self.threshold).float()
-            binary_orig = self.current_binary.expand_as(binary_feat)
+            binary_feat = (up_out > self.threshold).float()  # (B, C, H', W')
+            binary_orig = self.current_binary.expand_as(binary_feat)  # (B, C, H', W')
+
             B, C, H, W = binary_feat.shape
-            inter = (binary_feat * binary_orig).view(B, C, -1).sum(dim=2)
-            union = (((binary_feat + binary_orig) > 0).float()).view(B, C, -1).sum(dim=2)
-            iou = inter / (union + 1e-6)
-            A_score = iou.mean(dim=0)
-            norm_sq = output.pow(2).sum(dim=(2, 3))
-            var_orig = self.current_orig.var(dim=(2, 3), unbiased=False).mean(dim=1, keepdim=True)
-            B_score = (norm_sq / (var_orig + 1e-6)).mean(dim=0)
-            if name not in self.score_dict:
-                self.score_dict[name] = {"A_sum": A_score.clone(), "B_sum": B_score.clone(), "count": 1}
+            # 2) 计算交集与并集 (IoU)——对每个通道分别算 IoU
+            inter = (binary_feat * binary_orig).view(B, C, -1).sum(dim=2)      # (B, C)
+            union = (((binary_feat + binary_orig) > 0).float()).view(B, C, -1).sum(dim=2)  # (B, C)
+            iou = inter / (union + 1e-6)  # (B, C)
+            A_score = iou.mean(dim=0)     # (C,)
+
+            # 3) 计算 B_score：输出的范数 / 上一层输入的方差
+            norm_sq = output.pow(2).sum(dim=(2, 3))  # (B, C)
+            var_orig = self.current_orig.var(dim=(2, 3), unbiased=False).mean(dim=1, keepdim=True)  # (B, 1)
+            B_score = (norm_sq / (var_orig + 1e-6)).mean(dim=0)  # (C,)
+
+            # 4) 把 A_score 和 B_score 累加到字典里
+            if name not in self.score_dict_conv:
+                self.score_dict_conv[name] = {
+                    "A_sum": A_score.clone(),
+                    "B_sum": B_score.clone(),
+                    "count": 1
+                }
             else:
-                self.score_dict[name]["A_sum"] += A_score
-                self.score_dict[name]["B_sum"] += B_score
-                self.score_dict[name]["count"] += 1
+                self.score_dict_conv[name]["A_sum"] += A_score
+                self.score_dict_conv[name]["B_sum"] += B_score
+                self.score_dict_conv[name]["count"] += 1
+
         return _hook
 
     def evaluate(self, data_loader, threshold=0.5):
+        """
+        对给定的 data_loader，遍历所有样本，收集每个卷积层的输出统计量；
+        同时在最后一步遍历完毕后，对所有线性层直接根据权重计算 L2 范数 + Z‐Score。
+        返回一个字典：{ layer_name: importance_numpy_array }。
+        """
         self.threshold = threshold
         hooks = []
+
+        # 1. 为卷积层注册 forward hook
         for name, module in self.model.named_modules():
             if isinstance(module, nn.Conv2d):
-                h = module.register_forward_hook(self.hook_fn(name))
+                h = module.register_forward_hook(self.hook_conv(name))
                 hooks.append(h)
+
         self.model.eval()
         with torch.no_grad():
             for x, _ in data_loader:
                 x = x.to(self.device)
+                # 保存原始输入，用于后续计算方差
                 self.current_orig = x.clone()
-                gray = x.mean(dim=1, keepdim=True)
+                # 生成当前批次的二值化 mask，用于 A_score 计算
+                gray = x.mean(dim=1, keepdim=True)  # (B, 1, H, W)
                 self.current_binary = F.interpolate(gray, size=self.target_size, mode="bilinear", align_corners=False)
-                self.current_binary = (self.current_binary > threshold).float()
+                self.current_binary = (self.current_binary > threshold).float()  # (B, 1, H', W')
+
+                # 只做前向传播，让所有 Conv2d 的 hook 执行
                 _ = self.model(x)
+
+        # 卷积层 hook 移除
         for h in hooks:
             h.remove()
-            
+
         importance_dict = {}
-        for name, scores in self.score_dict.items():
+
+        # 2. 处理卷积层的累计统计 → 最终 importance
+        #    先对 A_sum / count, B_sum / count 做 gamma 变换和 Z‐Score，再相乘，最后再做一轮 Z‐Score
+        for name, scores in self.score_dict_conv.items():
             count = scores["count"]
-            A_avg = scores["A_sum"] / count
-            B_avg = scores["B_sum"] / count
+            A_avg = scores["A_sum"] / count       # Tensor, 形状 (C,)
+            B_avg = scores["B_sum"] / count       # Tensor, 形状 (C,)
             gamma = 0.2
-            
-            # 对 A_avg 与 B_avg 经过 gamma 变换
+
+            # 做 γ 幂运算
             A_transformed = torch.pow(A_avg, gamma)
             B_transformed = torch.pow(B_avg, gamma)
-            
-            # --- 对 A_transformed 使用 Z 分数标准化 ---
+
+            # 对 A_transformed 做首轮 Z‐Score
             mean_A = A_transformed.mean()
-            std_A = A_transformed.std() + 1e-6  # 避免除 0
+            std_A = A_transformed.std() + 1e-6
             norm_A = (A_transformed - mean_A) / std_A
-            
-            # --- 对 B_transformed 使用 Z 分数标准化 ---
+
+            # 对 B_transformed 做首轮 Z‐Score
             mean_B = B_transformed.mean()
             std_B = B_transformed.std() + 1e-6
             norm_B = (B_transformed - mean_B) / std_B
-            
-            # 结合两个归一化项得到重要性指标
-            importance = norm_A * norm_B
-            
-            # 可选：对 importance 再次做 Z 分数标准化，
-            # 使得每层的重要性值具有零均值和单位标准差。
-            mean_imp = importance.mean()
-            std_imp = importance.std() + 1e-6
-            z_score_importance = (importance - mean_imp) / std_imp
-            
+
+            # 乘起来作为“综合重要性”
+            importance_raw = norm_A * norm_B  # Tensor, 形状 (C,)
+
+            # 再做一次 Z‐Score，使每个层输出的通道分数均值为 0，方差为 1
+            mean_imp = importance_raw.mean()
+            std_imp = importance_raw.std() + 1e-6
+            z_score_importance = (importance_raw - mean_imp) / std_imp  # Tensor, (C,)
+
             importance_dict[name] = z_score_importance.detach().cpu().numpy()
-            
+
+        # 3. 处理线性层：直接用 weight 的 L2 范数 + Z‐Score，生成 importance
+        for name, module in self.model.named_modules():
+            if isinstance(module, nn.Linear):
+                # module.weight 形状 (out_features, in_features)
+                with torch.no_grad():
+                    W = module.weight.data  # Tensor, (out_features, in_features)
+                    # 计算每个输出神经元（第 j 行）的 L2 范数
+                    # -> shape (out_features,)
+                    l2_norm = W.norm(p=2, dim=1)
+
+                    # 做 Z‐Score 标准化
+                    mean_w = l2_norm.mean()
+                    std_w = l2_norm.std() + 1e-6
+                    z_score_w = (l2_norm - mean_w) / std_w  # Tensor, (out_features,)
+
+                    importance_dict[name] = z_score_w.detach().cpu().numpy()
+
+        # 保证 CUDA 异步计算完成
+        torch.cuda.synchronize(self.device)
         return importance_dict
+
 
 
 
@@ -189,10 +245,18 @@ class MaskedResNet(nn.Module):
 
     def forward(self, x, update=False):
         def hook_fn(module, inputs, output, name):
-            mask_expanded = self.probab_masks[name].reshape(1, -1, 1, 1).clone()
+            if output.ndim == 4:  # 表示形状是 (50, 512, 2, 2)
+                mask_expanded = self.probab_masks[name].reshape(1, -1, 1, 1).clone()
+            elif output.ndim == 2:  # 表示形状是 (50, 512)
+                mask_expanded = self.probab_masks[name].reshape(1, -1).clone()
+            else:
+                raise ValueError(f"Unexpected mask shape: {output.shape}")
+            # mask_expanded = self.probab_masks[name].reshape(1, -1, 1, 1).clone()
             
-
+            # print("output维度",output.shape)
+            # print("mask维度",mask_expanded.shape)
             output = output * mask_expanded
+            # print("output相乘后于",output.shape)
 
             return output
         

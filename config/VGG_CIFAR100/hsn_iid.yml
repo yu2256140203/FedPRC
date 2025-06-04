@@ -28,7 +28,7 @@ server:
 
 data:
     # The training and testing dataset
-    datasource: CIFAR10
+    datasource: CIFAR100
     random_seed: 1234
     # Number of samples in each partition
     partition_size: 500
@@ -44,7 +44,7 @@ trainer:
     rounds: 400
 
     # The maximum number of clients running concurrently
-    max_concurrency: 5
+    max_concurrency: 3
 
     # The target accuracy
     target_accuracy: 1
@@ -82,11 +82,11 @@ parameters:
     importance_filters: [0.5,0.5] #先服务端，后客户端
     hidden_size: [64, 128, 256, 512]
     first_layer: conv1
-    ranks_round: 5 #重要性评价间隔
+    ranks_round: 2 #重要性评价间隔
     proxy_data_rate: 0.2
     loss_rate: [1,1]
-    hsn_outputs: outputs/use_iid.txt
+    hsn_outputs: hsn_outputs/VGG_CIFAR100/hsn_iid.txt
     FlexFL_exp: False
     unuse_hsn: False
-    model: resnet18
-    momentum: 0.9
+    model: vgg
+    momentum: 0

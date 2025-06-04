@@ -1,67 +1,75 @@
 import torch
 import torch.nn as nn
 from collections import OrderedDict
+from plato.config import Config
+import torch
+from collections import OrderedDict
+from torch.nn import Module
 
-def get_model_param_output_channels(model, dummy_input):
-    """
-    遍历模型中所有叶子模块的前向输出，获取输出通道数，
-    并构造一个有序字典：键为参数的全名（模块名+参数名），值为该模块前向输出张量的通道数。
+def get_model_param_output_channels(model, dummy_input=None):
+    if Config.data.datasource == "CIFAR10":
+        input_sizes = [32, 32]
+    elif Config.data.datasource == "CIFAR100":
+        input_sizes = [32, 32]
+    else:
+        input_sizes = [64, 64]
+        
+    # 实例化模型并准备一个随机输入
+    model = model()
+    dummy_input = torch.randn(1, 3, input_sizes[0], input_sizes[1])
     
-    字典顺序按照 model.named_parameters() 的顺序排列。
-
-    参数：
-      model: 需要检查的模型，例如 ResNet、VGG 等。
-      dummy_input: 用于触发前向传播的虚拟输入张量。
-
-    返回：
-      一个 OrderedDict，key 为参数全名（例如 "conv1.weight"），value 为所在模块输出张量的通道数。
-    """
-    output_channels = {}  # 保存每个模块的输出通道数
-
-    def hook(module, input, output):
-        # 处理 output 可能存在多种形式的情况
-        if isinstance(output, torch.Tensor):
-            shape = output.size()
-        elif isinstance(output, (list, tuple)) and len(output) > 0 and isinstance(output[0], torch.Tensor):
-            shape = output[0].size()
+    # 用于存储“模块 -> 输出通道数”
+    output_channels = {}
+    
+    # forward hook：把每个叶子模块（没有子模块的子网络）输出通道数记录下来
+    def hook(module: Module, inp, out):
+        # 只关心 Tensor 或者包含 Tensor 的 tuple/list
+        if isinstance(out, torch.Tensor):
+            shape = out.shape
+        elif isinstance(out, (list, tuple)) and len(out) > 0 and isinstance(out[0], torch.Tensor):
+            shape = out[0].shape
         else:
             return
         
-        # 确保输出张量的 shape 至少为 (N, C, ...)
         if len(shape) >= 2:
             output_channels[module] = shape[1]
-
-    # 为每个叶子模块注册 hook
+    
+    # 在所有叶子模块上注册 hook
     hooks = []
     for mod_name, module in model.named_modules():
-        if len(list(module.children())) == 0:
+        if len(list(module.children())) == 0:  # 叶子节点
             h = module.register_forward_hook(hook)
-            hooks.append((mod_name, h))
+            hooks.append(h)
     
-    # 触发一次前向传播以收集数据
+    # 触发一次前向传播，收集每个叶子模块的“输出通道数”
     model.eval()
     with torch.no_grad():
         model(dummy_input)
     
-    # 移除 hook
-    for mod_name, h in hooks:
+    # 卸载所有 hook
+    for h in hooks:
         h.remove()
     
-    # 构造参数全名到输出通道数的映射（无序版本）
-    param_channel_dict = {}
-    for mod_name, module in model.named_modules():
-        if module in output_channels:
-            for param_name, _ in module.named_parameters(recurse=False):
-                full_param_name = f"{mod_name}.{param_name}" if mod_name else param_name
-                param_channel_dict[full_param_name] = output_channels[module]
-    
-    # 按照 model.named_parameters() 的顺序构造一个有序字典
+    # 构造最终的 OrderedDict：按照 named_modules() 的顺序，
+    # 先把每个模块的参数（weight, bias……）塞进去，再把 BN 的 running_mean/var 塞进去
     ordered_param_channel_dict = OrderedDict()
-    for name, _ in model.named_parameters():
-        if name in param_channel_dict:
-            ordered_param_channel_dict[name] = param_channel_dict[name]
+    for mod_name, module in model.named_modules():
+        if module not in output_channels:
+            continue
+        
+        # 1) 先加所有 parameters（recurse=False，不递归到子模块）
+        for p_name, _ in module.named_parameters(recurse=False):
+            full_p_name = f"{mod_name}.{p_name}" if mod_name else p_name
+            ordered_param_channel_dict[full_p_name] = output_channels[module]
+        
+        # 2) 再加所有 buffers（只挑 running_mean 和 running_var）
+        for b_name, _ in module.named_buffers(recurse=False):
+            if b_name in ("running_mean", "running_var"):
+                full_b_name = f"{mod_name}.{b_name}" if mod_name else b_name
+                ordered_param_channel_dict[full_b_name] = output_channels[module]
     
     return ordered_param_channel_dict
+
 
 # 示例用法：
 if __name__ == '__main__':

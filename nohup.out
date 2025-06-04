@@ -29629,3 +29629,57 @@ Evaluation complete!
 [INFO][19:03:52]: [Client #76] Sent 43.99 MB of payload data to the server.
 [INFO][19:03:52]: [Client #5] The server disconnected the connection.
 test.sh: 第 7 行： 2517381 已杀死               python FedPRC.py -c config/new_6.yml &> outputs/new_6.txt
+Traceback (most recent call last):
+  File "FedPRC.py", line 1, in <module>
+    from client import client
+  File "/home/dyx/yjl/plato/FedPRC/client.py", line 4, in <module>
+    from plato.trainers import registry as trainers_registry
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/plato/trainers/registry.py", line 19, in <module>
+    from plato.trainers import basic, diff_privacy, pascal_voc, gan, split_learning
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/plato/trainers/basic.py", line 18, in <module>
+    from plato.trainers import base, loss_criterion, lr_schedulers, optimizers, tracking
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/plato/trainers/loss_criterion.py", line 7, in <module>
+    from lightly import loss
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/__init__.py", line 88, in <module>
+    from lightly.api import _version_checking
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/api/__init__.py", line 6, in <module>
+    from lightly.api.api_workflow_artifacts import ArtifactNotExist
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/api/api_workflow_artifacts.py", line 4, in <module>
+    from lightly.api import download
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/api/download.py", line 14, in <module>
+    from lightly.api import utils
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/api/utils.py", line 20, in <module>
+    from lightly.openapi_generated.swagger_client.configuration import Configuration
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/openapi_generated/swagger_client/__init__.py", line 21, in <module>
+    from lightly.openapi_generated.swagger_client.api.collaboration_api import CollaborationApi
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/openapi_generated/swagger_client/api/__init__.py", line 10, in <module>
+    from lightly.openapi_generated.swagger_client.api.jobs_api import JobsApi
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/openapi_generated/swagger_client/api/jobs_api.py", line 47, in <module>
+    class JobsApi(object):
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/lightly/openapi_generated/swagger_client/api/jobs_api.py", line 203, in JobsApi
+    def get_jobs(self, **kwargs) -> List[JobsData]:  # noqa: E501
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/decorator.py", line 49, in validate_arguments
+    return validate(func)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/decorator.py", line 36, in validate
+    vd = ValidatedFunction(_func, config)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/decorator.py", line 126, in __init__
+    self.create_model(fields, takes_args, takes_kwargs, config)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/decorator.py", line 264, in create_model
+    self.model = create_model(to_camel(self.raw_function.__name__), __base__=DecoratorBaseModel, **fields)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/main.py", line 1024, in create_model
+    return meta(__model_name, resolved_bases, namespace, **kwds)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/main.py", line 197, in __new__
+    fields[ann_name] = ModelField.infer(
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/fields.py", line 504, in infer
+    return cls(
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/fields.py", line 434, in __init__
+    self.prepare()
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/fields.py", line 544, in prepare
+    self._set_default_and_type()
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/fields.py", line 568, in _set_default_and_type
+    default_value = self.get_default()
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/fields.py", line 437, in get_default
+    return smart_deepcopy(self.default) if self.default_factory is None else self.default_factory()
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/utils.py", line 683, in smart_deepcopy
+    if obj_type in IMMUTABLE_NON_COLLECTIONS_TYPES:
+KeyboardInterrupt

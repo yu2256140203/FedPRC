@@ -33,8 +33,11 @@ data:
     # Number of samples in each partition
     partition_size: 500
 
-    # IID or non-IID?
-    sampler: iid
+    sampler: noniid
+    
+
+    # The concentration parameter for the Dirichlet distribution
+    concentration: 0.6
 
 trainer:
     # The type of the trainer
@@ -85,8 +88,8 @@ parameters:
     ranks_round: 5 #重要性评价间隔
     proxy_data_rate: 0.2
     loss_rate: [1,1]
-    hsn_outputs: outputs/use_iid.txt
+    hsn_outputs: hsn_outputs/Resnet34_CIFAR10/hsn_noiid_0.6_noBN.txt
     FlexFL_exp: False
     unuse_hsn: False
-    model: resnet18
-    momentum: 0.9
+    model: resnet34
+    momentum: 0

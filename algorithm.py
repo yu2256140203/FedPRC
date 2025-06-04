@@ -59,10 +59,13 @@ class FedPRC_algorithm(fedavg.Algorithm):
 
         submodel_weights = []
         mapping_indices_list = []
+        client_data_sizes = []
         for payload in weights_received:
             submodel_weights.append(payload["outbound_payload"])
             mapping_indices_list.append(payload["mapping_indices"])
-        global_parameters,restored_states = aggregate_submodel_states(full_state=self.model.state_dict(),sub_state_list=submodel_weights,mapping_indices_list=mapping_indices_list)
+            client_data_sizes.append(payload["data_size"])
+            
+        global_parameters,restored_states = aggregate_submodel_states(full_state=self.model.state_dict(),sub_state_list=submodel_weights,mapping_indices_list=mapping_indices_list,client_data_sizes=client_data_sizes)
         
         return global_parameters,restored_states
 

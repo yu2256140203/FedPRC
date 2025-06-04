@@ -85,7 +85,7 @@ parameters:
     ranks_round: 5 #重要性评价间隔
     proxy_data_rate: 0.2
     loss_rate: [1,1]
-    hsn_outputs: hsn_outputs/Resnet34_CIFAR10/hsn_iid.txt
+    hsn_outputs: hsn_outputs/Resnet34_CIFAR10/hsn_iid_3.txt
     FlexFL_exp: False
     unuse_hsn: False
     model: resnet34

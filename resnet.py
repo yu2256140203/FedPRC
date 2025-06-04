@@ -189,16 +189,38 @@ class ResNet(nn.Module):
 # 模型构造函数
 # -----------------------------
 def resnet18(layer_prune_rates=None, track=False,classes_size=10):
-    """ResNet18 with per-layer prune rates, using basic blocks.
-       对于 ResNet18，每层 block 内剪枝率列表长度为 2。
-       示例:
-       layer_prune_rates = [
-         [[0.9, 0.95], [0.92, 0.93]],  # layer1: 2 blocks
-         [[0.88, 0.90], [0.87, 0.89]],  # layer2: 2 blocks
-         [[0.85, 0.86], [0.84, 0.85]],  # layer3: 2 blocks
-         [[0.80, 0.83], [0.79, 0.82]]   # layer4: 2 blocks
-       ]
-    """
+    if layer_prune_rates == None:
+        layer_prune_rates = [
+        [[1,1], [1,1]],   # layer1
+        [[1,1], [1,1]],   # layer2
+        [[1,1], [1,1]],   # layer3
+        [[1,1], [1,1]]    # layer4
+    ]
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
+
+    data_shape = 3
+    hidden_size = [64, 128, 256, 512]
+    model = ResNet(data_shape, hidden_size, Block, [2, 2, 2, 2], classes_size, layer_prune_rates, track)
+    model.apply(init_param)
+    return model
+def resnet18_CIFAR100(layer_prune_rates=None, track=False,classes_size=100):
+    if layer_prune_rates == None:
+        layer_prune_rates = [
+        [[1,1], [1,1]],   # layer1
+        [[1,1], [1,1]],   # layer2
+        [[1,1], [1,1]],   # layer3
+        [[1,1], [1,1]]    # layer4
+    ]
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
+
+    data_shape = 3
+    hidden_size = [64, 128, 256, 512]
+    model = ResNet(data_shape, hidden_size, Block, [2, 2, 2, 2], classes_size, layer_prune_rates, track)
+    model.apply(init_param)
+    return model
+def resnet18_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200):
     if layer_prune_rates == None:
         layer_prune_rates = [
         [[1,1], [1,1]],   # layer1
@@ -233,7 +255,42 @@ def resnet34(layer_prune_rates=None, track=False,classes_size=10):
     model = ResNet(data_shape, hidden_size, Block, [3, 4, 6, 3], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
-
+def resnet34_CIFAR100(layer_prune_rates=None, track=False,classes_size=100):
+    if layer_prune_rates == None:
+        layer_prune_rates = [
+        [[1,1], [1,1], [1,1]],   # layer1
+        [[1,1], [1,1], [1,1], [1,1]],   # layer2
+        [[1,1], [1,1], [1,1], [1,1], [1,1], [1,1]],   # layer3
+        [[1,1], [1,1], [1,1]]    # layer4
+    ]
+    """ResNet34 with per-layer prune rates, using basic blocks.
+       对于 ResNet34，大层 block 数为 [3, 4, 6, 3].
+    """
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
+    data_shape = 3
+    hidden_size = [64, 128, 256, 512]
+    model = ResNet(data_shape, hidden_size, Block, [3, 4, 6, 3], classes_size, layer_prune_rates, track)
+    model.apply(init_param)
+    return model
+def resnet34_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200):
+    if layer_prune_rates == None:
+        layer_prune_rates = [
+        [[1,1], [1,1], [1,1]],   # layer1
+        [[1,1], [1,1], [1,1], [1,1]],   # layer2
+        [[1,1], [1,1], [1,1], [1,1], [1,1], [1,1]],   # layer3
+        [[1,1], [1,1], [1,1]]    # layer4
+    ]
+    """ResNet34 with per-layer prune rates, using basic blocks.
+       对于 ResNet34，大层 block 数为 [3, 4, 6, 3].
+    """
+    if Config().data.datasource == "CIFAR100":
+        classes_size = 100
+    data_shape = 3
+    hidden_size = [64, 128, 256, 512]
+    model = ResNet(data_shape, hidden_size, Block, [3, 4, 6, 3], classes_size, layer_prune_rates, track)
+    model.apply(init_param)
+    return model
 def resnet50(layer_prune_rates, track=False,classes_size=10):
     """ResNet50 with per-layer prune rates, using Bottleneck blocks.
        对于 ResNet50，大层 block 数为 [3, 4, 6, 3]，每个 block 内剪枝率长度为 3.

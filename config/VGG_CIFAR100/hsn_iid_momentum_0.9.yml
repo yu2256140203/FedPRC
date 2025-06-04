@@ -85,8 +85,8 @@ parameters:
     ranks_round: 5 #重要性评价间隔
     proxy_data_rate: 0.2
     loss_rate: [1,1]
-    hsn_outputs: outputs/use_iid.txt
+    hsn_outputs: hsn_outputs/Resnet34_CIFAR10/use_iid.txt
     FlexFL_exp: False
     unuse_hsn: False
-    model: resnet18
+    model: resnet34
     momentum: 0.9
