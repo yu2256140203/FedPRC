@@ -463,9 +463,11 @@ def restore_pruned_state(full_state, pruned_state, mapping_indices):
             # restored_param = torch.zeros_like(full_param)
             sub_param = pruned_state[key]
             # print(key)
+            # print(type(mapping),len(mapping))
             # print((mapping))
             # if isinstance(mapping, tuple):
-            if isinstance(mapping,list) and len(mapping) == 2:
+            if isinstance(mapping,list) and len(mapping) == 2 and "weight" in key:
+                # print(key)
                 # 针对二维的参数，例如卷积层的 weight，mapping 格式为 (input_indices, output_indices)
                 in_idx, out_idx = mapping
                 in_idx_tensor = torch.tensor(in_idx, dtype=torch.long, device=full_param.device)
@@ -474,8 +476,8 @@ def restore_pruned_state(full_state, pruned_state, mapping_indices):
                 restored_param[out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] = sub_param
             elif "num_batches_tracked" in key:
                 pass
-            elif isinstance(mapping, list) and len(mapping) == 1:
-                
+            elif isinstance(mapping, list):
+                # print(key)
                 # # 针对一维参数或特殊二维参数（如 linear.weight 需要更新列）
                 idx_tensor = torch.tensor(mapping, dtype=torch.long, device=full_param.device)
                 # # # 对于 linear.weight, 需要更新的是列而不是行

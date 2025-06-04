@@ -78,6 +78,7 @@ parameters:
         gamma: 0.1
         milestone_steps: 80ep,120ep
     rates: [0.5,0.71,1]
+
     Parameters_to_percent_of_clients: [4,3,3]
     importance_filters: [0.5,0.5] #先服务端，后客户端
     hidden_size: [64, 128, 256, 512]

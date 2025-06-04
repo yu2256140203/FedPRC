@@ -29683,3 +29683,2366 @@ Traceback (most recent call last):
   File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/pydantic/v1/utils.py", line 683, in smart_deepcopy
     if obj_type in IMMUTABLE_NON_COLLECTIONS_TYPES:
 KeyboardInterrupt
+[INFO][22:02:30]: PyTorch version 2.0.1 available.
+[INFO][22:02:31]: [93m[1m[2901741] Logging runtime results to: ./results/2901741.csv.[0m
+[INFO][22:02:31]: [Server #2901741] Started training on 100 clients with 10 per round.
+[tensor([0.5484], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4731], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5025], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5111], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5790], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5762], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5127], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5219], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4564], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5339], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6315], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6482], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4373], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5680], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4946], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6245], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6023], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5076], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5603], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4739], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4352], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5689], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6224], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6348], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5949], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6437], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6511], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5201], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5740], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4520], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5185], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5418], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5442], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4724], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5015], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5105], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5763], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5731], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5116], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5200], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4553], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5309], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6256], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6420], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4358], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5639], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4919], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6173], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5970], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5065], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5553], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4722], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4335], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5640], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6148], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6281], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5893], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6366], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6439], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5148], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5711], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4514], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5163], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5394], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5407], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4717], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5006], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5100], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5737], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5702], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5106], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5183], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4544], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5282], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6201], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6361], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4344], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5601], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4894], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6106], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5920], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5054], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5506], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4707], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4322], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5595], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6077], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6218], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5841], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6299], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6370], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5096], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5683], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4508], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5143], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5371], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5375], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4712], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4998], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5096], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5713], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5676], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5097], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5166], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4535], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5256], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6149], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6304], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4334], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5565], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4872], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6043], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5873], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5045], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5462], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4693], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4311], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5555], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6011], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6156], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5793], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6235], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6305], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5657], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4504], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5124], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5349], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5346], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4708], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4990], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5094], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5691], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5651], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5089], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5150], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4528], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5232], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6100], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6251], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4325], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5532], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4854], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5984], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5829], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5037], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5421], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4682], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4301], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5517], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5948], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6097], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5746], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6175], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6244], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5003], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5632], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4501], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5106], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5328], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5319], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4706], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4984], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5091], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5669], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5627], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5083], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5135], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4521], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5210], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6055], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6200], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4319], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5502], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4837], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5928], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5788], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5031], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5384], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4672], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4294], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5482], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5890], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6041], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5703], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6118], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6185], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4961], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5609], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4500], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5089], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5308], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5294], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4704], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4978], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5090], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5649], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5605], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5077], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5120], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4516], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5190], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6012], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6152], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4315], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5473], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4823], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5876], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5749], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5025], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5349], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4664], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4288], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5450], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5836], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5989], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5662], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6064], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6130], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4921], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5588], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4500], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5074], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5290], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5272], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4703], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4973], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5088], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5630], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5585], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5072], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5106], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4511], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5171], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5972], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6108], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4313], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5447], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4810], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5827], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5712], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5020], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5317], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4657], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4284], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5421], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5786], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5940], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5624], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6013], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6078], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4885], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5568], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4501], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5061], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5272], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5251], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4703], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4969], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5087], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5612], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5566], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5067], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5094], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4507], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5154], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5934], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6065], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4314], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5423], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4800], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5781], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5677], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5016], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5287], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4652], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4282], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5395], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5739], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5894], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5589], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5965], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6029], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4850], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5550], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4503], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5256], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5233], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4703], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4965], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5087], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5595], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5548], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5064], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5082], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4504], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5137], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5897], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6025], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4315], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5400], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4791], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5738], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5644], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5013], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5259], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4647], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4280], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5370], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5694], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5851], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5556], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5919], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5983], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4818], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5533], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4506], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5036], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5240], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5216], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4703], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4962], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5087], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5579], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5532], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5060], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5070], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4502], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5122], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5862], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5987], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4317], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5379], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4783], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5698], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5613], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5010], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5233], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4644], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4281], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5348], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5652], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5811], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5525], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5877], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5939], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4788], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5517], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4510], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5024], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5225], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5202], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4704], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4959], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5087], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5563], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5516], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5058], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5059], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4500], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5108], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5829], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5951], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4321], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5360], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4776], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5660], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5584], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5008], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5210], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4641], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4284], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5328], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5614], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5774], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5496], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5836], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5898], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4760], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5503], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4515], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5014], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5211], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5188], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4705], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4956], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5088], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5549], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5502], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5055], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5049], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4498], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5095], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5798], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5918], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4325], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5342], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4771], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5624], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5557], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5006], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5188], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4640], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4288], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5310], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5578], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5740], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5470], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5799], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5860], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4735], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5489], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4520], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5004], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5198], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5176], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4706], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4954], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5088], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5535], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5489], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5053], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5040], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4497], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5082], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5769], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5886], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4330], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5325], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4767], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5591], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5531], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5004], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5167], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4639], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4292], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5293], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5545], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5708], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5445], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5765], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5823], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4711], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5476], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4525], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4995], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5186], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5165], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4707], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4952], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5089], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5522], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5476], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5052], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5031], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4497], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5071], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5741], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5856], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4336], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5309], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4763], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5560], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5506], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5003], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5148], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4639], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4297], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5278], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5515], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5678], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5422], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5733], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5789], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4688], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5464], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4530], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4986], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5174], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5155], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4709], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4950], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5090], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5510], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5465], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5050], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5022], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4497], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5060], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5715], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5829], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4342], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5295], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4761], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5531], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5483], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5001], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5131], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4640], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4303], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5265], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5486], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5650], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5401], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5702], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5757], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4668], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5453], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4536], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4978], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5163], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5145], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4710], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4949], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5091], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5498], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5454], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5049], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5014], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4497], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5050], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5691], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5803], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4349], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5282], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4759], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5503], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5462], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5001], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5115], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4641], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4309], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5252], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5460], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5623], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5381], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5673], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5727], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4649], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5443], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4543], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4970], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5153], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5137], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4712], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4948], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5092], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5488], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5443], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5006], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4498], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5042], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5668], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5779], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4357], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5270], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4758], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5477], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5441], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5000], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5100], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4643], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4315], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5241], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5435], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5599], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5362], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5646], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5698], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4631], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5434], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4549], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4963], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5144], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5129], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4715], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4947], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5093], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5478], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5433], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4999], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4499], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5034], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5647], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5756], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4365], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5258], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4757], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5453], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5422], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5000], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5086], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4646], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4322], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5230], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5412], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5576], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5344], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5620], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5671], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4615], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5426], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4556], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4957], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5134], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5122], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4717], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4947], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5094], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5468], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5424], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4993], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4501], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5026], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5627], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5734], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4373], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5248], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4757], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5430], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5403], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5000], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5074], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4650], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4330], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5221], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5391], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5554], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5328], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5595], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5646], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4599], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5417], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4563], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4951], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5126], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5116], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4720], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4946], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5096], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5459], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5416], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4986], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4502], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5019], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5608], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5713], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4382], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5238], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4757], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5408], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5386], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5000], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5062], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4653], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4337], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5212], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5371], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5533], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5312], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5571], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5622], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4585], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5410], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4571], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4945], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5118], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5110], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4722], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4947], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5097], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5451], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5407], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4980], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4504], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5013], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5590], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5694], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4390], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5229], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4758], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5388], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5369], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5001], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5052], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4657], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4345], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5204], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5353], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5514], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5297], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5549], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5599], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4572], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5403], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4578], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4939], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5111], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5105], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4725], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4947], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5099], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5443], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5400], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4975], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4506], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5007], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5572], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5675], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4399], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5220], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4759], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5369], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5354], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5001], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5042], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4662], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4353], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5197], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5336], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5496], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5284], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5528], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5577], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4560], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5397], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4586], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4935], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5103], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5101], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4728], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4947], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5100], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5435], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5392], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4970], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4508], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5001], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5556], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5658], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4408], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5212], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4761], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5350], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5339], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5002], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5032], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4666], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4361], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5190], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5319], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5479], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5271], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5508], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5557], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4549], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5391], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4594], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4932], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5097], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5096], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4730], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4948], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5102], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5427], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5386], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4965], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4510], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4996], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5541], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5641], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4417], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5205], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4763], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5333], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5325], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5003], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5024], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4670], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4369], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5184], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5304], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5463], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5258], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5489], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5538], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4539], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5385], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4601], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4930], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5091], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5093], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4733], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4948], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5104], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5420], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5379], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4960], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4513], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4992], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5526], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5626], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4427], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5198], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4765], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5317], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5311], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5004], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5016], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4675], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4377], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5179], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5290], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5448], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5247], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5470], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5520], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4530], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5380], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4609], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4928], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5085], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5089], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4736], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4949], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5105], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5413], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5373], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5047], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4956], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4515], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4987], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5512], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5611], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4436], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5191], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4768], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5302], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5299], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5005], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5009], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4680], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4385], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5174], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5277], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5433], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5236], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5453], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5502], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4521], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5375], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4617], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4925], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5080], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5086], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4739], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4950], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5107], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5407], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5367], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4951], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4518], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4984], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5499], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5597], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4445], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5185], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4770], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5287], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5287], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5006], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5002], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4685], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4393], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5169], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5264], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5420], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5226], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5436], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5486], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4514], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5371], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4625], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4923], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5075], device='cuda:0', grad_fn=<SelectBackward0>)]
+[INFO][22:02:33]: [Server #2901741] Configuring the server...
+[INFO][22:02:33]: Training: 400 rounds or accuracy above 100.0%
+
+[INFO][22:02:33]: Data source: CIFAR10
+[INFO][22:02:34]: Starting client #1's process.
+[tensor([0.5083], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4742], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4951], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5109], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5401], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5362], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4948], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4521], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4980], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5486], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5583], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4455], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5180], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4773], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5274], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5275], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5007], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4996], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4689], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4401], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5165], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5252], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5407], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5216], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5421], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5471], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4506], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5366], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4632], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4921], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5070], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5081], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4745], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4952], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5110], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5395], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5356], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4944], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4523], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4977], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5474], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5571], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4464], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5174], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4776], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5261], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5264], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5008], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4991], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4694], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4410], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5161], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5241], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5395], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5207], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5406], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5456], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4500], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5362], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4640], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4919], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5066], device='cuda:0', grad_fn=<SelectBackward0>)]
+Files already downloaded and verified
+Files already downloaded and verified
+[INFO][22:02:34]: Starting client #2's process.
+[INFO][22:02:34]: Starting client #3's process.
+[INFO][22:02:35]: Starting client #4's process.
+[INFO][22:02:35]: Starting client #5's process.
+[INFO][22:02:35]: Setting the random seed for selecting clients: 1234
+[INFO][22:02:35]: Starting a server at address 127.0.0.1 and port 8120.
+[INFO][22:02:37]: PyTorch version 2.0.1 available.
+[INFO][22:02:38]: PyTorch version 2.0.1 available.
+[INFO][22:02:38]: PyTorch version 2.0.1 available.
+[INFO][22:02:38]: PyTorch version 2.0.1 available.
+[INFO][22:02:38]: Starting a custom client #1
+[INFO][22:02:38]: PyTorch version 2.0.1 available.
+[INFO][22:02:38]: Starting a custom client #2
+[INFO][22:02:38]: Starting a custom client #4
+[INFO][22:02:38]: Starting a custom client #5
+[INFO][22:02:38]: Starting a custom client #3
+[INFO][22:02:43]: [Client #1] Contacting the server.
+[INFO][22:02:43]: [Client #1] Connecting to the server at http://127.0.0.1:8120.
+[INFO][22:02:43]: 127.0.0.1 [04/Jun/2025:22:02:43 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749045763.4248958 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][22:02:43]: [Server #2901741] A new client just connected.
+[INFO][22:02:43]: [Client #1] Connected to the server.
+[INFO][22:02:43]: [Client #1] Waiting to be selected.
+[INFO][22:02:43]: [Server #2901741] New client with id #1 arrived.
+[INFO][22:02:43]: [Server #2901741] Client process #2902097 registered.
+[INFO][22:02:43]: [Client #2] Contacting the server.
+[INFO][22:02:43]: [Client #2] Connecting to the server at http://127.0.0.1:8120.
+[INFO][22:02:43]: 127.0.0.1 [04/Jun/2025:22:02:43 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749045763.6791942 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][22:02:43]: [Server #2901741] A new client just connected.
+[INFO][22:02:43]: [Client #2] Connected to the server.
+[INFO][22:02:43]: [Client #2] Waiting to be selected.
+[INFO][22:02:43]: [Server #2901741] New client with id #2 arrived.
+[INFO][22:02:43]: [Server #2901741] Client process #2902098 registered.
+[INFO][22:02:43]: [Client #4] Contacting the server.
+[INFO][22:02:43]: [Client #4] Connecting to the server at http://127.0.0.1:8120.
+[INFO][22:02:43]: 127.0.0.1 [04/Jun/2025:22:02:43 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749045763.8482034 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][22:02:43]: [Server #2901741] A new client just connected.
+[INFO][22:02:43]: [Client #4] Connected to the server.
+[INFO][22:02:43]: [Client #4] Waiting to be selected.
+[INFO][22:02:43]: [Server #2901741] New client with id #4 arrived.
+[INFO][22:02:43]: [Server #2901741] Client process #2902162 registered.
+[INFO][22:02:43]: [Client #5] Contacting the server.
+[INFO][22:02:43]: [Client #5] Connecting to the server at http://127.0.0.1:8120.
+[INFO][22:02:43]: 127.0.0.1 [04/Jun/2025:22:02:43 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749045763.9000847 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][22:02:43]: [Server #2901741] A new client just connected.
+[INFO][22:02:43]: [Client #5] Connected to the server.
+[INFO][22:02:43]: [Client #5] Waiting to be selected.
+[INFO][22:02:43]: [Server #2901741] New client with id #5 arrived.
+[INFO][22:02:43]: [Server #2901741] Client process #2902164 registered.
+[INFO][22:02:43]: [Client #3] Contacting the server.
+[INFO][22:02:43]: [Client #3] Connecting to the server at http://127.0.0.1:8120.
+[INFO][22:02:43]: 127.0.0.1 [04/Jun/2025:22:02:43 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749045763.9808748 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][22:02:43]: [Server #2901741] A new client just connected.
+[INFO][22:02:43]: [Client #3] Connected to the server.
+[INFO][22:02:43]: [Client #3] Waiting to be selected.
+[INFO][22:02:43]: [Server #2901741] New client with id #3 arrived.
+[INFO][22:02:43]: [Server #2901741] Client process #2902099 registered.
+[INFO][22:02:43]: [Server #2901741] Starting training.
+[INFO][22:02:43]: [93m[1m
+[Server #2901741] Starting round 1/400.[0m
+[INFO][22:02:43]: [Server #2901741] Selected clients: [100, 57, 15, 1, 12, 75, 5, 86, 89, 11]
+[INFO][22:02:43]: [Server #2901741] Selecting client #100 for training.
+[INFO][22:02:50]: [Server #2901741] Sending the current model to client #100.
+[INFO][22:02:50]: [Server #2901741] Sent 84.70 MB of payload data to client #100.
+[INFO][22:02:50]: [Client #100] Selected by the server.
+[INFO][22:02:50]: [Server #2901741] Selecting client #57 for training.
+[INFO][22:02:50]: [Client #100] Loading its data source...
+[INFO][22:02:50]: Data source: CIFAR10
+[INFO][22:02:51]: [Client #100] Dataset size: 50000
+[INFO][22:02:51]: [Client #100] Sampler: noniid
+[INFO][22:02:56]: [Server #2901741] Sending the current model to client #57.
+[INFO][22:02:56]: [Server #2901741] Sent 42.51 MB of payload data to client #57.
+[INFO][22:02:56]: [Client #57] Selected by the server.
+[INFO][22:02:56]: [Server #2901741] Selecting client #15 for training.
+[INFO][22:02:56]: [Client #57] Loading its data source...
+[INFO][22:02:56]: Data source: CIFAR10
+[INFO][22:02:57]: [Client #57] Dataset size: 50000
+[INFO][22:02:57]: [Client #57] Sampler: noniid
+[INFO][22:03:03]: [Server #2901741] Sending the current model to client #15.
+[INFO][22:03:03]: [Client #15] Selected by the server.
+[INFO][22:03:03]: [Server #2901741] Sent 21.27 MB of payload data to client #15.
+[INFO][22:03:03]: [Server #2901741] Selecting client #1 for training.
+[INFO][22:03:03]: [Client #15] Loading its data source...
+[INFO][22:03:03]: Data source: CIFAR10
+[INFO][22:03:04]: [Client #15] Dataset size: 50000
+[INFO][22:03:04]: [Client #15] Sampler: noniid
+[INFO][22:03:10]: [Server #2901741] Sending the current model to client #1.
+[INFO][22:03:10]: [Client #1] Selected by the server.
+[INFO][22:03:10]: [Server #2901741] Sent 21.27 MB of payload data to client #1.
+[INFO][22:03:10]: [Server #2901741] Selecting client #12 for training.
+[INFO][22:03:10]: [Client #1] Loading its data source...
+[INFO][22:03:10]: Data source: CIFAR10
+[INFO][22:03:10]: [Client #15] Received 21.28 MB of payload data from the server.
+[INFO][22:03:10]: [Client #15] Start to process inbound data.
+[INFO][22:03:10]: [Client #57] Received 42.53 MB of payload data from the server.
+[INFO][22:03:10]: [Client #57] Start to process inbound data.
+[INFO][22:03:10]: [Client #100] Received 84.71 MB of payload data from the server.
+[INFO][22:03:10]: [Client #100] Start to process inbound data.
+[INFO][22:03:10]: [93m[1m[Client #15] Started training in communication round #1.[0m
+当前客户端剪枝率 0.25
+[[[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]]]
+当前客户端: 15 参数量： 5565130
+Files already downloaded and verified
+Files already downloaded and verified
+[INFO][22:03:11]: [93m[1m[Client #57] Started training in communication round #1.[0m
+当前客户端剪枝率 0.5041
+[[[0.703125, 0.703125], [0.703125, 0.703125], [0.703125, 0.703125]], [[0.703125, 0.703125], [0.703125, 0.703125], [0.703125, 0.703125], [0.703125, 0.703125]], [[0.70703125, 0.70703125], [0.70703125, 0.70703125], [0.70703125, 0.70703125], [0.70703125, 0.70703125], [0.70703125, 0.70703125], [0.70703125, 0.70703125]], [[0.708984375, 0.708984375], [0.708984375, 0.708984375], [0.708984375, 0.708984375]]]
+当前客户端: 57 参数量： 11135468
+Files already downloaded and verified
+Files already downloaded and verified
+[INFO][22:03:11]: [93m[1m[Client #100] Started training in communication round #1.[0m
+当前客户端剪枝率 1
+[[[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]]]
+当前客户端: 100 参数量： 22193738
+Files already downloaded and verified
+Files already downloaded and verified
+[INFO][22:03:13]: [Client #1] Dataset size: 50000
+[INFO][22:03:13]: [Client #1] Sampler: noniid
+[INFO][22:03:16]: PyTorch version 2.0.1 available.
+[INFO][22:03:16]: PyTorch version 2.0.1 available.
+[INFO][22:03:16]: [Server #2901741] Sending the current model to client #12.
+[INFO][22:03:16]: [Client #12] Selected by the server.
+[INFO][22:03:16]: [Server #2901741] Sent 21.27 MB of payload data to client #12.
+[INFO][22:03:16]: [Client #12] Loading its data source...
+[INFO][22:03:16]: Data source: CIFAR10
+[INFO][22:03:16]: [Client #1] Received 21.28 MB of payload data from the server.
+[INFO][22:03:16]: [Client #1] Start to process inbound data.
+[INFO][22:03:16]: PyTorch version 2.0.1 available.
+[INFO][22:03:17]: [93m[1m[Client #1] Started training in communication round #1.[0m
+当前客户端剪枝率 0.25
+[[[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]]]
+当前客户端: 1 参数量： 5565130
+Files already downloaded and verified
+Files already downloaded and verified
+[INFO][22:03:17]: [Client #57] Loading the dataset with size 500.
+[INFO][22:03:17]: [Client #15] Loading the dataset with size 500.
+[INFO][22:03:17]: [Client #100] Loading the dataset with size 500.
+[INFO][22:03:17]: [93m[1m[Client #57] Started training epoch 1.[0m
+[INFO][22:03:18]: [93m[1m[Client #15] Started training epoch 1.[0m
+[INFO][22:03:18]: [93m[1m[Client #100] Started training epoch 1.[0m
+[INFO][22:03:18]: [Client #12] Dataset size: 50000
+[INFO][22:03:18]: [Client #12] Sampler: noniid
+[INFO][22:03:18]: [Client #12] Received 21.28 MB of payload data from the server.
+[INFO][22:03:18]: [Client #12] Start to process inbound data.
+[INFO][22:03:18]: [93m[1m[Client #12] Started training in communication round #1.[0m
+当前客户端剪枝率 0.25
+[[[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]]]
+当前客户端: 12 参数量： 5565130
+Files already downloaded and verified
+Files already downloaded and verified
+[INFO][22:03:18]: [Client #57] Epoch: [1/10][0/10]	Loss: 2.316577
+[INFO][22:03:19]: [93m[1m[Client #57] Started training epoch 2.[0m
+[INFO][22:03:19]: [Client #57] Epoch: [2/10][0/10]	Loss: 2.062154
+[INFO][22:03:19]: [Client #15] Epoch: [1/10][0/10]	Loss: 2.313281
+[INFO][22:03:19]: [93m[1m[Client #57] Started training epoch 3.[0m
+[INFO][22:03:19]: [Client #57] Epoch: [3/10][0/10]	Loss: 1.834505
+[INFO][22:03:19]: [93m[1m[Client #15] Started training epoch 2.[0m
+[INFO][22:03:19]: [Client #15] Epoch: [2/10][0/10]	Loss: 2.115198
+[INFO][22:03:19]: [93m[1m[Client #15] Started training epoch 3.[0m
+[INFO][22:03:19]: [93m[1m[Client #57] Started training epoch 4.[0m
+[INFO][22:03:19]: [Client #15] Epoch: [3/10][0/10]	Loss: 2.040307
+[INFO][22:03:19]: [Client #100] Epoch: [1/10][0/10]	Loss: 2.439955
+[INFO][22:03:19]: [Client #57] Epoch: [4/10][0/10]	Loss: 1.883040
+[INFO][22:03:20]: [93m[1m[Client #15] Started training epoch 4.[0m
+[INFO][22:03:20]: [Client #15] Epoch: [4/10][0/10]	Loss: 1.964236
+[INFO][22:03:20]: [93m[1m[Client #57] Started training epoch 5.[0m
+[INFO][22:03:20]: [Client #57] Epoch: [5/10][0/10]	Loss: 1.702568
+[INFO][22:03:20]: [93m[1m[Client #100] Started training epoch 2.[0m
+[INFO][22:03:20]: [Client #100] Epoch: [2/10][0/10]	Loss: 2.196407
+[INFO][22:03:20]: [93m[1m[Client #15] Started training epoch 5.[0m
+[INFO][22:03:20]: [Client #15] Epoch: [5/10][0/10]	Loss: 1.695675
+[INFO][22:03:20]: [93m[1m[Client #57] Started training epoch 6.[0m
+[INFO][22:03:20]: [Client #57] Epoch: [6/10][0/10]	Loss: 1.519822
+[INFO][22:03:20]: [93m[1m[Client #15] Started training epoch 6.[0m
+[INFO][22:03:20]: [Client #15] Epoch: [6/10][0/10]	Loss: 1.573291
+[INFO][22:03:20]: [93m[1m[Client #100] Started training epoch 3.[0m
+[INFO][22:03:20]: [93m[1m[Client #57] Started training epoch 7.[0m
+[INFO][22:03:20]: [Client #100] Epoch: [3/10][0/10]	Loss: 2.061345
+[INFO][22:03:20]: [Client #57] Epoch: [7/10][0/10]	Loss: 1.868724
+[INFO][22:03:21]: [93m[1m[Client #15] Started training epoch 7.[0m
+[INFO][22:03:21]: [Client #15] Epoch: [7/10][0/10]	Loss: 1.496812
+[INFO][22:03:21]: [93m[1m[Client #57] Started training epoch 8.[0m
+[INFO][22:03:21]: [Client #57] Epoch: [8/10][0/10]	Loss: 1.655908
+[INFO][22:03:21]: [93m[1m[Client #15] Started training epoch 8.[0m
+[INFO][22:03:21]: [93m[1m[Client #100] Started training epoch 4.[0m
+[INFO][22:03:21]: [Client #15] Epoch: [8/10][0/10]	Loss: 1.490865
+[INFO][22:03:21]: [Client #100] Epoch: [4/10][0/10]	Loss: 1.857252
+[INFO][22:03:21]: PyTorch version 2.0.1 available.
+[INFO][22:03:21]: [93m[1m[Client #57] Started training epoch 9.[0m
+[INFO][22:03:21]: [93m[1m[Client #15] Started training epoch 9.[0m
+[INFO][22:03:21]: [Client #15] Epoch: [9/10][0/10]	Loss: 1.401243
+[INFO][22:03:21]: [Client #57] Epoch: [9/10][0/10]	Loss: 1.648694
+[INFO][22:03:21]: PyTorch version 2.0.1 available.
+[INFO][22:03:21]: [93m[1m[Client #100] Started training epoch 5.[0m
+[INFO][22:03:22]: [93m[1m[Client #15] Started training epoch 10.[0m
+[INFO][22:03:22]: [Client #15] Epoch: [10/10][0/10]	Loss: 1.602078
+[INFO][22:03:22]: [Client #100] Epoch: [5/10][0/10]	Loss: 1.678703
+[INFO][22:03:22]: [93m[1m[Client #57] Started training epoch 10.[0m
+[INFO][22:03:22]: [Client #57] Epoch: [10/10][0/10]	Loss: 1.549723
+[INFO][22:03:22]: [Client #1] Loading the dataset with size 500.
+[INFO][22:03:22]: [Client #15] Model saved to ./models/pretrained/resnet_15_2902162.pth.
+[INFO][22:03:22]: [93m[1m[Client #100] Started training epoch 6.[0m
+[INFO][22:03:22]: [Client #57] Model saved to ./models/pretrained/resnet_57_2902098.pth.
+[INFO][22:03:22]: [Client #100] Epoch: [6/10][0/10]	Loss: 1.729392
+[INFO][22:03:22]: [Client #12] Loading the dataset with size 500.
+[INFO][22:03:22]: [93m[1m[Client #100] Started training epoch 7.[0m
+[INFO][22:03:22]: [Client #100] Epoch: [7/10][0/10]	Loss: 1.791046
+[INFO][22:03:23]: [93m[1m[Client #100] Started training epoch 8.[0m
+[INFO][22:03:23]: [Client #15] Loading a model from ./models/pretrained/resnet_15_2902162.pth.
+[INFO][22:03:23]: [Client #100] Epoch: [8/10][0/10]	Loss: 1.626973
+[INFO][22:03:23]: [Client #57] Loading a model from ./models/pretrained/resnet_57_2902098.pth.
+[INFO][22:03:23]: [93m[1m[Client #1] Started training epoch 1.[0m
+[INFO][22:03:23]: [93m[1m[Client #100] Started training epoch 9.[0m
+[INFO][22:03:23]: [Client #100] Epoch: [9/10][0/10]	Loss: 1.551284
+[INFO][22:03:23]: [93m[1m[Client #12] Started training epoch 1.[0m
+[INFO][22:03:23]: [93m[1m[Client #100] Started training epoch 10.[0m
+[INFO][22:03:23]: [Client #100] Epoch: [10/10][0/10]	Loss: 1.704342
+[INFO][22:03:24]: [Client #100] Model saved to ./models/pretrained/resnet_100_2902097.pth.
+[INFO][22:03:24]: [Client #1] Epoch: [1/10][0/10]	Loss: 2.344222
+[INFO][22:03:25]: [Client #12] Epoch: [1/10][0/10]	Loss: 2.214999
+[INFO][22:03:25]: [93m[1m[Client #1] Started training epoch 2.[0m
+[INFO][22:03:25]: [Client #1] Epoch: [2/10][0/10]	Loss: 1.659542
+[INFO][22:03:25]: [Client #100] Loading a model from ./models/pretrained/resnet_100_2902097.pth.
+[INFO][22:03:25]: [93m[1m[Client #12] Started training epoch 2.[0m
+[INFO][22:03:25]: [Client #12] Epoch: [2/10][0/10]	Loss: 1.871232
+[INFO][22:03:25]: [93m[1m[Client #1] Started training epoch 3.[0m
+[INFO][22:03:25]: [Client #1] Epoch: [3/10][0/10]	Loss: 1.317220
+[INFO][22:03:25]: [93m[1m[Client #12] Started training epoch 3.[0m
+[INFO][22:03:25]: [Client #12] Epoch: [3/10][0/10]	Loss: 1.775533
+[INFO][22:03:25]: [93m[1m[Client #1] Started training epoch 4.[0m
+[INFO][22:03:25]: [Client #1] Epoch: [4/10][0/10]	Loss: 1.218965
+[INFO][22:03:25]: [93m[1m[Client #12] Started training epoch 4.[0m
+[INFO][22:03:25]: [Client #12] Epoch: [4/10][0/10]	Loss: 1.766482
+[INFO][22:03:25]: [93m[1m[Client #1] Started training epoch 5.[0m
+[INFO][22:03:25]: [Client #1] Epoch: [5/10][0/10]	Loss: 1.399197
+[INFO][22:03:25]: [93m[1m[Client #12] Started training epoch 5.[0m
+[INFO][22:03:26]: [Client #12] Epoch: [5/10][0/10]	Loss: 1.458104
+[INFO][22:03:26]: [93m[1m[Client #1] Started training epoch 6.[0m
+[INFO][22:03:26]: [Client #1] Epoch: [6/10][0/10]	Loss: 1.402166
+[INFO][22:03:26]: [93m[1m[Client #12] Started training epoch 6.[0m
+[INFO][22:03:26]: [Client #12] Epoch: [6/10][0/10]	Loss: 1.588748
+[INFO][22:03:26]: PyTorch version 2.0.1 available.
+[INFO][22:03:26]: [93m[1m[Client #1] Started training epoch 7.[0m
+[INFO][22:03:26]: [Client #1] Epoch: [7/10][0/10]	Loss: 1.572966
+[INFO][22:03:26]: [93m[1m[Client #12] Started training epoch 7.[0m
+[INFO][22:03:26]: [Client #12] Epoch: [7/10][0/10]	Loss: 1.631374
+[INFO][22:03:26]: [93m[1m[Client #1] Started training epoch 8.[0m
+[INFO][22:03:26]: [Client #1] Epoch: [8/10][0/10]	Loss: 1.213641
+[INFO][22:03:26]: [93m[1m[Client #12] Started training epoch 8.[0m
+[INFO][22:03:26]: PyTorch version 2.0.1 available.
+[INFO][22:03:26]: [Client #12] Epoch: [8/10][0/10]	Loss: 1.561203
+[INFO][22:03:26]: [93m[1m[Client #1] Started training epoch 9.[0m
+[INFO][22:03:26]: [Client #1] Epoch: [9/10][0/10]	Loss: 1.358375
+[INFO][22:03:27]: [93m[1m[Client #12] Started training epoch 9.[0m
+[INFO][22:03:27]: [Client #12] Epoch: [9/10][0/10]	Loss: 1.443338
+[INFO][22:03:27]: [93m[1m[Client #1] Started training epoch 10.[0m
+[INFO][22:03:27]: [Client #1] Epoch: [10/10][0/10]	Loss: 1.433871
+[INFO][22:03:27]: [93m[1m[Client #12] Started training epoch 10.[0m
+[INFO][22:03:27]: [Client #12] Epoch: [10/10][0/10]	Loss: 1.514012
+[INFO][22:03:27]: [Client #1] Model saved to ./models/pretrained/resnet_1_2902164.pth.
+[INFO][22:03:27]: [Client #12] Model saved to ./models/pretrained/resnet_12_2902099.pth.
+[INFO][22:03:28]: [Client #1] Loading a model from ./models/pretrained/resnet_1_2902164.pth.
+[INFO][22:03:28]: [Client #12] Loading a model from ./models/pretrained/resnet_12_2902099.pth.
+[INFO][22:03:28]: PyTorch version 2.0.1 available.
+[INFO][22:03:31]: [Client #15] Test accuracy: 25.70%
+[INFO][22:03:31]: PyTorch version 2.0.1 available.
+[INFO][22:03:31]: PyTorch version 2.0.1 available.
+[INFO][22:03:32]: [Client #57] Test accuracy: 18.29%
+[INFO][22:03:35]: [Client #15] Model trained.
+[INFO][22:03:35]: [Client #15] Inbound data has been processed.
+[INFO][22:03:35]: [Client #15] Outbound data is ready to be sent after being processed.
+[INFO][22:03:35]: [Client #15] Sent 21.28 MB of payload data to the server.
+[INFO][22:03:35]: [Server #2901741] Received 21.28 MB of payload data from client #15.
+[INFO][22:03:35]: [Server #2901741] Advancing the wall clock time to 1749045767.45.
+[INFO][22:03:35]: [Client #100] Test accuracy: 25.47%
+[INFO][22:03:36]: [Client #57] Model trained.
+[INFO][22:03:36]: [Client #57] Inbound data has been processed.
+[INFO][22:03:36]: [Client #57] Outbound data is ready to be sent after being processed.
+[INFO][22:03:36]: [Client #57] Sent 42.55 MB of payload data to the server.
+[INFO][22:03:36]: [Server #2901741] Received 42.55 MB of payload data from client #57.
+[INFO][22:03:36]: [Server #2901741] Advancing the wall clock time to 1749045768.60.
+[INFO][22:03:38]: [Client #12] Test accuracy: 17.92%
+[INFO][22:03:38]: [Client #1] Test accuracy: 15.49%
+[INFO][22:03:39]: [Client #100] Model trained.
+[INFO][22:03:39]: [Client #100] Inbound data has been processed.
+[INFO][22:03:39]: [Client #100] Outbound data is ready to be sent after being processed.
+[INFO][22:03:39]: [Client #100] Sent 84.75 MB of payload data to the server.
+[INFO][22:03:40]: [Server #2901741] Received 84.75 MB of payload data from client #100.
+[INFO][22:03:40]: [Server #2901741] Advancing the wall clock time to 1749045769.56.
+[INFO][22:03:41]: [Client #12] Model trained.
+[INFO][22:03:41]: [Client #12] Inbound data has been processed.
+[INFO][22:03:41]: [Client #12] Outbound data is ready to be sent after being processed.
+[INFO][22:03:41]: [Client #12] Sent 21.28 MB of payload data to the server.
+[INFO][22:03:41]: [Server #2901741] Received 21.28 MB of payload data from client #12.
+[INFO][22:03:41]: [Server #2901741] Advancing the wall clock time to 1749045769.56.
+[INFO][22:03:42]: [Client #1] Model trained.
+[INFO][22:03:42]: [Client #1] Inbound data has been processed.
+[INFO][22:03:42]: [Client #1] Outbound data is ready to be sent after being processed.
+[INFO][22:03:42]: [Client #1] Sent 21.28 MB of payload data to the server.
+[INFO][22:03:42]: [Server #2901741] Received 21.28 MB of payload data from client #1.
+[INFO][22:03:42]: [Server #2901741] Advancing the wall clock time to 1749045769.56.
+[INFO][22:03:42]: [Server #2901741] Selecting client #75 for training.
+[INFO][22:03:48]: [Server #2901741] Sending the current model to client #75.
+[INFO][22:03:48]: [Client #75] Selected by the server.
+[INFO][22:03:48]: [Server #2901741] Sent 84.70 MB of payload data to client #75.
+[INFO][22:03:48]: [Server #2901741] Selecting client #5 for training.
+[INFO][22:03:48]: [Client #75] Sampler: noniid
+[INFO][22:03:54]: [Server #2901741] Sending the current model to client #5.
+[INFO][22:03:54]: [Client #5] Selected by the server.
+[INFO][22:03:54]: [Server #2901741] Sent 21.27 MB of payload data to client #5.
+[INFO][22:03:54]: [Server #2901741] Selecting client #86 for training.
+[INFO][22:03:54]: [Client #5] Sampler: noniid
+[INFO][22:04:01]: [Server #2901741] Sending the current model to client #86.
+[INFO][22:04:01]: [Client #86] Selected by the server.
+[INFO][22:04:01]: [Server #2901741] Sent 84.70 MB of payload data to client #86.
+[INFO][22:04:01]: [Server #2901741] Selecting client #89 for training.
+[INFO][22:04:02]: [Client #86] Sampler: noniid
+[INFO][22:04:09]: [Server #2901741] Sending the current model to client #89.
+[INFO][22:04:09]: [Client #89] Selected by the server.
+[INFO][22:04:09]: [Server #2901741] Sent 84.70 MB of payload data to client #89.
+[INFO][22:04:09]: [Server #2901741] Selecting client #11 for training.
+[INFO][22:04:09]: [Client #5] Received 21.28 MB of payload data from the server.
+[INFO][22:04:09]: [Client #5] Start to process inbound data.
+[INFO][22:04:09]: [Client #89] Sampler: noniid
+[INFO][22:04:09]: [93m[1m[Client #5] Started training in communication round #1.[0m
+Evaluation complete!
+0.1829
+当前客户端剪枝率 0.25
+[[[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]]]
+当前客户端: 5 参数量： 5565130
+[INFO][22:04:12]: PyTorch version 2.0.1 available.
+[INFO][22:04:13]: [Client #5] Loading the dataset with size 500.
+[INFO][22:04:14]: [93m[1m[Client #5] Started training epoch 1.[0m
+[INFO][22:04:14]: [Server #2901741] Sending the current model to client #11.
+[INFO][22:04:14]: [Client #11] Selected by the server.
+[INFO][22:04:14]: [Server #2901741] Sent 21.27 MB of payload data to client #11.
+[INFO][22:04:14]: [Client #11] Sampler: noniid
+[INFO][22:04:14]: [Client #11] Received 21.28 MB of payload data from the server.
+[INFO][22:04:14]: [Client #11] Start to process inbound data.
+[INFO][22:04:14]: [93m[1m[Client #11] Started training in communication round #1.[0m
+Evaluation complete!
+0.1792
+当前客户端剪枝率 0.25
+[[[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5]], [[0.5, 0.5], [0.5, 0.5], [0.5, 0.5]]]
+当前客户端: 11 参数量： 5565130
+[INFO][22:04:15]: [Client #75] Received 84.71 MB of payload data from the server.
+[INFO][22:04:15]: [Client #75] Start to process inbound data.
+[INFO][22:04:15]: [Client #86] Received 84.71 MB of payload data from the server.
+[INFO][22:04:15]: [Client #86] Start to process inbound data.
+[INFO][22:04:15]: [Client #89] Received 84.71 MB of payload data from the server.
+[INFO][22:04:15]: [Client #89] Start to process inbound data.
+[INFO][22:04:16]: [Client #5] Epoch: [1/10][0/10]	Loss: 2.265731
+[INFO][22:04:16]: [93m[1m[Client #5] Started training epoch 2.[0m
+[INFO][22:04:16]: [Client #5] Epoch: [2/10][0/10]	Loss: 1.326892
+[INFO][22:04:16]: [93m[1m[Client #75] Started training in communication round #1.[0m
+Evaluation complete!
+0.2547
+当前客户端剪枝率 1
+[[[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]]]
+当前客户端: 75 参数量： 22193738
+[INFO][22:04:16]: [93m[1m[Client #89] Started training in communication round #1.[0m
+Evaluation complete!
+0.1549
+当前客户端剪枝率 1
+[[[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]]]
+当前客户端: 89 参数量： 22193738
+[INFO][22:04:16]: [93m[1m[Client #86] Started training in communication round #1.[0m
+Evaluation complete!
+0.257
+当前客户端剪枝率 1
+[[[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]], [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0]]]
+当前客户端: 86 参数量： 22193738
+[INFO][22:04:17]: [93m[1m[Client #5] Started training epoch 3.[0m
+[INFO][22:04:17]: [Client #5] Epoch: [3/10][0/10]	Loss: 1.602032
+[INFO][22:04:17]: [93m[1m[Client #5] Started training epoch 4.[0m
+[INFO][22:04:17]: [Client #5] Epoch: [4/10][0/10]	Loss: 1.180174
+[INFO][22:04:17]: [93m[1m[Client #5] Started training epoch 5.[0m
+[INFO][22:04:17]: [Client #5] Epoch: [5/10][0/10]	Loss: 1.088688
+[INFO][22:04:18]: [93m[1m[Client #5] Started training epoch 6.[0m
+[INFO][22:04:18]: [Client #5] Epoch: [6/10][0/10]	Loss: 1.037961
+[INFO][22:04:18]: [93m[1m[Client #5] Started training epoch 7.[0m
+[INFO][22:04:18]: [Client #5] Epoch: [7/10][0/10]	Loss: 1.203996
+[INFO][22:04:19]: [93m[1m[Client #5] Started training epoch 8.[0m
+[INFO][22:04:19]: [Client #5] Epoch: [8/10][0/10]	Loss: 1.136997
+[INFO][22:04:19]: [93m[1m[Client #5] Started training epoch 9.[0m
+[INFO][22:04:19]: [Client #5] Epoch: [9/10][0/10]	Loss: 0.871770
+[INFO][22:04:19]: [93m[1m[Client #5] Started training epoch 10.[0m
+[INFO][22:04:19]: [Client #5] Epoch: [10/10][0/10]	Loss: 1.163198
+[INFO][22:04:19]: [Client #5] Model saved to ./models/pretrained/resnet_5_2902098.pth.
+[INFO][22:04:20]: [Client #5] Loading a model from ./models/pretrained/resnet_5_2902098.pth.
+[INFO][22:04:21]: PyTorch version 2.0.1 available.
+[INFO][22:04:22]: [Client #11] Loading the dataset with size 500.
+[INFO][22:04:22]: PyTorch version 2.0.1 available.
+[INFO][22:04:22]: PyTorch version 2.0.1 available.
+[INFO][22:04:22]: PyTorch version 2.0.1 available.
+[INFO][22:04:22]: [93m[1m[Client #11] Started training epoch 1.[0m
+[INFO][22:04:23]: [Client #75] Loading the dataset with size 500.
+[INFO][22:04:23]: [Client #86] Loading the dataset with size 500.
+[INFO][22:04:23]: [Client #89] Loading the dataset with size 500.
+[INFO][22:04:23]: [93m[1m[Client #75] Started training epoch 1.[0m
+[INFO][22:04:24]: [Client #11] Epoch: [1/10][0/10]	Loss: 2.252566
+[INFO][22:04:24]: [93m[1m[Client #86] Started training epoch 1.[0m
+[INFO][22:04:24]: PyTorch version 2.0.1 available.
+[INFO][22:04:24]: [93m[1m[Client #11] Started training epoch 2.[0m
+[INFO][22:04:24]: [Client #11] Epoch: [2/10][0/10]	Loss: 1.842321
+[INFO][22:04:24]: [93m[1m[Client #89] Started training epoch 1.[0m
+[INFO][22:04:24]: [93m[1m[Client #11] Started training epoch 3.[0m
+[INFO][22:04:24]: [Client #11] Epoch: [3/10][0/10]	Loss: 1.797355
+[INFO][22:04:24]: [93m[1m[Client #11] Started training epoch 4.[0m
+[INFO][22:04:24]: [Client #11] Epoch: [4/10][0/10]	Loss: 1.549675
+[INFO][22:04:25]: [93m[1m[Client #11] Started training epoch 5.[0m
+[INFO][22:04:25]: [Client #11] Epoch: [5/10][0/10]	Loss: 1.610270
+[INFO][22:04:25]: [Client #75] Epoch: [1/10][0/10]	Loss: 2.401004
+[INFO][22:04:25]: [93m[1m[Client #11] Started training epoch 6.[0m
+[INFO][22:04:25]: [Client #11] Epoch: [6/10][0/10]	Loss: 1.523087
+[INFO][22:04:25]: [93m[1m[Client #11] Started training epoch 7.[0m
+[INFO][22:04:25]: [Client #11] Epoch: [7/10][0/10]	Loss: 1.687401
+[INFO][22:04:25]: [93m[1m[Client #75] Started training epoch 2.[0m
+[INFO][22:04:25]: [Client #75] Epoch: [2/10][0/10]	Loss: 1.637162
+[INFO][22:04:25]: [93m[1m[Client #11] Started training epoch 8.[0m
+[INFO][22:04:25]: [Client #11] Epoch: [8/10][0/10]	Loss: 1.516888
+[INFO][22:04:25]: [93m[1m[Client #75] Started training epoch 3.[0m
+[INFO][22:04:25]: [Client #75] Epoch: [3/10][0/10]	Loss: 1.467468
+[INFO][22:04:26]: [93m[1m[Client #11] Started training epoch 9.[0m
+[INFO][22:04:26]: [Client #11] Epoch: [9/10][0/10]	Loss: 1.590765
+[INFO][22:04:26]: [93m[1m[Client #11] Started training epoch 10.[0m
+[INFO][22:04:26]: [Client #11] Epoch: [10/10][0/10]	Loss: 1.658003
+[INFO][22:04:26]: [93m[1m[Client #75] Started training epoch 4.[0m
+[INFO][22:04:26]: [Client #75] Epoch: [4/10][0/10]	Loss: 1.546352
+[INFO][22:04:26]: [Client #11] Model saved to ./models/pretrained/resnet_11_2902099.pth.
+[INFO][22:04:26]: [Client #86] Epoch: [1/10][0/10]	Loss: 2.294720
+[INFO][22:04:26]: [93m[1m[Client #75] Started training epoch 5.[0m
+[INFO][22:04:26]: [Client #75] Epoch: [5/10][0/10]	Loss: 1.561276
+[INFO][22:04:27]: [93m[1m[Client #86] Started training epoch 2.[0m
+[INFO][22:04:27]: [Client #86] Epoch: [2/10][0/10]	Loss: 1.914862
+[INFO][22:04:27]: [93m[1m[Client #75] Started training epoch 6.[0m
+[INFO][22:04:27]: [Client #75] Epoch: [6/10][0/10]	Loss: 1.510847
+[INFO][22:04:27]: [Client #11] Loading a model from ./models/pretrained/resnet_11_2902099.pth.
+[INFO][22:04:27]: [93m[1m[Client #86] Started training epoch 3.[0m
+[INFO][22:04:27]: [Client #89] Epoch: [1/10][0/10]	Loss: 2.397186
+[INFO][22:04:27]: [Client #86] Epoch: [3/10][0/10]	Loss: 1.766472
+[INFO][22:04:27]: [93m[1m[Client #75] Started training epoch 7.[0m
+[INFO][22:04:27]: [Client #75] Epoch: [7/10][0/10]	Loss: 1.194432
+[INFO][22:04:28]: [93m[1m[Client #86] Started training epoch 4.[0m
+[INFO][22:04:28]: [93m[1m[Client #89] Started training epoch 2.[0m
+[INFO][22:04:28]: [Client #86] Epoch: [4/10][0/10]	Loss: 1.631670
+[INFO][22:04:28]: [Client #89] Epoch: [2/10][0/10]	Loss: 1.658355
+[INFO][22:04:28]: [93m[1m[Client #75] Started training epoch 8.[0m
+[INFO][22:04:28]: [Client #75] Epoch: [8/10][0/10]	Loss: 0.963035
+[INFO][22:04:28]: [93m[1m[Client #86] Started training epoch 5.[0m
+[INFO][22:04:28]: [93m[1m[Client #89] Started training epoch 3.[0m
+[INFO][22:04:29]: [Client #86] Epoch: [5/10][0/10]	Loss: 1.648298
+[INFO][22:04:29]: [Client #89] Epoch: [3/10][0/10]	Loss: 1.513091
+[INFO][22:04:29]: [93m[1m[Client #75] Started training epoch 9.[0m
+[INFO][22:04:29]: [Client #75] Epoch: [9/10][0/10]	Loss: 1.213813
+[INFO][22:04:29]: [93m[1m[Client #86] Started training epoch 6.[0m
+[INFO][22:04:29]: [93m[1m[Client #89] Started training epoch 4.[0m
+[INFO][22:04:29]: [Client #86] Epoch: [6/10][0/10]	Loss: 1.630236
+[INFO][22:04:29]: [Client #89] Epoch: [4/10][0/10]	Loss: 1.492210
+[INFO][22:04:30]: [93m[1m[Client #75] Started training epoch 10.[0m
+[INFO][22:04:30]: [Client #75] Epoch: [10/10][0/10]	Loss: 0.898375
+[INFO][22:04:30]: [93m[1m[Client #86] Started training epoch 7.[0m
+[INFO][22:04:30]: [93m[1m[Client #89] Started training epoch 5.[0m
+[INFO][22:04:30]: [Client #86] Epoch: [7/10][0/10]	Loss: 1.471002
+[INFO][22:04:30]: [Client #89] Epoch: [5/10][0/10]	Loss: 1.373940
+[INFO][22:04:30]: PyTorch version 2.0.1 available.
+[INFO][22:04:30]: [Client #75] Model saved to ./models/pretrained/resnet_75_2902097.pth.
+[INFO][22:04:30]: [93m[1m[Client #86] Started training epoch 8.[0m
+[INFO][22:04:30]: [93m[1m[Client #89] Started training epoch 6.[0m
+[INFO][22:04:30]: [Client #86] Epoch: [8/10][0/10]	Loss: 1.440144
+[INFO][22:04:30]: [Client #89] Epoch: [6/10][0/10]	Loss: 1.189854
+[INFO][22:04:31]: [93m[1m[Client #86] Started training epoch 9.[0m
+[INFO][22:04:31]: [93m[1m[Client #89] Started training epoch 7.[0m
+[INFO][22:04:31]: [Client #86] Epoch: [9/10][0/10]	Loss: 1.564851
+[INFO][22:04:31]: [Client #89] Epoch: [7/10][0/10]	Loss: 1.193235
+[INFO][22:04:31]: [Client #75] Loading a model from ./models/pretrained/resnet_75_2902097.pth.
+[INFO][22:04:31]: [93m[1m[Client #89] Started training epoch 8.[0m
+[INFO][22:04:31]: [Client #89] Epoch: [8/10][0/10]	Loss: 0.864441
+[INFO][22:04:31]: [93m[1m[Client #86] Started training epoch 10.[0m
+[INFO][22:04:31]: [Client #86] Epoch: [10/10][0/10]	Loss: 1.520473
+[INFO][22:04:32]: [93m[1m[Client #89] Started training epoch 9.[0m
+[INFO][22:04:32]: [Client #89] Epoch: [9/10][0/10]	Loss: 1.093276
+[INFO][22:04:32]: [Client #86] Model saved to ./models/pretrained/resnet_86_2902162.pth.
+[INFO][22:04:32]: [93m[1m[Client #89] Started training epoch 10.[0m
+[INFO][22:04:32]: [Client #89] Epoch: [10/10][0/10]	Loss: 0.976060
+[INFO][22:04:33]: [Client #89] Model saved to ./models/pretrained/resnet_89_2902164.pth.
+[INFO][22:04:33]: [Client #86] Loading a model from ./models/pretrained/resnet_86_2902162.pth.
+[INFO][22:04:34]: [Client #89] Loading a model from ./models/pretrained/resnet_89_2902164.pth.
+[INFO][22:04:35]: PyTorch version 2.0.1 available.
+[INFO][22:04:35]: [Client #5] Test accuracy: 17.03%
+[INFO][22:04:36]: [Client #11] Test accuracy: 18.19%
+[INFO][22:04:36]: [Client #5] Model trained.
+[INFO][22:04:36]: [Client #5] Inbound data has been processed.
+[INFO][22:04:36]: [Client #5] Outbound data is ready to be sent after being processed.
+[INFO][22:04:36]: [Client #5] Sent 21.28 MB of payload data to the server.
+[INFO][22:04:36]: [Server #2901741] Received 21.28 MB of payload data from client #5.
+[INFO][22:04:36]: [Server #2901741] Advancing the wall clock time to 1749045769.56.
+[INFO][22:04:36]: PyTorch version 2.0.1 available.
+[INFO][22:04:37]: [Client #11] Model trained.
+[INFO][22:04:37]: [Client #11] Inbound data has been processed.
+[INFO][22:04:37]: [Client #11] Outbound data is ready to be sent after being processed.
+[INFO][22:04:37]: [Client #11] Sent 21.28 MB of payload data to the server.
+[INFO][22:04:37]: [Server #2901741] Received 21.28 MB of payload data from client #11.
+[INFO][22:04:37]: [Server #2901741] Advancing the wall clock time to 1749045769.56.
+[INFO][22:04:37]: PyTorch version 2.0.1 available.
+[INFO][22:04:42]: [Client #75] Test accuracy: 20.39%
+[INFO][22:04:44]: [Client #86] Test accuracy: 23.67%
+[INFO][22:04:45]: [Client #75] Model trained.
+[INFO][22:04:45]: [Client #75] Inbound data has been processed.
+[INFO][22:04:45]: [Client #75] Outbound data is ready to be sent after being processed.
+[INFO][22:04:45]: [Client #75] Sent 84.75 MB of payload data to the server.
+[INFO][22:04:45]: [Server #2901741] Received 84.75 MB of payload data from client #75.
+[INFO][22:04:45]: [Server #2901741] Advancing the wall clock time to 1749045770.26.
+[INFO][22:04:47]: [Client #86] Model trained.
+[INFO][22:04:47]: [Client #86] Inbound data has been processed.
+[INFO][22:04:47]: [Client #86] Outbound data is ready to be sent after being processed.
+[INFO][22:04:47]: [Client #86] Sent 84.75 MB of payload data to the server.
+[INFO][22:04:47]: [Client #89] Test accuracy: 20.78%
+[INFO][22:04:47]: [Server #2901741] Received 84.75 MB of payload data from client #86.
+[INFO][22:04:47]: [Server #2901741] Advancing the wall clock time to 1749045771.39.
+[INFO][22:04:49]: [Client #89] Model trained.
+[INFO][22:04:49]: [Client #89] Inbound data has been processed.
+[INFO][22:04:49]: [Client #89] Outbound data is ready to be sent after being processed.
+[INFO][22:04:49]: [Client #89] Sent 84.75 MB of payload data to the server.
+[INFO][22:04:49]: [Server #2901741] Received 84.75 MB of payload data from client #89.
+[INFO][22:04:49]: [Server #2901741] Advancing the wall clock time to 1749045771.39.
+[INFO][22:04:49]: [Server #2901741] All 10 client report(s) received. Processing.
+[INFO][22:04:49]: [Server #2901741] Updated weights have been received.
+[INFO][22:04:49]: [Server #2901741] Aggregating model weights directly rather than weight deltas.
+======== Running on http://127.0.0.1:8120 ========
+(Press CTRL+C to quit)
+linear.weight
+linear.weight
+linear.weight
+linear.weight
+linear.weight
+linear.weight
+linear.weight
+linear.weight
+linear.weight
+linear.weight
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成聚合
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+[INFO][22:04:55]: [Server #2901741] Finished aggregating updated weights.
+[INFO][22:04:55]: [Server #2901741] Started model testing.
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+conv1.weight
+<class 'list'> 2
+conv1.weight
+layer1.0.conv1.weight
+<class 'list'> 2
+layer1.0.conv1.weight
+layer1.0.conv2.weight
+<class 'list'> 2
+layer1.0.conv2.weight
+layer1.0.shortcut.weight
+<class 'list'> 2
+layer1.0.shortcut.weight
+layer1.1.conv1.weight
+<class 'list'> 2
+layer1.1.conv1.weight
+layer1.1.conv2.weight
+<class 'list'> 2
+layer1.1.conv2.weight
+layer1.1.shortcut.weight
+<class 'list'> 2
+layer1.1.shortcut.weight
+layer1.2.conv1.weight
+<class 'list'> 2
+layer1.2.conv1.weight
+layer1.2.conv2.weight
+<class 'list'> 2
+layer1.2.conv2.weight
+layer1.2.shortcut.weight
+<class 'list'> 2
+layer1.2.shortcut.weight
+layer2.0.conv1.weight
+<class 'list'> 2
+layer2.0.conv1.weight
+layer2.0.conv2.weight
+<class 'list'> 2
+layer2.0.conv2.weight
+layer2.0.shortcut.weight
+<class 'list'> 2
+layer2.0.shortcut.weight
+layer2.1.conv1.weight
+<class 'list'> 2
+layer2.1.conv1.weight
+layer2.1.conv2.weight
+<class 'list'> 2
+layer2.1.conv2.weight
+layer2.1.shortcut.weight
+<class 'list'> 2
+layer2.1.shortcut.weight
+layer2.2.conv1.weight
+<class 'list'> 2
+layer2.2.conv1.weight
+layer2.2.conv2.weight
+<class 'list'> 2
+layer2.2.conv2.weight
+layer2.2.shortcut.weight
+<class 'list'> 2
+layer2.2.shortcut.weight
+layer2.3.conv1.weight
+<class 'list'> 2
+layer2.3.conv1.weight
+layer2.3.conv2.weight
+<class 'list'> 2
+layer2.3.conv2.weight
+layer2.3.shortcut.weight
+<class 'list'> 2
+layer2.3.shortcut.weight
+layer3.0.conv1.weight
+<class 'list'> 2
+layer3.0.conv1.weight
+layer3.0.conv2.weight
+<class 'list'> 2
+layer3.0.conv2.weight
+layer3.0.shortcut.weight
+<class 'list'> 2
+layer3.0.shortcut.weight
+layer3.1.conv1.weight
+<class 'list'> 2
+layer3.1.conv1.weight
+layer3.1.conv2.weight
+<class 'list'> 2
+layer3.1.conv2.weight
+layer3.1.shortcut.weight
+<class 'list'> 2
+layer3.1.shortcut.weight
+layer3.2.conv1.weight
+<class 'list'> 2
+layer3.2.conv1.weight
+layer3.2.conv2.weight
+<class 'list'> 2
+layer3.2.conv2.weight
+layer3.2.shortcut.weight
+<class 'list'> 2
+layer3.2.shortcut.weight
+layer3.3.conv1.weight
+<class 'list'> 2
+layer3.3.conv1.weight
+layer3.3.conv2.weight
+<class 'list'> 2
+layer3.3.conv2.weight
+layer3.3.shortcut.weight
+<class 'list'> 2
+layer3.3.shortcut.weight
+layer3.4.conv1.weight
+<class 'list'> 2
+layer3.4.conv1.weight
+layer3.4.conv2.weight
+<class 'list'> 2
+layer3.4.conv2.weight
+layer3.4.shortcut.weight
+<class 'list'> 2
+layer3.4.shortcut.weight
+layer3.5.conv1.weight
+<class 'list'> 2
+layer3.5.conv1.weight
+layer3.5.conv2.weight
+<class 'list'> 2
+layer3.5.conv2.weight
+layer3.5.shortcut.weight
+<class 'list'> 2
+layer3.5.shortcut.weight
+layer4.0.conv1.weight
+<class 'list'> 2
+layer4.0.conv1.weight
+layer4.0.conv2.weight
+<class 'list'> 2
+layer4.0.conv2.weight
+layer4.0.shortcut.weight
+<class 'list'> 2
+layer4.0.shortcut.weight
+layer4.1.conv1.weight
+<class 'list'> 2
+layer4.1.conv1.weight
+layer4.1.conv2.weight
+<class 'list'> 2
+layer4.1.conv2.weight
+layer4.1.shortcut.weight
+<class 'list'> 2
+layer4.1.shortcut.weight
+layer4.2.conv1.weight
+<class 'list'> 2
+layer4.2.conv1.weight
+layer4.2.conv2.weight
+<class 'list'> 2
+layer4.2.conv2.weight
+layer4.2.shortcut.weight
+<class 'list'> 2
+layer4.2.shortcut.weight
+linear.weight
+<class 'list'> 2
+linear.weight
+linear.bias
+<class 'list'> 10
+linear.bias
+
+===== 模型权重分析 =====
+conv1.weight: min=-0.197517, max=0.192789, mean=0.001472, std=0.111885
+layer1.0.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer1.0.bn1.weight 所有值都相同!
+layer1.0.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer1.0.bn1.bias 所有值都相同!
+layer1.0.conv1.weight: min=-0.044917, max=0.045323, mean=-0.000179, std=0.024116
+layer1.0.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer1.0.bn2.weight 所有值都相同!
+layer1.0.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer1.0.bn2.bias 所有值都相同!
+layer1.0.conv2.weight: min=-0.044864, max=0.045122, mean=0.000189, std=0.024091
+layer1.0.shortcut.weight: min=-0.125921, max=0.125884, mean=-0.000451, std=0.072232
+layer1.1.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer1.1.bn1.weight 所有值都相同!
+layer1.1.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer1.1.bn1.bias 所有值都相同!
+layer1.1.conv1.weight: min=-0.044904, max=0.043952, mean=0.000130, std=0.024127
+layer1.1.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer1.1.bn2.weight 所有值都相同!
+layer1.1.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer1.1.bn2.bias 所有值都相同!
+layer1.1.conv2.weight: min=-0.044356, max=0.045955, mean=0.000171, std=0.024092
+layer1.1.shortcut.weight: min=-0.127354, max=0.126189, mean=-0.000815, std=0.072364
+layer1.2.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer1.2.bn1.weight 所有值都相同!
+layer1.2.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer1.2.bn1.bias 所有值都相同!
+layer1.2.conv1.weight: min=-0.044102, max=0.044029, mean=-0.000194, std=0.024020
+layer1.2.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer1.2.bn2.weight 所有值都相同!
+layer1.2.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer1.2.bn2.bias 所有值都相同!
+layer1.2.conv2.weight: min=-0.044878, max=0.045069, mean=-0.000104, std=0.024111
+layer1.2.shortcut.weight: min=-0.126331, max=0.126174, mean=0.000265, std=0.071453
+layer2.0.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.0.bn1.weight 所有值都相同!
+layer2.0.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.0.bn1.bias 所有值都相同!
+layer2.0.conv1.weight: min=-0.043486, max=0.043812, mean=-0.000306, std=0.024112
+layer2.0.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.0.bn2.weight 所有值都相同!
+layer2.0.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.0.bn2.bias 所有值都相同!
+layer2.0.conv2.weight: min=-0.031424, max=0.031342, mean=-0.000074, std=0.017003
+layer2.0.shortcut.weight: min=-0.125752, max=0.126093, mean=-0.000161, std=0.071951
+layer2.1.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.1.bn1.weight 所有值都相同!
+layer2.1.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.1.bn1.bias 所有值都相同!
+layer2.1.conv1.weight: min=-0.031258, max=0.031359, mean=-0.000090, std=0.016982
+layer2.1.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.1.bn2.weight 所有值都相同!
+layer2.1.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.1.bn2.bias 所有值都相同!
+layer2.1.conv2.weight: min=-0.031408, max=0.031110, mean=-0.000058, std=0.016989
+layer2.1.shortcut.weight: min=-0.089262, max=0.089139, mean=-0.000218, std=0.051237
+layer2.2.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.2.bn1.weight 所有值都相同!
+layer2.2.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.2.bn1.bias 所有值都相同!
+layer2.2.conv1.weight: min=-0.031194, max=0.030957, mean=-0.000017, std=0.017005
+layer2.2.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.2.bn2.weight 所有值都相同!
+layer2.2.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.2.bn2.bias 所有值都相同!
+layer2.2.conv2.weight: min=-0.030816, max=0.031627, mean=-0.000050, std=0.017041
+layer2.2.shortcut.weight: min=-0.089092, max=0.089477, mean=-0.000219, std=0.051128
+layer2.3.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.3.bn1.weight 所有值都相同!
+layer2.3.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.3.bn1.bias 所有值都相同!
+layer2.3.conv1.weight: min=-0.030728, max=0.031888, mean=-0.000009, std=0.017023
+layer2.3.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer2.3.bn2.weight 所有值都相同!
+layer2.3.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer2.3.bn2.bias 所有值都相同!
+layer2.3.conv2.weight: min=-0.031285, max=0.031121, mean=-0.000135, std=0.016988
+layer2.3.shortcut.weight: min=-0.089135, max=0.088981, mean=-0.000785, std=0.050520
+layer3.0.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.0.bn1.weight 所有值都相同!
+layer3.0.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.0.bn1.bias 所有值都相同!
+layer3.0.conv1.weight: min=-0.030409, max=0.030304, mean=-0.000047, std=0.017007
+layer3.0.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.0.bn2.weight 所有值都相同!
+layer3.0.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.0.bn2.bias 所有值都相同!
+layer3.0.conv2.weight: min=-0.021740, max=0.022018, mean=-0.000019, std=0.012038
+layer3.0.shortcut.weight: min=-0.089028, max=0.088669, mean=0.000097, std=0.050886
+layer3.1.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.1.bn1.weight 所有值都相同!
+layer3.1.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.1.bn1.bias 所有值都相同!
+layer3.1.conv1.weight: min=-0.021863, max=0.021801, mean=0.000016, std=0.012028
+layer3.1.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.1.bn2.weight 所有值都相同!
+layer3.1.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.1.bn2.bias 所有值都相同!
+layer3.1.conv2.weight: min=-0.021652, max=0.021533, mean=-0.000009, std=0.012017
+layer3.1.shortcut.weight: min=-0.063097, max=0.062839, mean=0.000011, std=0.036100
+layer3.2.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.2.bn1.weight 所有值都相同!
+layer3.2.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.2.bn1.bias 所有值都相同!
+layer3.2.conv1.weight: min=-0.021673, max=0.021556, mean=-0.000019, std=0.012037
+layer3.2.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.2.bn2.weight 所有值都相同!
+layer3.2.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.2.bn2.bias 所有值都相同!
+layer3.2.conv2.weight: min=-0.021520, max=0.021525, mean=0.000007, std=0.012023
+layer3.2.shortcut.weight: min=-0.062749, max=0.062899, mean=0.000020, std=0.036084
+layer3.3.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.3.bn1.weight 所有值都相同!
+layer3.3.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.3.bn1.bias 所有值都相同!
+layer3.3.conv1.weight: min=-0.021685, max=0.021631, mean=0.000004, std=0.012033
+layer3.3.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.3.bn2.weight 所有值都相同!
+layer3.3.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.3.bn2.bias 所有值都相同!
+layer3.3.conv2.weight: min=-0.021501, max=0.021338, mean=-0.000022, std=0.012017
+[ERROR][22:04:55]: Task exception was never retrieved
+future: <Task finished name='Task-2710' coro=<AsyncServer._handle_event_internal() done, defined at /home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/socketio/async_server.py:608> exception=AttributeError("'NoneType' object has no attribute 'min'")>
+Traceback (most recent call last):
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/socketio/async_server.py", line 610, in _handle_event_internal
+    r = await server._trigger_event(data[0], namespace, sid, *data[1:])
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/socketio/async_server.py", line 646, in _trigger_event
+    return await handler.trigger_event(event, *args)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/socketio/async_namespace.py", line 37, in trigger_event
+    ret = await handler(*args)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/plato/servers/base.py", line 68, in on_client_payload_done
+    await self.plato_server._client_payload_done(sid, data["id"])
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/plato/servers/base.py", line 858, in _client_payload_done
+    await self.process_client_info(client_id, sid)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/plato/servers/base.py", line 917, in process_client_info
+    await self._process_clients(client_info)
+  File "/home/dyx/yjl/miniconda3/envs/plato/lib/python3.8/site-packages/plato/servers/base.py", line 1136, in _process_clients
+    await self._process_reports()
+  File "/home/dyx/yjl/plato/FedPRC/server.py", line 467, in _process_reports
+    self.accuracy = self.trainer.custom_server_test(self.testset)
+  File "/home/dyx/yjl/plato/FedPRC/trainer.py", line 84, in custom_server_test
+    check_bn_layers(model)
+  File "/home/dyx/yjl/plato/FedPRC/trainer.py", line 51, in check_bn_layers
+    print(f"  running_mean: min={module.running_mean.min().item():.4f}, "
+AttributeError: 'NoneType' object has no attribute 'min'
+[INFO][22:06:15]: [Client #2] The server disconnected the connection.
+[INFO][22:06:15]: [Client #4] The server disconnected the connection.
+[INFO][22:06:15]: [Client #3] The server disconnected the connection.
+[INFO][22:06:15]: [Client #5] The server disconnected the connection.
+[INFO][22:06:15]: [Client #1] The server disconnected the connection.
+layer3.3.shortcut.weight: min=-0.062958, max=0.063160, mean=-0.000172, std=0.036072
+layer3.4.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.4.bn1.weight 所有值都相同!
+layer3.4.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.4.bn1.bias 所有值都相同!
+layer3.4.conv1.weight: min=-0.021389, max=0.021238, mean=-0.000008, std=0.012028
+layer3.4.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.4.bn2.weight 所有值都相同!
+layer3.4.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.4.bn2.bias 所有值都相同!
+layer3.4.conv2.weight: min=-0.021500, max=0.021512, mean=-0.000028, std=0.012025
+layer3.4.shortcut.weight: min=-0.063046, max=0.063063, mean=-0.000081, std=0.035987
+layer3.5.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.5.bn1.weight 所有值都相同!
+layer3.5.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.5.bn1.bias 所有值都相同!
+layer3.5.conv1.weight: min=-0.021460, max=0.021298, mean=-0.000014, std=0.012033
+layer3.5.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer3.5.bn2.weight 所有值都相同!
+layer3.5.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer3.5.bn2.bias 所有值都相同!
+layer3.5.conv2.weight: min=-0.021303, max=0.021156, mean=-0.000018, std=0.012024
+layer3.5.shortcut.weight: min=-0.062764, max=0.062721, mean=0.000072, std=0.036097
+layer4.0.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer4.0.bn1.weight 所有值都相同!
+layer4.0.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer4.0.bn1.bias 所有值都相同!
+layer4.0.conv1.weight: min=-0.021171, max=0.021124, mean=-0.000023, std=0.012037
+layer4.0.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer4.0.bn2.weight 所有值都相同!
+layer4.0.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer4.0.bn2.bias 所有值都相同!
+layer4.0.conv2.weight: min=-0.015201, max=0.015021, mean=-0.000022, std=0.008509
+layer4.0.shortcut.weight: min=-0.062745, max=0.062683, mean=-0.000052, std=0.036070
+layer4.1.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer4.1.bn1.weight 所有值都相同!
+layer4.1.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer4.1.bn1.bias 所有值都相同!
+layer4.1.conv1.weight: min=-0.015089, max=0.015080, mean=-0.000004, std=0.008503
+layer4.1.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer4.1.bn2.weight 所有值都相同!
+layer4.1.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer4.1.bn2.bias 所有值都相同!
+layer4.1.conv2.weight: min=-0.015177, max=0.015034, mean=-0.000019, std=0.008504
+layer4.1.shortcut.weight: min=-0.044790, max=0.044365, mean=-0.000069, std=0.025529
+layer4.2.bn1.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer4.2.bn1.weight 所有值都相同!
+layer4.2.bn1.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer4.2.bn1.bias 所有值都相同!
+layer4.2.conv1.weight: min=-0.015086, max=0.015044, mean=-0.000011, std=0.008500
+layer4.2.bn2.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: layer4.2.bn2.weight 所有值都相同!
+layer4.2.bn2.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: layer4.2.bn2.bias 所有值都相同!
+layer4.2.conv2.weight: min=-0.015369, max=0.015287, mean=-0.000016, std=0.008504
+layer4.2.shortcut.weight: min=-0.044591, max=0.044495, mean=-0.000013, std=0.025521
+bn4.weight: min=1.000000, max=1.000000, mean=1.000000, std=0.000000
+警告: bn4.weight 所有值都相同!
+bn4.bias: min=0.000000, max=0.000000, mean=0.000000, std=0.000000
+警告: bn4.bias 所有值都相同!
+linear.weight: min=-0.050400, max=0.049930, mean=0.000289, std=0.026112
+linear.bias: min=-0.010530, max=0.013192, mean=-0.000000, std=0.008808
+
+===== 批归一化层分析 =====
+layer1.0.bn1:

@@ -107,7 +107,7 @@ class client(simple.Client):
         self._load_payload(inbound_payload)
         report, outbound_payload = await self._train()
         #去掉本地BN
-        outbound_payload = self.filter_out_bn_params(outbound_payload)
+        # outbound_payload = self.filter_out_bn_params(outbound_payload)
         outbound_payload = {"acc":report.accuracy ,"outbound_payload":outbound_payload,"mapping_indices":self.mapping_indices,"client_id":self.client_id}
         if   (self.current_round % Config().parameters.ranks_round == 0) or self.current_round==1:
             outbound_payload["channel_importance_dict"] = self.channel_importance_dict
@@ -124,20 +124,20 @@ class client(simple.Client):
 
         return report, outbound_payload
     
-    def filter_out_bn_params(self,state_dict: dict) -> dict:
-        """
-        过滤掉 state_dict 中所有与 BatchNorm 相关的 key-value。
-        一般来说，BN 层的 key 中会包含 'bn' 或 'downsample.1' 等标志。
-        返回一个新的字典，只保留非 BN 的参数。
-        """
-        new_dict = {}
-        for k, v in state_dict.items():
-            # 只要 k 包含 'bn' 或者 'downsample.1'，就跳过
-            # 你可以根据你网络里 BN 的具体命名再补充，比如 'bn1', 'bn2' 等
-            if ("bn" in k) or ("downsample.1" in k) or ("running_mean" in k) or ("running_var" in k):
-                continue
-            new_dict[k] = v
-        return new_dict
+    # def filter_out_bn_params(self,state_dict: dict) -> dict:
+    #     """
+    #     过滤掉 state_dict 中所有与 BatchNorm 相关的 key-value。
+    #     一般来说，BN 层的 key 中会包含 'bn' 或 'downsample.1' 等标志。
+    #     返回一个新的字典，只保留非 BN 的参数。
+    #     """
+    #     new_dict = {}
+    #     for k, v in state_dict.items():
+    #         # 只要 k 包含 'bn' 或者 'downsample.1'，就跳过
+    #         # 你可以根据你网络里 BN 的具体命名再补充，比如 'bn1', 'bn2' 等
+    #         if ("bn" in k) or ("downsample.1" in k) or ("running_mean" in k) or ("running_var" in k):
+    #             continue
+    #         new_dict[k] = v
+    #     return new_dict
 
     # def customize_report(self, report):
     #     self.acc = report.accuracy
