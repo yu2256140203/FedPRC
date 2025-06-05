@@ -526,42 +526,47 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,c
     返回聚合后的全模型状态字典 aggregated_state。
     """
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    restored_states = []
-    for pruned_state, mapping_indices in zip(sub_state_list, mapping_indices_list):
-        restored_state = restore_pruned_state(full_state, pruned_state, mapping_indices)
-        restored_states.append(restored_state)
+    # restored_states = []
+    # for pruned_state, mapping_indices in zip(sub_state_list, mapping_indices_list):
+    #     restored_state = restore_pruned_state(full_state, pruned_state, mapping_indices)
+    #     restored_states.append(restored_state)
     
-    aggregated_state = {}
-    total_data = sum(client_data_sizes)
+    # aggregated_state = {}
+    # total_data = sum(client_data_sizes)
     
-    for key in full_state.keys():
-        # 使用各客户端的数据量作为权重进行加权平均
-        agg_param = sum((client_data_sizes[i] / total_data) * restored_states[i][key] 
-                        for i in range(len(restored_states)))
-        aggregated_state[key] = agg_param
+    # for key in full_state.keys():
+    #     # 使用各客户端的数据量作为权重进行加权平均
+    #     agg_param = sum((client_data_sizes[i] / total_data) * restored_states[i][key] 
+    #                     for i in range(len(restored_states)))
+    #     aggregated_state[key] = agg_param
     import copy    
     global_parameters = copy.deepcopy(full_state)
     for key,value in full_state.items():
-        count = torch.zeros(value.shape)
+        global_parameters[key] = global_parameters[key].to(device=device)
+        value = value.to(device=device)
+        count = torch.zeros(value.shape).to(device=device)
         for index,client_state in enumerate(sub_state_list):
+                client_state[key] = client_state[key].to(device=device)
                 if value.dim() == 4 or value.dim()==2:
                     
                     in_idx, out_idx = mapping_indices_list[index][key]
                     in_idx_tensor = torch.tensor(in_idx, dtype=torch.long, device=device)
                     out_idx_tensor = torch.tensor(out_idx, dtype=torch.long, device=device)
                     # 假设参数 shape 为 (out_channels, in_channels, ...)，利用高级索引覆盖对应位置
-                    global_parameters[key][out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] = client_state[key]
-                    count[out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += torch.ones(client_state[key].shape)
+                    global_parameters[key][out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += client_state[key].to(device=device)
+                    count[out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += torch.ones(client_state[key].shape).to(device=device)
                 elif value.dim()==1:
                     idx_tensor = torch.tensor(mapping_indices_list[index][key], dtype=torch.long, device=device)
                     global_parameters[key][idx_tensor] += client_state[key]
-                    count[idx_tensor] += torch.ones(client_state[key].shape)
+                    count[idx_tensor] += torch.ones(client_state[key].shape).to(device=device)
                 else:
                     print("ERROR!当前有参数没有聚合，当前参数为:",key)
-        count = torch.where(count == 0, torch.ones(count.shape), count)
+        count = torch.where(count == 0, torch.ones(count.shape).to(device=device), count).to(device=device)
+        
+        
         global_parameters[key] = torch.div(
                     global_parameters[key] - value, count
-                )
+                ).to(device=device)
 
 
 

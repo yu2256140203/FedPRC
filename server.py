@@ -257,13 +257,16 @@ class server(fedavg.Server):
         if  Config().parameters.unuse_hsn != None and  Config().parameters.unuse_hsn != True and  self.current_round % Config().parameters.ranks_round == 0 and self.current_round != 1:
 
             self.deltas  = None
-            for idx, (client_parameters, payload) in enumerate(zip(restored_models, weights_received)):
+            # for idx, (client_parameters, payload) in enumerate(zip(restored_models, weights_received)):
+            for idx, payload in enumerate(weights_received):
+
                 # 强行转化成列表
-                self.deltas = copy.deepcopy(self.algorithm.compute_weight_deltas(last_global_parameters, [client_parameters]))
+                # self.deltas = copy.deepcopy(self.algorithm.compute_weight_deltas(last_global_parameters, [client_parameters]))
                 
                 # if self.probab_masks[payload["client_id"] - 1] is not None and idx == len(weights_received) - 1:
                 #     #如果是最后一项，释放掉计算图
-                self.update_hsn(self.deltas[0], self.probab_masks[payload["client_id"] - 1])
+                # self.update_hsn(self.deltas[0], self.probab_masks[payload["client_id"] - 1])
+                self.update_hsn(self.probab_masks[payload["client_id"] - 1])
                 break
 
                     
@@ -330,7 +333,7 @@ class server(fedavg.Server):
     # 然后直接使用 OrderedDict[str, torch.Tensor]
 
     def update_hsn(self,
-                            diff: OrderedDict[str, torch.Tensor],
+                            # diff: OrderedDict[str, torch.Tensor],
                             probab_masks,
                             save_graph = True,
                             retain_blocks: List[str] = []) -> None:
