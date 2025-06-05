@@ -32046,3 +32046,4 @@ linear.bias: min=-0.010530, max=0.013192, mean=-0.000000, std=0.008808
 
 ===== 批归一化层分析 =====
 layer1.0.bn1:
+test.sh: 第 18 行： 3811995 已杀死               python FedPRC.py -c /home/dyx/yjl/plato/FedPRC/config/Resnet34_CIFAR10/hsn_noiid0.6.yml &> outputs/Resnet34_CIFAR10/hsn_noiid_0.6_4.txt

@@ -495,6 +495,29 @@ def restore_pruned_state(full_state, pruned_state, mapping_indices):
     return restored_state
 
 
+# def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,client_data_sizes):
+#     """
+#     聚合多个子模型参数。
+#     对于每个子模型，先调用 restore_pruned_state 将其参数恢复到与 full_state 相同的尺寸（缺失部分默认使用原始全模型参数）。
+#     然后对所有子模型恢复后的状态字典进行逐参数、逐元素平均（例如取均值）。
+#     返回聚合后的全模型状态字典 aggregated_state。
+#     """
+#     restored_states = []
+#     for pruned_state, mapping_indices in zip(sub_state_list, mapping_indices_list):
+#         restored_state = restore_pruned_state(full_state, pruned_state, mapping_indices)
+#         restored_states.append(restored_state)
+    
+#     aggregated_state = {}
+#     total_data = sum(client_data_sizes)
+    
+#     for key in full_state.keys():
+#         # 使用各客户端的数据量作为权重进行加权平均
+#         agg_param = sum((client_data_sizes[i] / total_data) * restored_states[i][key] 
+#                         for i in range(len(restored_states)))
+#         aggregated_state[key] = agg_param
+
+#     return aggregated_state, restored_states
+
 def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,client_data_sizes):
     """
     聚合多个子模型参数。
@@ -502,6 +525,7 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,c
     然后对所有子模型恢复后的状态字典进行逐参数、逐元素平均（例如取均值）。
     返回聚合后的全模型状态字典 aggregated_state。
     """
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     restored_states = []
     for pruned_state, mapping_indices in zip(sub_state_list, mapping_indices_list):
         restored_state = restore_pruned_state(full_state, pruned_state, mapping_indices)
@@ -515,8 +539,36 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,c
         agg_param = sum((client_data_sizes[i] / total_data) * restored_states[i][key] 
                         for i in range(len(restored_states)))
         aggregated_state[key] = agg_param
+    import copy    
+    global_parameters = copy.deepcopy(full_state)
+    for key,value in full_state.items():
+        count = torch.zeros(value.shape)
+        for index,client_state in enumerate(sub_state_list):
+                if value.dim() == 4 or value.dim()==2:
+                    
+                    in_idx, out_idx = mapping_indices_list[index][key]
+                    in_idx_tensor = torch.tensor(in_idx, dtype=torch.long, device=device)
+                    out_idx_tensor = torch.tensor(out_idx, dtype=torch.long, device=device)
+                    # 假设参数 shape 为 (out_channels, in_channels, ...)，利用高级索引覆盖对应位置
+                    global_parameters[key][out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] = client_state[key]
+                    count[out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += torch.ones(client_state[key].shape)
+                elif value.dim()==1:
+                    idx_tensor = torch.tensor(mapping_indices_list[index][key], dtype=torch.long, device=device)
+                    global_parameters[key][idx_tensor] += client_state[key]
+                    count[idx_tensor] += torch.ones(client_state[key].shape)
+                else:
+                    print("ERROR!当前有参数没有聚合，当前参数为:",key)
+        count = torch.where(count == 0, torch.ones(count.shape), count)
+        global_parameters[key] = torch.div(
+                    global_parameters[key] - value, count
+                )
 
-    return aggregated_state, restored_states
+
+
+    # return global_parameters, restored_states
+    return global_parameters, None
+
+    
 
 
 

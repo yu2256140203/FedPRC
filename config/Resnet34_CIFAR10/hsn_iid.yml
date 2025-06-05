@@ -82,10 +82,10 @@ parameters:
     importance_filters: [0.5,0.5] #先服务端，后客户端
     hidden_size: [64, 128, 256, 512]
     first_layer: conv1
-    ranks_round: 5 #重要性评价间隔
+    ranks_round: 10 #重要性评价间隔
     proxy_data_rate: 0.2
     loss_rate: [1,1]
-    hsn_outputs: hsn_outputs/Resnet34_CIFAR10/hsn_iid_3.txt
+    hsn_outputs: hsn_outputs/Resnet34_CIFAR10/hsn_iid_4.txt
     FlexFL_exp: False
     unuse_hsn: False
     model: resnet34
