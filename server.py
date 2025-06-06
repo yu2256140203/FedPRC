@@ -64,6 +64,7 @@ class server(fedavg.Server):
         
         #随机的三种mapping
         self.current_mapping = {}
+        self.current_prune_rates = {}
 
         for client_idx in range(total_clients):
             if client_idx < (total_clients * parameters_to_clients_ratio[0]) // sum(parameters_to_clients_ratio):
@@ -119,15 +120,15 @@ class server(fedavg.Server):
                 #初始的超网络输出：
                 self.current_hsn_output,self.reg_loss = self.hsn()
                 print(self.current_hsn_output)
-        # if Config().parameters.momentum == 0:
-        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
-        # else:
-        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
-        self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), 
-                            lr=0.1,
-                            momentum=0.5, 
-                            weight_decay=0.0001)
-        self.scheduler = torch.optim.lr_scheduler.ExponentialLR(self.hyper_optimizer , gamma=0.9)
+        if Config().parameters.momentum == 0:
+            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
+        else:
+            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
+        # self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), 
+        #                     lr=0.1,
+        #                     momentum=0.5, 
+        #                     weight_decay=0.0001)
+        # self.scheduler = torch.optim.lr_scheduler.ExponentialLR(self.hyper_optimizer , gamma=0.9)
 
         #重新定义超网络优化器，探索重要性
         #希望初始超网络的输出能公平少一点随机，这样让初始的模型能有较好的性能
@@ -194,6 +195,8 @@ class server(fedavg.Server):
         server_response["prune_rates"] = reverse_prune_rates(server_response["mapping_indices"], dict_modules=self.dict_modules,modules_indices = self.modules_indices)
         if str(rate) not in self.current_mapping.keys():
             self.current_mapping[str(rate)] = server_response["mapping_indices"]
+            self.current_prune_rates[str(rate)] = server_response["prune_rates"]
+
 
         
 
@@ -304,6 +307,7 @@ class server(fedavg.Server):
             logged_items["middle_accuracy"] = middle_acc
             logged_items["small_accuracy"] = small_acc
 
+
             return logged_items
     
     def customize_server_payload(self, payload):
@@ -357,7 +361,7 @@ class server(fedavg.Server):
         total_loss_for_backward.backward()
         self.hyper_optimizer.step()
 
-        self.scheduler.step()
+        # self.scheduler.step()
         
         torch.cuda.empty_cache()  # 清理缓存
 
@@ -453,13 +457,15 @@ class server(fedavg.Server):
             # Testing the updated model directly at the server
             logging.info("[%s] Started model testing.", self)
             rates = self.current_mapping.keys()
-            self.acc_sub = []
+            self.acc_sub = {}
             parameters_list = self.algorithm.get_test_parameters(self.trainer.model,self.current_mapping)
             for index,i in enumerate(rates):
-                model = self.model(all_rate= float(i))
-                model.load_state_dict(parameters_list[index])
-                self.acc_sub.append(self.trainer.custom_server_test(self.testset,model))
+                model = self.model(layer_prune_rates=self.current_prune_rates[i])
+                model.load_state_dict(parameters_list[i])
+                self.acc_sub[i] = self.trainer.custom_server_test(self.testset,model)
             self.accuracy = self.trainer.custom_server_test(self.testset,self.trainer.model)
+            self.current_mapping = {}#清空等待下一轮
+            self.current_prune_rates = {}
             # self.accuracy = self.trainer.custom_server_test(self.testset)
 
         if hasattr(Config().trainer, "target_perplexity"):

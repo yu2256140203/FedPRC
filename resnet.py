@@ -194,7 +194,7 @@ class ResNet(nn.Module):
 # -----------------------------
 # 模型构造函数
 # -----------------------------
-def resnet18(layer_prune_rates=None, track=False,classes_size=10):
+def resnet18(layer_prune_rates=None, track=False,classes_size=10,all_rate=None):
     if all_rate != None:
         layer_prune_rates = [
         [[all_rate,all_rate], [all_rate,all_rate]],   # layer1
@@ -217,7 +217,7 @@ def resnet18(layer_prune_rates=None, track=False,classes_size=10):
     model = ResNet(data_shape, hidden_size, Block, [2, 2, 2, 2], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
-def resnet18_CIFAR100(layer_prune_rates=None, track=False,classes_size=100):
+def resnet18_CIFAR100(layer_prune_rates=None, track=False,classes_size=100,all_rate=None):
     if all_rate != None:
         layer_prune_rates = [
         [[all_rate,all_rate], [all_rate,all_rate]],   # layer1
@@ -240,7 +240,7 @@ def resnet18_CIFAR100(layer_prune_rates=None, track=False,classes_size=100):
     model = ResNet(data_shape, hidden_size, Block, [2, 2, 2, 2], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
-def resnet18_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200):
+def resnet18_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200,all_rate=None):
     if all_rate != None:
         layer_prune_rates = [
         [[all_rate,all_rate], [all_rate,all_rate]],   # layer1
