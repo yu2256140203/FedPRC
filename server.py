@@ -63,7 +63,7 @@ class server(fedavg.Server):
         self.deltas = None
         
         #随机的三种mapping
-        self.random_mapping = []
+        self.current_mapping = {}
 
         for client_idx in range(total_clients):
             if client_idx < (total_clients * parameters_to_clients_ratio[0]) // sum(parameters_to_clients_ratio):
@@ -74,9 +74,6 @@ class server(fedavg.Server):
                 group_index = 2
             # 设置 rates
             self.rates[client_idx] = self.rates_values[group_index]
-        # for rate in self.rates_values:
-        #     self.random_mapping.append(get_channel_indices(self.model(),Config().parameters.hidden_size, rate,input_sizes=self.input_sizes))
-
 
 
         if Config().parameters.FlexFL_exp:
@@ -126,6 +123,11 @@ class server(fedavg.Server):
             self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
         else:
             self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
+        # self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), 
+        #                     lr=0.1,
+        #                     momentum=0.5, 
+        #                     weight_decay=0.0001)
+        # scheduler = torch.optim.lr_scheduler.ExponentialLR(self.hyper_optimizer , gamma=0.998)
 
         #重新定义超网络优化器，探索重要性
         #希望初始超网络的输出能公平少一点随机，这样让初始的模型能有较好的性能
@@ -190,7 +192,8 @@ class server(fedavg.Server):
             self.probab_masks[self.selected_client_id-1 ] = probab_masks
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1 ]
         server_response["prune_rates"] = reverse_prune_rates(server_response["mapping_indices"], dict_modules=self.dict_modules,modules_indices = self.modules_indices)
-            
+        if str(rate) not in self.current_mapping.keys():
+            self.current_mapping[str(rate)] = server_response["mapping_indices"]
 
         
 
@@ -285,36 +288,16 @@ class server(fedavg.Server):
             for i in self.selected_clients:
                 self.avg_acc.append(self.acc[i-1])
                 x = self.rates_values.index(self.rates[i-1])
-                if x == 0:
-                    self.small_acc.append(self.acc[i-1])
-                elif x == 1:
-                    self.middle_acc.append(self.acc[i-1])
-                elif x == 2:
-                    self.large_acc.append(self.acc[i-1])
             # print(self.avg_acc,self.large_acc,self.middle_acc,self.small_acc)
             if len(self.avg_acc) == 0:
                 avg_acc = 0.0
             else:
                 # print(sum(self.avg_acc), len(self.avg_acc))
                 avg_acc = sum(self.avg_acc) / len(self.avg_acc)
+            large_acc = self.acc_sub["1"]
+            middle_acc = self.acc_sub["0.71"]
+            small_acc  = self.acc_sub["0.5"]
 
-            if len(self.large_acc) == 0:
-                large_acc = 0.0
-            else:
-                large_acc = sum(self.large_acc) / len(self.large_acc)
-
-            if len(self.middle_acc) == 0:
-                middle_acc = 0.0
-            else:
-                middle_acc = sum(self.middle_acc) / len(self.middle_acc)
-
-            if len(self.small_acc) == 0:
-                small_acc = 0.0
-            else:
-                small_acc = sum(self.small_acc) / len(self.small_acc)
-                    
-
-            # clusters_accuracy = "; ".join([str(acc) for acc in clusters_accuracy])
 
             logged_items["avg_accuracy"] = avg_acc
             logged_items["large_accuracy"] = large_acc
@@ -467,7 +450,15 @@ class server(fedavg.Server):
         else:
             # Testing the updated model directly at the server
             logging.info("[%s] Started model testing.", self)
-            self.accuracy = self.trainer.custom_server_test(self.testset)
+            rates = self.current_mapping.keys()
+            self.acc_sub = []
+            parameters_list = self.algorithm.get_test_parameters(self.trainer.model,self.current_mapping)
+            for index,i in enumerate(rates):
+                model = self.model(all_rate= float(i))
+                model.load_state_dict(parameters_list[index])
+                self.acc_sub.append(self.trainer.custom_server_test(self.testset,model))
+            self.accuracy = self.trainer.custom_server_test(self.testset,self.trainer.model)
+            # self.accuracy = self.trainer.custom_server_test(self.testset)
 
         if hasattr(Config().trainer, "target_perplexity"):
             logging.info(

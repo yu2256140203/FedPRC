@@ -51,10 +51,11 @@ def get_channel_indices_unuse_hsn(model,submodel_layer_prune_rate=None,importanc
 
     
     # modules_indices = get_model_param_output_channels(model,input_data)
-    for key,value in modules_indices.items():
+    # for key,value in modules_indices.items(): modules_indices[key]
+    for key,value in model.state_dict().items():
         if dict_modules[key.rsplit('.', 1)[0]] == "conv" and current_out == None:
             current_in  =  list(range(3))
-            current_out =  list(range(value))
+            current_out =  list(range(modules_indices[key]))
             mapping_indices[key] = (current_in,current_out)
         elif dict_modules[key.rsplit('.', 1)[0]] == "conv" and "short" not in key and "weight" in key:
             last_current_in = current_in
@@ -546,6 +547,8 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,c
         value = value.to(device=device)
         count = torch.zeros(value.shape).to(device=device)
         for index,client_state in enumerate(sub_state_list):
+                if key not in client_state.keys() or key not in mapping_indices_list[index].keys():
+                    continue
                 client_state[key] = client_state[key].to(device=device)
                 if value.dim() == 4 or value.dim()==2:
                     

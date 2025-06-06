@@ -1,8 +1,7 @@
 """
-修改后的ResNet模型代码，解决了剪枝率不同导致的结构不一致问题。
-主要修改：
-1. 统一模型结构，始终创建shortcut连接
-2. 使用条件身份映射，在不需要shortcut时直接使用输入
+本代码实现了 ResNet 变体，每个卷积层根据剪枝率动态调整输出通道数，
+并保证对应下一层的输入通道数与该层输出通道数一致，同时对 shortcut 分支进行修剪，
+确保 shortcut 分支输出与主分支 f(x) 输出维度匹配。
 """
 
 import numpy as np
@@ -39,8 +38,7 @@ class Block(nn.Module):
       conv1: new_conv1 = ceil(planes * r1)
       conv2: new_conv2 = ceil(planes * r2)
     最终 Block 输出通道数为 new_conv2.
-    
-    修改点：始终创建shortcut连接，但在forward中根据need_shortcut决定是否使用。
+    如果需要 shortcut，则构造 1x1 卷积把输入映射为 new_conv2 个通道，从而保证与主分支 f(x) 保持一致。
     """
     expansion = 1
 
@@ -58,15 +56,14 @@ class Block(nn.Module):
         self.bn2 = nn.BatchNorm2d(new_conv1, momentum=None, track_running_stats=track)
         self.conv2 = nn.Conv2d(new_conv1, new_conv2, kernel_size=3, stride=1, padding=1, bias=False)
 
-        # 修改点1：始终创建shortcut连接
+        # 若步长不为1或输入通道数不等于新输出通道数，则通过1×1卷积调整shortcut
+        # if stride != 1 or in_planes != new_conv2:
+        # if stride != 1 :#保证模型结构相同
         self.shortcut = nn.Conv2d(in_planes, new_conv2, kernel_size=1, stride=stride, bias=False)
-        # 修改点2：记录是否需要使用shortcut
-        self.need_shortcut = stride != 1 or in_planes != new_conv2
 
     def forward(self, x):
         out = F.relu(self.bn1(self.scaler1(x)))
-        # 修改点3：根据need_shortcut决定是否使用shortcut
-        shortcut = self.shortcut(out) if self.need_shortcut else x
+        shortcut = self.shortcut(out) if hasattr(self, "shortcut") else x
         out = self.conv1(out)
         out = F.relu(self.bn2(self.scaler2(out)))
         out = self.conv2(out)
@@ -84,8 +81,7 @@ class Bottleneck(nn.Module):
       conv2: 使用 3×3 卷积，将 new1 映射为 new2 = ceil(planes * r2)，步长为stride
       conv3: 使用 1×1 卷积，将 new2 映射为 new3 = ceil(planes * expansion * r3)
     最终输出通道数为 new3.
-    
-    修改点：始终创建shortcut连接，但在forward中根据need_shortcut决定是否使用。
+    如果需要 shortcut，则利用1×1 卷积调整输入通道数为 new3.
     """
     expansion = 4
 
@@ -108,15 +104,14 @@ class Bottleneck(nn.Module):
         self.bn3 = nn.BatchNorm2d(new2, momentum=None, track_running_stats=track)
         self.conv3 = nn.Conv2d(new2, new3, kernel_size=1, bias=False)
 
-        # 修改点1：始终创建shortcut连接
+        # if stride != 1 or in_planes != new3:
+        # if stride != 1 :#保证模型结构相同
+
         self.shortcut = nn.Conv2d(in_planes, new3, kernel_size=1, stride=stride, bias=False)
-        # 修改点2：记录是否需要使用shortcut
-        self.need_shortcut = stride != 1 or in_planes != new3
 
     def forward(self, x):
         out = F.relu(self.bn1(self.scaler1(x)))
-        # 修改点3：根据need_shortcut决定是否使用shortcut
-        shortcut = self.shortcut(out) if self.need_shortcut else x
+        shortcut = self.shortcut(out) if hasattr(self, "shortcut") else x
         out = self.conv1(out)
         out = F.relu(self.bn2(self.scaler2(out)))
         out = self.conv2(out)
@@ -183,7 +178,6 @@ class ResNet(nn.Module):
         out = out.view(out.size(0), -1)
         out = self.linear(out)
         return out
-    
     def __call__(self, x=None):
         if x == None:
             return self
@@ -195,13 +189,6 @@ class ResNet(nn.Module):
 # 模型构造函数
 # -----------------------------
 def resnet18(layer_prune_rates=None, track=False,classes_size=10):
-    if all_rate != None:
-        layer_prune_rates = [
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer1
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer2
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer3
-        [[all_rate,all_rate], [all_rate,all_rate]]    # layer4
-    ]
     if layer_prune_rates == None:
         layer_prune_rates = [
         [[1,1], [1,1]],   # layer1
@@ -218,13 +205,6 @@ def resnet18(layer_prune_rates=None, track=False,classes_size=10):
     model.apply(init_param)
     return model
 def resnet18_CIFAR100(layer_prune_rates=None, track=False,classes_size=100):
-    if all_rate != None:
-        layer_prune_rates = [
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer1
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer2
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer3
-        [[all_rate,all_rate], [all_rate,all_rate]]    # layer4
-    ]
     if layer_prune_rates == None:
         layer_prune_rates = [
         [[1,1], [1,1]],   # layer1
@@ -241,13 +221,6 @@ def resnet18_CIFAR100(layer_prune_rates=None, track=False,classes_size=100):
     model.apply(init_param)
     return model
 def resnet18_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200):
-    if all_rate != None:
-        layer_prune_rates = [
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer1
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer2
-        [[all_rate,all_rate], [all_rate,all_rate]],   # layer3
-        [[all_rate,all_rate], [all_rate,all_rate]]    # layer4
-    ]
     if layer_prune_rates == None:
         layer_prune_rates = [
         [[1,1], [1,1]],   # layer1
@@ -264,14 +237,7 @@ def resnet18_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200):
     model.apply(init_param)
     return model
 
-def resnet34(layer_prune_rates=None, track=False,classes_size=10,all_rate=None):
-    if all_rate != None:
-        layer_prune_rates = [
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer1
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer2
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer3
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]]    # layer4
-    ]
+def resnet34_server(layer_prune_rates=None, track=False,classes_size=10):
     if layer_prune_rates == None:
         layer_prune_rates = [
         [[1,1], [1,1], [1,1]],   # layer1
@@ -289,14 +255,7 @@ def resnet34(layer_prune_rates=None, track=False,classes_size=10,all_rate=None):
     model = ResNet(data_shape, hidden_size, Block, [3, 4, 6, 3], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
-def resnet34_CIFAR100(layer_prune_rates=None, track=False,classes_size=100,all_rate=None):
-    if all_rate != None:
-        layer_prune_rates = [
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer1
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer2
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer3
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]]    # layer4
-    ]
+def resnet34_CIFAR100(layer_prune_rates=None, track=False,classes_size=100):
     if layer_prune_rates == None:
         layer_prune_rates = [
         [[1,1], [1,1], [1,1]],   # layer1
@@ -314,14 +273,7 @@ def resnet34_CIFAR100(layer_prune_rates=None, track=False,classes_size=100,all_r
     model = ResNet(data_shape, hidden_size, Block, [3, 4, 6, 3], classes_size, layer_prune_rates, track)
     model.apply(init_param)
     return model
-def resnet34_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200,all_rate=None):
-    if all_rate != None:
-        layer_prune_rates = [
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer1
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer2
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]],   # layer3
-        [[all_rate,all_rate], [all_rate,all_rate], [all_rate,all_rate]]    # layer4
-    ]
+def resnet34_TinyImagenet(layer_prune_rates=None, track=False,classes_size=200):
     if layer_prune_rates == None:
         layer_prune_rates = [
         [[1,1], [1,1], [1,1]],   # layer1

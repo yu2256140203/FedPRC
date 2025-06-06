@@ -21,10 +21,11 @@ class FedPRC_trainer(basic.Trainer):
         # self.current_loss = loss.clone()
         
         return super().train_step_end(config, batch, loss)
-    def custom_server_test(self,test_set):
+    def custom_server_test(self,test_set,model):
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         testloader = DataLoader(test_set, batch_size=Config().trainer.batch_size, shuffle=False)
-        model = self.model.to(device)
+        # model = self.model.to(device)
+        model.cuda()
         model.eval()
         # 在test_server_accuracy函数中添加
         def check_model_weights(model):
@@ -76,17 +77,6 @@ class FedPRC_trainer(basic.Trainer):
                         f"输入通道={weight.size(1)}, 全零输入通道={zero_in_channels}")
 
 
-
-
-
-        # 添加模型诊断
-        # check_model_weights(model)
-        # check_bn_layers(model)
-        # check_pruned_channels(model)
-
-# 然后继续测试...
-
-        # 测试模型
         correct = 0
         total = 0
         with torch.no_grad():
@@ -103,6 +93,7 @@ class FedPRC_trainer(basic.Trainer):
                 correct += (predicted == labels).sum().item()
                 # print("目前有",correct,"一样")
         accuracy =  correct / total
+        model.train()
         return accuracy
 
 

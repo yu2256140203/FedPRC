@@ -50,6 +50,18 @@ class FedPRC_algorithm(fedavg.Algorithm):
 
 
         return local_parameters
+    def get_test_parameters(self,model,mapping_dict):
+        """
+        Get the parameters of local models from the global model.
+        """
+        local_parameters_list = {}
+        for key,value in mapping_dict.items():
+            local_parameters_list[key] = prune_state_dict(model.state_dict(), value)
+        
+
+
+
+        return local_parameters_list
 
     def aggregation(self, weights_received):
         #有它，聚合参数，否则聚合变量
@@ -68,4 +80,7 @@ class FedPRC_algorithm(fedavg.Algorithm):
         global_parameters,restored_states = aggregate_submodel_states(full_state=self.model.state_dict(),sub_state_list=submodel_weights,mapping_indices_list=mapping_indices_list,client_data_sizes=client_data_sizes)
         
         return global_parameters,restored_states
+    def load_weights(self, weights):
+        """Loads the model weights passed in as a parameter."""
+        self.model.load_state_dict(weights, strict=False)#非严格性参数加载，避免有些参数有点多
 
