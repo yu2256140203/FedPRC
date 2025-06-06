@@ -119,15 +119,15 @@ class server(fedavg.Server):
                 #初始的超网络输出：
                 self.current_hsn_output,self.reg_loss = self.hsn()
                 print(self.current_hsn_output)
-        if Config().parameters.momentum == 0:
-            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
-        else:
-            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
-        # self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), 
-        #                     lr=0.1,
-        #                     momentum=0.5, 
-        #                     weight_decay=0.0001)
-        # scheduler = torch.optim.lr_scheduler.ExponentialLR(self.hyper_optimizer , gamma=0.998)
+        # if Config().parameters.momentum == 0:
+        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
+        # else:
+        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
+        self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), 
+                            lr=0.1,
+                            momentum=0.5, 
+                            weight_decay=0.0001)
+        self.scheduler = torch.optim.lr_scheduler.ExponentialLR(self.hyper_optimizer , gamma=0.9)
 
         #重新定义超网络优化器，探索重要性
         #希望初始超网络的输出能公平少一点随机，这样让初始的模型能有较好的性能
@@ -350,12 +350,14 @@ class server(fedavg.Server):
             self.hyper_optimizer.step()
             images, labels = images.cpu(), labels.cpu()
             del log_probs,loss
-
+        
         _,self.reg_loss = self.hsn()
         self.hyper_optimizer.zero_grad()
         total_loss_for_backward = Config().parameters.loss_rate[1] * self.reg_loss
         total_loss_for_backward.backward()
         self.hyper_optimizer.step()
+
+        self.scheduler.step()
         
         torch.cuda.empty_cache()  # 清理缓存
 
