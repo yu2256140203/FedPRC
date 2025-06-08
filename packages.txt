@@ -95,7 +95,6 @@ packaging==24.1
 pandas==1.1.3
 Pillow==8.2.0
 platformdirs==4.3.6
-plato-learn @ file:///home/dyx/yjl/plato
 protobuf==5.27.3
 psutil==6.1.0
 ptflops==0.7.3

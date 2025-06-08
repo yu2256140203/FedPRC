@@ -184,11 +184,10 @@ class server(fedavg.Server):
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1]
             
         else:
-            client_full_model_global_rank = combine_importance(importance_dict=self.server_importance_dicts, hsn_outputs=self.current_hsn_output, device=self.device, conv_names=self.conv_names)
-
+            self.client_full_model_global_rank = combine_importance(importance_dict=self.server_importance_dicts, hsn_outputs=self.current_hsn_output, device=self.device, conv_names=self.conv_names)
             
             pruned_mapping,binary_masks, probab_masks, binary_indices, channels_info_sorted, total_param, target_keep  =prune_mapping_with_global_threshold_and_binary_indices(initial_mapping=self.init_mapping,
-            final_importance=client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
+            final_importance=self.client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
             self.clients_mapping_indices[self.selected_client_id-1 ] = pruned_mapping
             self.probab_masks[self.selected_client_id-1 ] = probab_masks
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1 ]
@@ -463,6 +462,15 @@ class server(fedavg.Server):
                 model = self.model(layer_prune_rates=self.current_prune_rates[i])
                 model.load_state_dict(parameters_list[i])
                 self.acc_sub[i] = self.trainer.custom_server_test(self.testset,model)
+            real_rates = Config().parameters.rates
+            for rate in  real_rates:
+                if str(rate) not in rates:
+                    pruned_mapping,binary_masks, probab_masks, binary_indices, channels_info_sorted, total_param, target_keep  =prune_mapping_with_global_threshold_and_binary_indices(initial_mapping=self.init_mapping,
+            final_importance=self.client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
+                    model = self.model(all_rate = rate)
+                    parameters = self.algorithm.get_local_parameters(self.trainer.model.state_dict(),pruned_mapping)
+                    model.load_state_dict(parameters)
+                    self.acc_sub[str(rate)] = self.trainer.custom_server_test(self.testset,model)
             self.accuracy = self.trainer.custom_server_test(self.testset,self.trainer.model)
             self.current_mapping = {}#清空等待下一轮
             self.current_prune_rates = {}
