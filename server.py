@@ -120,10 +120,10 @@ class server(fedavg.Server):
                 #初始的超网络输出：
                 self.current_hsn_output,self.reg_loss = self.hsn()
                 print(self.current_hsn_output)
-        if Config().parameters.momentum == 0:
-            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
-        else:
-            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
+        # if Config().parameters.momentum == 0:
+        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
+        # else:
+        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
         # self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), 
         #                     lr=0.1,
         #                     momentum=0.5, 
@@ -248,8 +248,15 @@ class server(fedavg.Server):
                 avg_tensor[missing_indices] = server_values_for_missing
 
                 
-                # 更新 server_importance_dicts 的值为计算后的 avg_tensor
-                self.server_importance_dicts[key] = avg_tensor
+                # # 更新 server_importance_dicts 的值为计算后的 avg_tensor
+                # self.server_importance_dicts[key] = avg_tensor  + self.server_importance_dicts[key]
+                                # 更新 server_importance_dicts 的值为计算后的 avg_tensor
+                # 将原来的 server_importance_dicts[key] 转换为 tensor
+                old_value_tensor = torch.tensor(self.server_importance_dicts[key], device=self.device)
+                avg = 0.5 * (0.9 ** (self.current_round / Config().parameters.ranks_round-1))
+                old = 1-avg
+                # 保证两边都是 Tensor 后进行计算：一半用计算得到的 avg_tensor，一半保留原来的值
+                self.server_importance_dicts[key] = avg * avg_tensor + old * old_value_tensor
                 print("当前完成重要性聚合")
         print("当前完成聚合")
         
@@ -333,6 +340,7 @@ class server(fedavg.Server):
         model = MaskedResNet(base_model=self.algorithm.model,probab_masks=probab_masks)
         model.cuda()
         criterion = torch.nn.CrossEntropyLoss()
+        self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1*(0.9 ** (self.current_round/Config().parameters.ranks_round)))
         Predict_loss = 0.0
         
 
@@ -467,7 +475,8 @@ class server(fedavg.Server):
                 if str(rate) not in rates:
                     pruned_mapping,binary_masks, probab_masks, binary_indices, channels_info_sorted, total_param, target_keep  =prune_mapping_with_global_threshold_and_binary_indices(initial_mapping=self.init_mapping,
             final_importance=self.client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
-                    model = self.model(all_rate = rate)
+                    current_prune_rate = reverse_prune_rates(pruned_mapping, dict_modules=self.dict_modules,modules_indices = self.modules_indices)
+                    model = self.model(layer_prune_rates=current_prune_rate)
                     parameters = self.algorithm.get_local_parameters(self.trainer.model.state_dict(),pruned_mapping)
                     model.load_state_dict(parameters)
                     self.acc_sub[str(rate)] = self.trainer.custom_server_test(self.testset,model)
