@@ -110,7 +110,6 @@ class ChannelImportanceEvaluator:
 
         importance_dict = {}
 
-        # 2. 处理卷积层的累计统计 → 最终 importance
         #    先对 A_sum / count, B_sum / count 做 gamma 变换和 Z‐Score，再相乘，最后再做一轮 Z‐Score
         for name, scores in self.score_dict_conv.items():
             count = scores["count"]
