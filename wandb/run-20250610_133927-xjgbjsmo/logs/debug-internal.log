@@ -1,0 +1,12 @@
+{"time":"2025-06-10T13:39:27.252479032+08:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/dyx/yjl/plato/FedPRC/wandb/run-20250610_133927-xjgbjsmo/logs/debug-core.log"}
+{"time":"2025-06-10T13:39:27.82558391+08:00","level":"INFO","msg":"created new stream","id":"xjgbjsmo"}
+{"time":"2025-06-10T13:39:27.825610628+08:00","level":"INFO","msg":"stream: started","id":"xjgbjsmo"}
+{"time":"2025-06-10T13:39:27.825690244+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"xjgbjsmo"}
+{"time":"2025-06-10T13:39:27.825747147+08:00","level":"INFO","msg":"handler: started","stream_id":"xjgbjsmo"}
+{"time":"2025-06-10T13:39:27.825833741+08:00","level":"INFO","msg":"sender: started","stream_id":"xjgbjsmo"}
+{"time":"2025-06-10T13:39:28.177492287+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-10T16:02:39.658117816+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": unexpected EOF"}
+{"time":"2025-06-10T16:39:01.11750782+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": unexpected EOF"}
+{"time":"2025-06-10T16:48:51.924581012+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": unexpected EOF"}
+{"time":"2025-06-10T16:55:39.857478714+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": unexpected EOF"}
+{"time":"2025-06-10T17:21:50.376849234+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/yu2256140203-2084/FedPRC_ResNet34_CIFAR10/xjgbjsmo/file_stream\": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)"}

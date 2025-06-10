@@ -1,0 +1,46 @@
+{
+  "os": "Linux-6.8.0-60-generic-x86_64-with-glibc2.10",
+  "python": "CPython 3.8.18",
+  "startedAt": "2025-06-10T05:39:27.251818Z",
+  "args": [
+    "-c",
+    "/home/dyx/yjl/plato/FedPRC/config/Resnet34_CIFAR10/hsn_noiid0.6_20round_importance_small_lr.yml"
+  ],
+  "program": "FedPRC.py",
+  "codePath": "FedPRC.py",
+  "git": {
+    "remote": "https://github.com/yu2256140203/FedPRC.git",
+    "commit": "deaca6c1f8b4908f6f8aa42c56ba2aaf07ba13f3"
+  },
+  "email": "yu2256140203@gmail.com",
+  "root": "/home/dyx/yjl/plato/FedPRC",
+  "host": "byg-A308",
+  "executable": "/home/dyx/yjl/miniconda3/envs/plato/bin/python",
+  "codePathLocal": "FedPRC.py",
+  "cpu_count": 24,
+  "cpu_count_logical": 32,
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "2014574526464",
+      "used": "1598415880192"
+    }
+  },
+  "memory": {
+    "total": "67098030080"
+  },
+  "cpu": {
+    "count": 24,
+    "countLogical": 32
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4090",
+      "memoryTotal": "25757220864",
+      "cudaCores": 16384,
+      "architecture": "Ada"
+    }
+  ],
+  "cudaVersion": "12.4"
+}

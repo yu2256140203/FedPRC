@@ -1,0 +1,585 @@
+[tensor([0.6007], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5813], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4452], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4728], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4504], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5093], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4169], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4626], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5388], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5254], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5591], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4886], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4858], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4703], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5946], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5128], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4409], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5168], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5636], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5773], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6532], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5207], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5042], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5418], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5052], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5508], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6722], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5308], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6343], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5704], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4412], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5072], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5936], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5771], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4443], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4720], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4511], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5092], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4185], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4637], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5395], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5254], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5554], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4883], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4858], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4712], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5918], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5116], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4403], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5150], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5595], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5712], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6492], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5178], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5030], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5401], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5048], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5492], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6686], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5285], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6312], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5678], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4420], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5059], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5869], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5731], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4436], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4712], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4518], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5093], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4201], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4648], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5402], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5254], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5519], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4881], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4857], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4721], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5891], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5104], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4398], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5133], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5556], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5654], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6455], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5151], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5385], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5043], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5474], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6647], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5263], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6282], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5654], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4429], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5046], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5806], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5693], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4429], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4706], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4525], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5093], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4217], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4660], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5410], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5255], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5486], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4879], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4856], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4730], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5865], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5093], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4393], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5117], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5519], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5599], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6418], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5125], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5007], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5370], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5040], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5458], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6611], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5242], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6253], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5632], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4437], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5034], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5747], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5658], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4423], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4701], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4532], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5094], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4233], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4671], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5417], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5256], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5455], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4876], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4856], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4739], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5841], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5083], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4389], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5103], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5485], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5547], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6384], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5102], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4997], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5357], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5036], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5443], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6575], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5222], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6226], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5612], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4445], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5024], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5697], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5625], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4418], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4696], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4539], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5094], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4248], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4682], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5424], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5257], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5425], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4875], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4856], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4748], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5818], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5073], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4386], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5089], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5452], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5498], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6351], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5079], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4988], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5344], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5033], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5428], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6541], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5203], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6199], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5591], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4453], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5013], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5649], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5594], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4413], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4693], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4546], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5095], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4263], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4693], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5431], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5258], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5397], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4873], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4855], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4756], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5795], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5065], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4383], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5077], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5421], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5451], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6319], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5058], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4980], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5332], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5030], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5414], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6508], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5186], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6173], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5571], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4460], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5004], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5604], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5565], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4409], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4690], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4552], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5095], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4278], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4704], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5437], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5258], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5371], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4871], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4855], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4765], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5774], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5056], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4381], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5066], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5392], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5407], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6288], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5039], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4972], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5321], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5028], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5401], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6477], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5169], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6148], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5552], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4468], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4996], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5562], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5538], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4404], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4688], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4560], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5096], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4293], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4715], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5444], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5259], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5345], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4870], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4855], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4774], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5754], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5049], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4380], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5055], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5364], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5366], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6259], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5020], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4965], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5310], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5026], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5389], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6447], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5153], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6124], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5534], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4478], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4988], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5522], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5512], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4400], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4686], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4566], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5097], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4307], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4725], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5450], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5260], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5322], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4869], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4855], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4782], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5734], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5042], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4379], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5045], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5338], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5326], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6231], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5003], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4958], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5301], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5024], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5377], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6417], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5138], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6100], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5516], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4486], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4981], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5486], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5488], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4396], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4685], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4573], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5098], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4321], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4735], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5456], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5260], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5299], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4868], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4855], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4790], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5716], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5036], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4378], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5036], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5314], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5290], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6204], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4988], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4952], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5292], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5023], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5366], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6389], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5124], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6077], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5499], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4494], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4975], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5452], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5465], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4393], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4684], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4580], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5101], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4335], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4745], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5463], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5262], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5278], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4855], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4798], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5698], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5030], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4379], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5027], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5291], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5255], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6178], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4973], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4946], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5284], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5022], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5355], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6361], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5112], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6056], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5483], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4503], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4969], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5419], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5444], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4390], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4684], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4587], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5103], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4349], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4754], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5468], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5263], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5258], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4856], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4806], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5681], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5024], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4379], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5020], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5269], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5222], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6154], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4959], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4941], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5276], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5020], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5344], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6333], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5099], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6034], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5467], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4510], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4963], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5390], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5425], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4388], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4684], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4593], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5105], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4362], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4763], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5474], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5264], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5239], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4856], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4813], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5664], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5019], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4380], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5012], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5248], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5191], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6130], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4946], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4936], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5269], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5020], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5334], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6307], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5088], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6014], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5451], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4518], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4958], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5362], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5407], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4386], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4684], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4600], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5107], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4375], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4772], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5480], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5265], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5220], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4857], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4821], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5648], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5015], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4382], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5006], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5228], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5161], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6107], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4934], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4932], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5262], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5019], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5325], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6282], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5077], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5994], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5437], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4526], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4953], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5336], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5389], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4385], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4685], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4606], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5109], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4388], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4780], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5485], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5265], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5203], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4858], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4828], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5633], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5010], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4383], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5000], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5209], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5134], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6085], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4923], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4928], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5256], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5316], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6257], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5067], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5975], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5423], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4534], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4949], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5312], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5374], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4384], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4686], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4612], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5111], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4400], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4789], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5490], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5266], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5187], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4859], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4835], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5619], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5007], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4385], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4994], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5191], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5108], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6064], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4912], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4924], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5251], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5307], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6233], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5058], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5957], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5409], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4542], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4945], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5289], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5359], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4384], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4687], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4617], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5112], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4412], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4797], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5495], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5267], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5172], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4860], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4842], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5605], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5003], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4387], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4989], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5175], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5084], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6044], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4903], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4921], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5245], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5298], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6210], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5049], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5939], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5396], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4549], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4942], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5269], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5345], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4383], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4689], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4623], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5114], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4424], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4804], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5499], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5268], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5157], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4865], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4860], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4848], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5591], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5000], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4390], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4984], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5159], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5062], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6024], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4894], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4917], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5241], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5290], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6188], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5040], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5921], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5383], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4556], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4938], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5248], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5332], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4383], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4690], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4628], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5116], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4435], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4812], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5504], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5269], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5143], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4862], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4855], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5578], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4997], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4393], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4980], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5144], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5042], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6006], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4886], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4915], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5236], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5283], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6167], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5032], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5905], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5371], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4563], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4935], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5231], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5320], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4384], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4692], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4634], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5117], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4446], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4819], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5508], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5269], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5130], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4863], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4861], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5566], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4995], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4396], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4976], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5131], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5023], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5988], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4878], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4912], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5232], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5275], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6146], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5025], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5889], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5359], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4569], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4933], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5213], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5309], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4384], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4694], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4639], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5119], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4457], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4826], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5512], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5270], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5117], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4864], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5554], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4992], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4399], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4972], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5118], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5005], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5970], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4871], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4910], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5228], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5268], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6126], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5017], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5873], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5348], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4576], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4930], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5198], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5298], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4385], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4696], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4644], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5120], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4467], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4832], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5514], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5271], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5105], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4865], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4873], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5543], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4990], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4403], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4969], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5105], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4988], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5954], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4864], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4908], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5225], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5261], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6108], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5011], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5859], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5337], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4582], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4928], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5182], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5288], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4386], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4698], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4649], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5122], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4477], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4838], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5517], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5271], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5094], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4879], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5532], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4988], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4406], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4965], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5094], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4972], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5938], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4858], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4906], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5221], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5254], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6089], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5004], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5846], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5326], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4589], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4927], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5169], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5279], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4387], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4700], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4653], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5123], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4487], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4844], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5520], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5271], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5083], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4885], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5521], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4986], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4410], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4962], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5083], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4957], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5923], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4852], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4905], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5218], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5248], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6071], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4998], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5832], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5316], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4595], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4925], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5156], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5271], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4389], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4703], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4658], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5124], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4497], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4850], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5522], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5272], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5073], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4866], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4869], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4890], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5511], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4985], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4414], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4960], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5073], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4943], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5908], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4847], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4903], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5216], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5242], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6054], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4992], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5820], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5306], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4601], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4924], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5145], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5263], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4390], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4705], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4662], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5125], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4506], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4856], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5524], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5272], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5063], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4870], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4896], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5501], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4984], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4418], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4957], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5063], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4929], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5894], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4842], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4902], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5213], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5235], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6037], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4987], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5807], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5296], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4607], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4923], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5133], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5256], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4392], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4708], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4667], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5126], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4515], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4861], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5526], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5272], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5054], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4871], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4901], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5492], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4983], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4422], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4955], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5054], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4916], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5880], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4838], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4901], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5211], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5230], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6021], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4982], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5795], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5287], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4612], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4922], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5123], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5249], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4394], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4710], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4671], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5127], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4524], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5528], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5272], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5045], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4872], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4906], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5482], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4982], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4427], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4953], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5045], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4905], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4834], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4900], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5209], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5224], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.6005], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4977], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5783], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5278], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4618], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4922], device='cuda:0', grad_fn=<SelectBackward0>)]
+[tensor([0.5114], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5242], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4395], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4713], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4675], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5128], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4532], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4871], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5529], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5272], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5037], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4868], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4874], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4911], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5473], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4981], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4431], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4951], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5037], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4893], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5854], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4830], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4900], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5207], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5018], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5218], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5990], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4972], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5772], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5269], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4623], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4921], device='cuda:0', grad_fn=<SelectBackward0>)]
+[INFO][13:32:15]: [Server #1810277] Configuring the server...
+[INFO][13:32:15]: Training: 400 rounds or accuracy above 100.0%
+
+[INFO][13:32:15]: Data source: CIFAR10
+Files already downloaded and verified
+Files already downloaded and verified
+[INFO][13:32:16]: Starting client #1's process.
+[INFO][13:32:16]: Starting client #2's process.
+[INFO][13:32:16]: Starting client #3's process.
+[INFO][13:32:16]: Starting client #4's process.
+[INFO][13:32:16]: Starting client #5's process.
+[INFO][13:32:16]: Setting the random seed for selecting clients: 1234
+[INFO][13:32:16]: Starting a server at address 127.0.0.1 and port 8120.
+======== Running on http://127.0.0.1:8120 ========
+(Press CTRL+C to quit)
+[INFO][13:32:23]: 127.0.0.1 [10/Jun/2025:13:32:23 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749533543.7212093 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][13:32:23]: [Server #1810277] A new client just connected.
+[INFO][13:32:23]: [Server #1810277] New client with id #1 arrived.
+[INFO][13:32:23]: [Server #1810277] Client process #1810497 registered.
+[INFO][13:32:23]: 127.0.0.1 [10/Jun/2025:13:32:23 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749533543.7327137 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][13:32:23]: [Server #1810277] A new client just connected.
+[INFO][13:32:23]: [Server #1810277] New client with id #3 arrived.
+[INFO][13:32:23]: [Server #1810277] Client process #1810530 registered.
+[INFO][13:32:23]: 127.0.0.1 [10/Jun/2025:13:32:23 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749533543.742757 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][13:32:23]: 127.0.0.1 [10/Jun/2025:13:32:23 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749533543.7428427 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][13:32:23]: [Server #1810277] A new client just connected.
+[INFO][13:32:23]: [Server #1810277] A new client just connected.
+[INFO][13:32:23]: [Server #1810277] New client with id #4 arrived.
+[INFO][13:32:23]: [Server #1810277] Client process #1810563 registered.
+[INFO][13:32:23]: [Server #1810277] New client with id #2 arrived.
+[INFO][13:32:23]: [Server #1810277] Client process #1810498 registered.
+[INFO][13:32:23]: 127.0.0.1 [10/Jun/2025:13:32:23 +0800] "GET /socket.io/?transport=polling&EIO=4&t=1749533543.8083618 HTTP/1.1" 200 294 "-" "Python/3.8 aiohttp/3.10.0"
+[INFO][13:32:23]: [Server #1810277] A new client just connected.
+[INFO][13:32:23]: [Server #1810277] New client with id #5 arrived.
+[INFO][13:32:23]: [Server #1810277] Client process #1810564 registered.
+[INFO][13:32:23]: [Server #1810277] Starting training.
+[INFO][13:32:23]: [93m[1m
+[Server #1810277] Starting round 1/400.[0m
+[INFO][13:32:23]: [Server #1810277] Selected clients: [100, 57, 15, 1, 12, 75, 5, 86, 89, 11]
+[INFO][13:32:23]: [Server #1810277] Selecting client #100 for training.
+linear.weight
+[INFO][13:32:32]: [Server #1810277] Sending the current model to client #100.
+[INFO][13:32:32]: [Server #1810277] Sent 84.70 MB of payload data to client #100.
+[INFO][13:32:32]: [Server #1810277] Selecting client #57 for training.
+linear.weight
+[INFO][13:32:40]: [Server #1810277] Sending the current model to client #57.
+[INFO][13:32:40]: [Server #1810277] Sent 42.51 MB of payload data to client #57.
+[INFO][13:32:40]: [Server #1810277] Selecting client #15 for training.
+linear.weight
+[INFO][13:32:48]: [Server #1810277] Sending the current model to client #15.
+[INFO][13:32:48]: [Server #1810277] Sent 21.26 MB of payload data to client #15.
+[INFO][13:32:48]: [Server #1810277] Selecting client #1 for training.
+linear.weight
+[INFO][13:32:56]: [Server #1810277] Sending the current model to client #1.
+[INFO][13:32:56]: [Server #1810277] Sent 21.26 MB of payload data to client #1.
+[INFO][13:32:56]: [Server #1810277] Selecting client #12 for training.
+linear.weight
+[INFO][13:33:04]: [Server #1810277] Sending the current model to client #12.
+[INFO][13:33:04]: [Server #1810277] Sent 21.26 MB of payload data to client #12.
+[INFO][13:33:15]: [Server #1810277] Received 21.33 MB of payload data from client #15.
+[INFO][13:33:15]: [Server #1810277] Advancing the wall clock time to 1749533546.30.
+[INFO][13:33:17]: [Server #1810277] Received 42.60 MB of payload data from client #57.
+[INFO][13:33:17]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:33:18]: [Server #1810277] Received 84.82 MB of payload data from client #100.
+[INFO][13:33:18]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:33:19]: [Server #1810277] Received 21.33 MB of payload data from client #1.
+[INFO][13:33:19]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:33:19]: [Server #1810277] Received 21.33 MB of payload data from client #12.
+[INFO][13:33:19]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:33:19]: [Server #1810277] Selecting client #75 for training.
+linear.weight
+[INFO][13:33:27]: [Server #1810277] Sending the current model to client #75.
+[INFO][13:33:27]: [Server #1810277] Sent 84.70 MB of payload data to client #75.
+[INFO][13:33:27]: [Server #1810277] Selecting client #5 for training.
+linear.weight
+[INFO][13:33:35]: [Server #1810277] Sending the current model to client #5.
+[INFO][13:33:35]: [Server #1810277] Sent 21.26 MB of payload data to client #5.
+[INFO][13:33:35]: [Server #1810277] Selecting client #86 for training.
+linear.weight
+[INFO][13:33:43]: [Server #1810277] Sending the current model to client #86.
+[INFO][13:33:43]: [Server #1810277] Sent 84.70 MB of payload data to client #86.
+[INFO][13:33:43]: [Server #1810277] Selecting client #89 for training.
+linear.weight
+[INFO][13:33:52]: [Server #1810277] Sending the current model to client #89.
+[INFO][13:33:52]: [Server #1810277] Sent 84.70 MB of payload data to client #89.
+[INFO][13:33:52]: [Server #1810277] Selecting client #11 for training.
+linear.weight
+[INFO][13:34:02]: [Server #1810277] Sending the current model to client #11.
+[INFO][13:34:02]: [Server #1810277] Sent 21.26 MB of payload data to client #11.
+[INFO][13:34:03]: [Server #1810277] Received 21.33 MB of payload data from client #5.
+[INFO][13:34:03]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:34:14]: [Server #1810277] Received 84.82 MB of payload data from client #75.
+[INFO][13:34:14]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:34:15]: [Server #1810277] Received 21.33 MB of payload data from client #11.
+[INFO][13:34:15]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:34:19]: [Server #1810277] Received 84.82 MB of payload data from client #86.
+[INFO][13:34:19]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:34:20]: [Server #1810277] Received 84.82 MB of payload data from client #89.
+[INFO][13:34:20]: [Server #1810277] Advancing the wall clock time to 1749533547.99.
+[INFO][13:34:20]: [Server #1810277] All 10 client report(s) received. Processing.
+[INFO][13:34:20]: [Server #1810277] Updated weights have been received.
+[INFO][13:34:20]: [Server #1810277] Aggregating model weights directly rather than weight deltas.
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成聚合
+[INFO][13:34:20]: [Server #1810277] Finished aggregating updated weights.
+[INFO][13:34:20]: [Server #1810277] Started model testing.
+[INFO][13:34:26]: [93m[1m[Server #1810277] Global model accuracy: 27.20%
+[0m
+[INFO][13:34:26]: [Server #1810277] All client reports have been processed.
+[INFO][13:34:26]: [Server #1810277] Saving the checkpoint to ./checkpoints/checkpoint_resnet_1.pth.
+[INFO][13:34:26]: [Server #1810277] Model saved to ./checkpoints/checkpoint_resnet_1.pth.
+[INFO][13:34:26]: [93m[1m
+[Server #1810277] Starting round 2/400.[0m
+[INFO][13:34:26]: [Server #1810277] Selected clients: [13, 99, 46, 31, 3, 4, 45, 83, 80, 62]
+[INFO][13:34:26]: [Server #1810277] Selecting client #13 for training.
+/home/dyx/yjl/plato/FedPRC/channel_evaluation.py:224: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  model_imp = torch.tensor(importance_dict[name], device=device, dtype=torch.float)
+[INFO][13:34:26]: [Server #1810277] Sending the current model to client #13.
+[INFO][13:34:26]: [Server #1810277] Sent 21.20 MB of payload data to client #13.
+[INFO][13:34:26]: [Server #1810277] Selecting client #99 for training.
+[INFO][13:34:26]: [Server #1810277] Sending the current model to client #99.
+[INFO][13:34:26]: [Server #1810277] Sent 84.65 MB of payload data to client #99.
+[INFO][13:34:26]: [Server #1810277] Selecting client #46 for training.
+[INFO][13:34:27]: [Server #1810277] Sending the current model to client #46.
+[INFO][13:34:27]: [Server #1810277] Sent 42.73 MB of payload data to client #46.
+[INFO][13:34:27]: [Server #1810277] Selecting client #31 for training.
+[INFO][13:34:27]: [Server #1810277] Sending the current model to client #31.
+[INFO][13:34:27]: [Server #1810277] Sent 21.20 MB of payload data to client #31.
+[INFO][13:34:27]: [Server #1810277] Selecting client #3 for training.
+[INFO][13:34:27]: [Server #1810277] Sending the current model to client #3.
+[INFO][13:34:27]: [Server #1810277] Sent 21.20 MB of payload data to client #3.
+[INFO][13:34:38]: [Server #1810277] Received 21.25 MB of payload data from client #13.
+[INFO][13:34:38]: [Server #1810277] Advancing the wall clock time to 1749533553.35.
+[INFO][13:34:40]: [Server #1810277] Received 21.25 MB of payload data from client #31.
+[INFO][13:34:40]: [Server #1810277] Advancing the wall clock time to 1749533556.30.
+[INFO][13:34:42]: [Server #1810277] Received 42.79 MB of payload data from client #46.
+[INFO][13:34:42]: [Server #1810277] Advancing the wall clock time to 1749533557.35.
+[INFO][13:34:42]: [Server #1810277] Received 21.25 MB of payload data from client #3.
+[INFO][13:34:42]: [Server #1810277] Advancing the wall clock time to 1749533557.49.
+[INFO][13:34:44]: [Server #1810277] Received 84.74 MB of payload data from client #99.
+[INFO][13:34:44]: [Server #1810277] Advancing the wall clock time to 1749533558.37.
+[INFO][13:34:44]: [Server #1810277] Selecting client #4 for training.
+[INFO][13:34:44]: [Server #1810277] Sending the current model to client #4.
+[INFO][13:34:44]: [Server #1810277] Sent 21.20 MB of payload data to client #4.
+[INFO][13:34:44]: [Server #1810277] Selecting client #45 for training.
+[INFO][13:34:44]: [Server #1810277] Sending the current model to client #45.
+[INFO][13:34:44]: [Server #1810277] Sent 42.73 MB of payload data to client #45.
+[INFO][13:34:44]: [Server #1810277] Selecting client #83 for training.
+[INFO][13:34:44]: [Server #1810277] Sending the current model to client #83.
+[INFO][13:34:44]: [Server #1810277] Sent 84.65 MB of payload data to client #83.
+[INFO][13:34:44]: [Server #1810277] Selecting client #80 for training.
+[INFO][13:34:44]: [Server #1810277] Sending the current model to client #80.
+[INFO][13:34:44]: [Server #1810277] Sent 84.65 MB of payload data to client #80.
+[INFO][13:34:44]: [Server #1810277] Selecting client #62 for training.
+[INFO][13:34:44]: [Server #1810277] Sending the current model to client #62.
+[INFO][13:34:44]: [Server #1810277] Sent 42.73 MB of payload data to client #62.
+[INFO][13:34:59]: [Server #1810277] Received 21.25 MB of payload data from client #4.
+[INFO][13:34:59]: [Server #1810277] Advancing the wall clock time to 1749533558.37.
+[INFO][13:34:59]: [Server #1810277] Received 42.79 MB of payload data from client #45.
+[INFO][13:34:59]: [Server #1810277] Advancing the wall clock time to 1749533558.37.
+[INFO][13:35:01]: [Server #1810277] Received 42.79 MB of payload data from client #62.
+[INFO][13:35:01]: [Server #1810277] Advancing the wall clock time to 1749533558.83.
+[INFO][13:35:04]: [Server #1810277] Received 84.74 MB of payload data from client #83.
+[INFO][13:35:04]: [Server #1810277] Advancing the wall clock time to 1749533560.17.
+[INFO][13:35:04]: [Server #1810277] Received 84.74 MB of payload data from client #80.
+[INFO][13:35:04]: [Server #1810277] Advancing the wall clock time to 1749533560.17.
+[INFO][13:35:04]: [Server #1810277] All 10 client report(s) received. Processing.
+[INFO][13:35:04]: [Server #1810277] Updated weights have been received.
+[INFO][13:35:04]: [Server #1810277] Aggregating model weights directly rather than weight deltas.
+当前完成聚合
+[INFO][13:35:04]: [Server #1810277] Finished aggregating updated weights.
+[INFO][13:35:04]: [Server #1810277] Started model testing.
+[INFO][13:35:11]: [93m[1m[Server #1810277] Global model accuracy: 35.31%
+[0m
+[INFO][13:35:11]: [Server #1810277] All client reports have been processed.
+[INFO][13:35:11]: [Server #1810277] Saving the checkpoint to ./checkpoints/checkpoint_resnet_2.pth.
+[INFO][13:35:11]: [Server #1810277] Model saved to ./checkpoints/checkpoint_resnet_2.pth.
+[INFO][13:35:11]: [93m[1m
+[Server #1810277] Starting round 3/400.[0m
+[INFO][13:35:11]: [Server #1810277] Selected clients: [79, 60, 20, 12, 24, 92, 15, 2, 65, 63]
+[INFO][13:35:11]: [Server #1810277] Selecting client #79 for training.
+[INFO][13:35:11]: [Server #1810277] Sending the current model to client #79.
+[INFO][13:35:11]: [Server #1810277] Sent 84.65 MB of payload data to client #79.
+[INFO][13:35:11]: [Server #1810277] Selecting client #60 for training.
+[INFO][13:35:11]: [Server #1810277] Sending the current model to client #60.
+[INFO][13:35:11]: [Server #1810277] Sent 42.73 MB of payload data to client #60.
+[INFO][13:35:11]: [Server #1810277] Selecting client #20 for training.
+[INFO][13:35:11]: [Server #1810277] Sending the current model to client #20.
+[INFO][13:35:11]: [Server #1810277] Sent 21.20 MB of payload data to client #20.
+[INFO][13:35:11]: [Server #1810277] Selecting client #12 for training.
+[INFO][13:35:11]: [Server #1810277] Sending the current model to client #12.
+[INFO][13:35:11]: [Server #1810277] Sent 21.20 MB of payload data to client #12.
+[INFO][13:35:11]: [Server #1810277] Selecting client #24 for training.
+[INFO][13:35:11]: [Server #1810277] Sending the current model to client #24.
+[INFO][13:35:11]: [Server #1810277] Sent 21.20 MB of payload data to client #24.
+[INFO][13:35:24]: [Server #1810277] Received 21.25 MB of payload data from client #20.
+[INFO][13:35:24]: [Server #1810277] Advancing the wall clock time to 1749533566.29.
+[INFO][13:35:24]: [Server #1810277] Received 42.79 MB of payload data from client #60.
+[INFO][13:35:24]: [Server #1810277] Advancing the wall clock time to 1749533567.21.
+[INFO][13:35:26]: [Server #1810277] Received 21.25 MB of payload data from client #24.
+[INFO][13:35:26]: [Server #1810277] Advancing the wall clock time to 1749533569.54.
+[INFO][13:35:26]: [Server #1810277] Received 21.25 MB of payload data from client #12.
+[INFO][13:35:26]: [Server #1810277] Advancing the wall clock time to 1749533569.63.
+[INFO][13:35:28]: [Server #1810277] Received 84.74 MB of payload data from client #79.
+[INFO][13:35:28]: [Server #1810277] Advancing the wall clock time to 1749533570.95.
+[INFO][13:35:28]: [Server #1810277] Selecting client #92 for training.
+[INFO][13:35:28]: [Server #1810277] Sending the current model to client #92.
+[INFO][13:35:28]: [Server #1810277] Sent 84.65 MB of payload data to client #92.
+[INFO][13:35:28]: [Server #1810277] Selecting client #15 for training.
+[INFO][13:35:28]: [Server #1810277] Sending the current model to client #15.
+[INFO][13:35:28]: [Server #1810277] Sent 21.20 MB of payload data to client #15.
+[INFO][13:35:28]: [Server #1810277] Selecting client #2 for training.
+[INFO][13:35:28]: [Server #1810277] Sending the current model to client #2.
+[INFO][13:35:28]: [Server #1810277] Sent 21.20 MB of payload data to client #2.
+[INFO][13:35:28]: [Server #1810277] Selecting client #65 for training.
+[INFO][13:35:28]: [Server #1810277] Sending the current model to client #65.
+[INFO][13:35:28]: [Server #1810277] Sent 42.73 MB of payload data to client #65.
+[INFO][13:35:28]: [Server #1810277] Selecting client #63 for training.
+[INFO][13:35:29]: [Server #1810277] Sending the current model to client #63.
+[INFO][13:35:29]: [Server #1810277] Sent 42.73 MB of payload data to client #63.
+[INFO][13:35:41]: [Server #1810277] Received 21.25 MB of payload data from client #15.
+[INFO][13:35:41]: [Server #1810277] Advancing the wall clock time to 1749533570.95.
+[INFO][13:35:41]: [Server #1810277] Received 21.25 MB of payload data from client #2.
+[INFO][13:35:41]: [Server #1810277] Advancing the wall clock time to 1749533570.95.
+[INFO][13:35:45]: [Server #1810277] Received 42.79 MB of payload data from client #65.
+[INFO][13:35:45]: [Server #1810277] Advancing the wall clock time to 1749533570.95.
+[INFO][13:35:45]: [Server #1810277] Received 84.74 MB of payload data from client #92.
+[INFO][13:35:45]: [Server #1810277] Advancing the wall clock time to 1749533570.95.
+[INFO][13:35:46]: [Server #1810277] Received 42.79 MB of payload data from client #63.
+[INFO][13:35:46]: [Server #1810277] Advancing the wall clock time to 1749533570.95.
+[INFO][13:35:46]: [Server #1810277] All 10 client report(s) received. Processing.
+[INFO][13:35:46]: [Server #1810277] Updated weights have been received.
+[INFO][13:35:46]: [Server #1810277] Aggregating model weights directly rather than weight deltas.
+当前完成聚合
+[INFO][13:35:46]: [Server #1810277] Finished aggregating updated weights.
+[INFO][13:35:46]: [Server #1810277] Started model testing.
+[INFO][13:35:52]: [93m[1m[Server #1810277] Global model accuracy: 36.09%
+[0m
+[INFO][13:35:52]: [Server #1810277] All client reports have been processed.
+[INFO][13:35:52]: [Server #1810277] Saving the checkpoint to ./checkpoints/checkpoint_resnet_3.pth.
+[INFO][13:35:52]: [Server #1810277] Model saved to ./checkpoints/checkpoint_resnet_3.pth.
+[INFO][13:35:52]: [93m[1m
+[Server #1810277] Starting round 4/400.[0m
+[INFO][13:35:52]: [Server #1810277] Selected clients: [32, 9, 86, 70, 60, 77, 87, 12, 66, 75]
+[INFO][13:35:52]: [Server #1810277] Selecting client #32 for training.
+[INFO][13:35:52]: [Server #1810277] Sending the current model to client #32.
+[INFO][13:35:52]: [Server #1810277] Sent 21.20 MB of payload data to client #32.
+[INFO][13:35:52]: [Server #1810277] Selecting client #9 for training.
+[INFO][13:35:53]: [Server #1810277] Sending the current model to client #9.
+[INFO][13:35:53]: [Server #1810277] Sent 21.20 MB of payload data to client #9.
+[INFO][13:35:53]: [Server #1810277] Selecting client #86 for training.
+[INFO][13:35:53]: [Server #1810277] Sending the current model to client #86.
+[INFO][13:35:53]: [Server #1810277] Sent 84.65 MB of payload data to client #86.
+[INFO][13:35:53]: [Server #1810277] Selecting client #70 for training.
+[INFO][13:35:53]: [Server #1810277] Sending the current model to client #70.
+[INFO][13:35:53]: [Server #1810277] Sent 42.73 MB of payload data to client #70.
+[INFO][13:35:53]: [Server #1810277] Selecting client #60 for training.
+[INFO][13:35:53]: [Server #1810277] Sending the current model to client #60.
+[INFO][13:35:53]: [Server #1810277] Sent 42.73 MB of payload data to client #60.
+[INFO][13:36:05]: [Server #1810277] Received 21.25 MB of payload data from client #32.
+[INFO][13:36:05]: [Server #1810277] Advancing the wall clock time to 1749533576.77.
+[INFO][13:36:05]: [Server #1810277] Received 21.25 MB of payload data from client #9.
+[INFO][13:36:05]: [Server #1810277] Advancing the wall clock time to 1749533577.33.
+[INFO][13:36:07]: [Server #1810277] Received 42.79 MB of payload data from client #70.
+[INFO][13:36:07]: [Server #1810277] Advancing the wall clock time to 1749533580.11.
+[INFO][13:36:08]: [Server #1810277] Received 42.79 MB of payload data from client #60.
+[INFO][13:36:08]: [Server #1810277] Advancing the wall clock time to 1749533580.66.
+[INFO][13:36:10]: [Server #1810277] Received 84.74 MB of payload data from client #86.
+[INFO][13:36:10]: [Server #1810277] Advancing the wall clock time to 1749533581.63.
+[INFO][13:36:10]: [Server #1810277] Selecting client #77 for training.
+[INFO][13:36:10]: [Server #1810277] Sending the current model to client #77.
+[INFO][13:36:10]: [Server #1810277] Sent 84.65 MB of payload data to client #77.
+[INFO][13:36:10]: [Server #1810277] Selecting client #87 for training.
+[INFO][13:36:10]: [Server #1810277] Sending the current model to client #87.
+[INFO][13:36:10]: [Server #1810277] Sent 84.65 MB of payload data to client #87.
+[INFO][13:36:10]: [Server #1810277] Selecting client #12 for training.
+[INFO][13:36:11]: [Server #1810277] Sending the current model to client #12.
+[INFO][13:36:11]: [Server #1810277] Sent 21.20 MB of payload data to client #12.
+[INFO][13:36:11]: [Server #1810277] Selecting client #66 for training.
+[INFO][13:36:11]: [Server #1810277] Sending the current model to client #66.
+[INFO][13:36:11]: [Server #1810277] Sent 42.73 MB of payload data to client #66.
+[INFO][13:36:11]: [Server #1810277] Selecting client #75 for training.
+[INFO][13:36:11]: [Server #1810277] Sending the current model to client #75.
+[INFO][13:36:11]: [Server #1810277] Sent 84.65 MB of payload data to client #75.
+[INFO][13:36:25]: [Server #1810277] Received 21.25 MB of payload data from client #12.
+[INFO][13:36:25]: [Server #1810277] Advancing the wall clock time to 1749533581.63.
+[INFO][13:36:27]: [Server #1810277] Received 42.79 MB of payload data from client #66.
+[INFO][13:36:27]: [Server #1810277] Advancing the wall clock time to 1749533581.63.
+[INFO][13:36:27]: [Server #1810277] Received 84.74 MB of payload data from client #77.
+[INFO][13:36:27]: [Server #1810277] Advancing the wall clock time to 1749533581.63.
+[INFO][13:36:30]: [Server #1810277] Received 84.74 MB of payload data from client #87.
+[INFO][13:36:30]: [Server #1810277] Advancing the wall clock time to 1749533582.30.
+[INFO][13:36:31]: [Server #1810277] Received 84.74 MB of payload data from client #75.
+[INFO][13:36:31]: [Server #1810277] Advancing the wall clock time to 1749533583.52.
+[INFO][13:36:31]: [Server #1810277] All 10 client report(s) received. Processing.
+[INFO][13:36:31]: [Server #1810277] Updated weights have been received.
+[INFO][13:36:31]: [Server #1810277] Aggregating model weights directly rather than weight deltas.
+当前完成聚合
+[INFO][13:36:31]: [Server #1810277] Finished aggregating updated weights.
+[INFO][13:36:31]: [Server #1810277] Started model testing.
+[INFO][13:36:37]: [93m[1m[Server #1810277] Global model accuracy: 39.05%
+[0m
+[INFO][13:36:37]: [Server #1810277] All client reports have been processed.
+[INFO][13:36:37]: [Server #1810277] Saving the checkpoint to ./checkpoints/checkpoint_resnet_4.pth.
+[INFO][13:36:37]: [Server #1810277] Model saved to ./checkpoints/checkpoint_resnet_4.pth.
+[INFO][13:36:37]: [93m[1m
+[Server #1810277] Starting round 5/400.[0m
+[INFO][13:36:37]: [Server #1810277] Selected clients: [6, 35, 72, 9, 83, 39, 62, 46, 32, 84]
+[INFO][13:36:37]: [Server #1810277] Selecting client #6 for training.
+[INFO][13:36:37]: [Server #1810277] Sending the current model to client #6.
+[INFO][13:36:37]: [Server #1810277] Sent 21.20 MB of payload data to client #6.
+[INFO][13:36:37]: [Server #1810277] Selecting client #35 for training.
+[INFO][13:36:37]: [Server #1810277] Sending the current model to client #35.
+[INFO][13:36:37]: [Server #1810277] Sent 21.20 MB of payload data to client #35.
+[INFO][13:36:37]: [Server #1810277] Selecting client #72 for training.
+[INFO][13:36:37]: [Server #1810277] Sending the current model to client #72.
+[INFO][13:36:38]: [Server #1810277] Sent 84.65 MB of payload data to client #72.
+[INFO][13:36:38]: [Server #1810277] Selecting client #9 for training.
+[INFO][13:36:38]: [Server #1810277] Sending the current model to client #9.
+[INFO][13:36:38]: [Server #1810277] Sent 21.20 MB of payload data to client #9.
+[INFO][13:36:38]: [Server #1810277] Selecting client #83 for training.
+[INFO][13:36:38]: [Server #1810277] Sending the current model to client #83.
+[INFO][13:36:38]: [Server #1810277] Sent 84.65 MB of payload data to client #83.
+[INFO][13:36:52]: [Server #1810277] Received 21.28 MB of payload data from client #6.
+[INFO][13:36:52]: [Server #1810277] Advancing the wall clock time to 1749533590.14.
+[INFO][13:36:52]: [Server #1810277] Received 21.28 MB of payload data from client #35.
+[INFO][13:36:52]: [Server #1810277] Advancing the wall clock time to 1749533591.63.
+[INFO][13:36:53]: [Server #1810277] Received 21.28 MB of payload data from client #9.
+[INFO][13:36:53]: [Server #1810277] Advancing the wall clock time to 1749533592.01.
+[INFO][13:36:57]: [Server #1810277] Received 84.77 MB of payload data from client #72.
+[INFO][13:36:57]: [Server #1810277] Advancing the wall clock time to 1749533594.80.
+[INFO][13:36:58]: [Server #1810277] Received 84.77 MB of payload data from client #83.
+[INFO][13:36:58]: [Server #1810277] Advancing the wall clock time to 1749533595.55.
+[INFO][13:36:58]: [Server #1810277] Selecting client #39 for training.
+[INFO][13:36:58]: [Server #1810277] Sending the current model to client #39.
+[INFO][13:36:58]: [Server #1810277] Sent 21.20 MB of payload data to client #39.
+[INFO][13:36:58]: [Server #1810277] Selecting client #62 for training.
+[INFO][13:36:58]: [Server #1810277] Sending the current model to client #62.
+[INFO][13:36:58]: [Server #1810277] Sent 42.73 MB of payload data to client #62.
+[INFO][13:36:58]: [Server #1810277] Selecting client #46 for training.
+[INFO][13:36:58]: [Server #1810277] Sending the current model to client #46.
+[INFO][13:36:58]: [Server #1810277] Sent 42.73 MB of payload data to client #46.
+[INFO][13:36:58]: [Server #1810277] Selecting client #32 for training.
+[INFO][13:36:58]: [Server #1810277] Sending the current model to client #32.
+[INFO][13:36:58]: [Server #1810277] Sent 21.20 MB of payload data to client #32.
+[INFO][13:36:58]: [Server #1810277] Selecting client #84 for training.
+[INFO][13:36:58]: [Server #1810277] Sending the current model to client #84.
+[INFO][13:36:58]: [Server #1810277] Sent 84.65 MB of payload data to client #84.
+[INFO][13:37:12]: [Server #1810277] Received 21.28 MB of payload data from client #39.
+[INFO][13:37:12]: [Server #1810277] Advancing the wall clock time to 1749533595.55.
+[INFO][13:37:13]: [Server #1810277] Received 42.83 MB of payload data from client #62.
+[INFO][13:37:13]: [Server #1810277] Advancing the wall clock time to 1749533595.55.
+[INFO][13:37:15]: [Server #1810277] Received 21.28 MB of payload data from client #32.
+[INFO][13:37:15]: [Server #1810277] Advancing the wall clock time to 1749533595.55.
+[INFO][13:37:17]: [Server #1810277] Received 42.83 MB of payload data from client #46.
+[INFO][13:37:17]: [Server #1810277] Advancing the wall clock time to 1749533595.55.
+[INFO][13:37:18]: [Server #1810277] Received 84.77 MB of payload data from client #84.
+[INFO][13:37:18]: [Server #1810277] Advancing the wall clock time to 1749533595.55.
+[INFO][13:37:18]: [Server #1810277] All 10 client report(s) received. Processing.
+[INFO][13:37:18]: [Server #1810277] Updated weights have been received.
+[INFO][13:37:18]: [Server #1810277] Aggregating model weights directly rather than weight deltas.
+/home/dyx/yjl/plato/FedPRC/server.py:253: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  server_values_for_missing = torch.tensor(self.server_importance_dicts[key], device=self.device)[missing_indices]
+/home/dyx/yjl/plato/FedPRC/server.py:263: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  old_value_tensor = torch.tensor(self.server_importance_dicts[key], device=self.device)
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成重要性聚合
+当前完成聚合
+超网络更新后： [tensor([0.3791], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3795], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3749], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3478], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.2939], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3982], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.2576], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.2034], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3454], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3890], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4221], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4326], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3815], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.2867], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4623], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4174], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4008], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3621], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3888], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3452], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5104], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3882], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4237], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4537], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4092], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4439], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5401], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3678], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.5267], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4340], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.3300], device='cuda:0', grad_fn=<SelectBackward0>), tensor([0.4515], device='cuda:0', grad_fn=<SelectBackward0>)]
+HSN outputs for round 5 saved to hsn_outputs/Resnet34_CIFAR10/hsn_noiid0.6_20round_importance_small_lr.txt.
+[INFO][13:37:25]: [Server #1810277] Finished aggregating updated weights.
+[INFO][13:37:25]: [Server #1810277] Started model testing.
+[INFO][13:37:31]: [93m[1m[Server #1810277] Global model accuracy: 42.23%
+[0m
+[INFO][13:37:31]: [Server #1810277] All client reports have been processed.
+[INFO][13:37:31]: [Server #1810277] Saving the checkpoint to ./checkpoints/checkpoint_resnet_5.pth.
+[INFO][13:37:31]: [Server #1810277] Model saved to ./checkpoints/checkpoint_resnet_5.pth.
+[INFO][13:37:31]: [93m[1m
+[Server #1810277] Starting round 6/400.[0m
+[INFO][13:37:31]: [Server #1810277] Selected clients: [26, 59, 68, 86, 3, 66, 10, 1, 43, 19]
+[INFO][13:37:31]: [Server #1810277] Selecting client #26 for training.
+[INFO][13:37:31]: [Server #1810277] Sending the current model to client #26.
+[INFO][13:37:31]: [Server #1810277] Sent 21.22 MB of payload data to client #26.
+[INFO][13:37:31]: [Server #1810277] Selecting client #59 for training.
+[INFO][13:37:32]: [Server #1810277] Sending the current model to client #59.
+[INFO][13:37:32]: [Server #1810277] Sent 42.74 MB of payload data to client #59.
+[INFO][13:37:32]: [Server #1810277] Selecting client #68 for training.
+[INFO][13:37:32]: [Server #1810277] Sending the current model to client #68.
+[INFO][13:37:32]: [Server #1810277] Sent 42.74 MB of payload data to client #68.
+[INFO][13:37:32]: [Server #1810277] Selecting client #86 for training.
+[INFO][13:37:32]: [Server #1810277] Sending the current model to client #86.
+[INFO][13:37:32]: [Server #1810277] Sent 84.68 MB of payload data to client #86.
+[INFO][13:37:32]: [Server #1810277] Selecting client #3 for training.
+[INFO][13:37:32]: [Server #1810277] Sending the current model to client #3.
+[INFO][13:37:32]: [Server #1810277] Sent 21.22 MB of payload data to client #3.
+[INFO][13:37:45]: [Server #1810277] Received 21.26 MB of payload data from client #26.
+[INFO][13:37:45]: [Server #1810277] Advancing the wall clock time to 1749533600.89.
+[INFO][13:37:45]: [Server #1810277] Received 42.81 MB of payload data from client #59.
+[INFO][13:37:45]: [Server #1810277] Advancing the wall clock time to 1749533602.85.
+[INFO][13:37:47]: [Server #1810277] Received 21.26 MB of payload data from client #3.
+[INFO][13:37:47]: [Server #1810277] Advancing the wall clock time to 1749533605.13.
+[INFO][13:37:48]: [Server #1810277] Received 42.81 MB of payload data from client #68.
+[INFO][13:37:48]: [Server #1810277] Advancing the wall clock time to 1749533605.64.
+[INFO][13:37:49]: [Server #1810277] Received 84.77 MB of payload data from client #86.
+[INFO][13:37:49]: [Server #1810277] Advancing the wall clock time to 1749533606.31.
+[INFO][13:37:49]: [Server #1810277] Selecting client #66 for training.
+[INFO][13:37:50]: [Server #1810277] Sending the current model to client #66.
+[INFO][13:37:50]: [Server #1810277] Sent 42.74 MB of payload data to client #66.
+[INFO][13:37:50]: [Server #1810277] Selecting client #10 for training.
+[INFO][13:37:50]: [Server #1810277] Sending the current model to client #10.
+[INFO][13:37:50]: [Server #1810277] Sent 21.22 MB of payload data to client #10.
+[INFO][13:37:50]: [Server #1810277] Selecting client #1 for training.
+[INFO][13:37:50]: [Server #1810277] Sending the current model to client #1.
+[INFO][13:37:50]: [Server #1810277] Sent 21.22 MB of payload data to client #1.
+[INFO][13:37:50]: [Server #1810277] Selecting client #43 for training.
+[INFO][13:37:50]: [Server #1810277] Sending the current model to client #43.
+[INFO][13:37:50]: [Server #1810277] Sent 42.74 MB of payload data to client #43.
+[INFO][13:37:50]: [Server #1810277] Selecting client #19 for training.
+[INFO][13:37:50]: [Server #1810277] Sending the current model to client #19.
+[INFO][13:37:50]: [Server #1810277] Sent 21.22 MB of payload data to client #19.
+[INFO][13:38:02]: [Server #1810277] Received 21.26 MB of payload data from client #10.
+[INFO][13:38:02]: [Server #1810277] Advancing the wall clock time to 1749533606.31.
+[INFO][13:38:03]: [Server #1810277] Received 42.81 MB of payload data from client #66.
+[INFO][13:38:03]: [Server #1810277] Advancing the wall clock time to 1749533606.31.
+[INFO][13:38:04]: [Server #1810277] Received 21.26 MB of payload data from client #1.
+[INFO][13:38:04]: [Server #1810277] Advancing the wall clock time to 1749533606.31.
+[INFO][13:38:05]: [Server #1810277] Received 21.26 MB of payload data from client #19.
+[INFO][13:38:05]: [Server #1810277] Advancing the wall clock time to 1749533606.31.
+[INFO][13:38:06]: [Server #1810277] Received 42.81 MB of payload data from client #43.
+[INFO][13:38:06]: [Server #1810277] Advancing the wall clock time to 1749533606.31.
+[INFO][13:38:06]: [Server #1810277] All 10 client report(s) received. Processing.
+[INFO][13:38:06]: [Server #1810277] Updated weights have been received.
+[INFO][13:38:06]: [Server #1810277] Aggregating model weights directly rather than weight deltas.
+当前完成聚合
+[INFO][13:38:06]: [Server #1810277] Finished aggregating updated weights.
+[INFO][13:38:06]: [Server #1810277] Started model testing.
+[INFO][13:38:12]: [93m[1m[Server #1810277] Global model accuracy: 41.08%
+[0m
+[INFO][13:38:12]: [Server #1810277] All client reports have been processed.
+[INFO][13:38:12]: [Server #1810277] Saving the checkpoint to ./checkpoints/checkpoint_resnet_6.pth.
+[INFO][13:38:12]: [Server #1810277] Model saved to ./checkpoints/checkpoint_resnet_6.pth.
+[INFO][13:38:12]: [93m[1m
+[Server #1810277] Starting round 7/400.[0m
+[INFO][13:38:12]: [Server #1810277] Selected clients: [91, 61, 85, 49, 22, 7, 10, 76, 64, 21]
+[INFO][13:38:12]: [Server #1810277] Selecting client #91 for training.
+[INFO][13:38:12]: [Server #1810277] Sending the current model to client #91.
+[INFO][13:38:12]: [Server #1810277] Sent 84.68 MB of payload data to client #91.
+[INFO][13:38:12]: [Server #1810277] Selecting client #61 for training.
+[INFO][13:38:13]: [Server #1810277] Sending the current model to client #61.
+[INFO][13:38:13]: [Server #1810277] Sent 42.74 MB of payload data to client #61.
+[INFO][13:38:13]: [Server #1810277] Selecting client #85 for training.
+[INFO][13:38:13]: [Server #1810277] Sending the current model to client #85.
+[INFO][13:38:13]: [Server #1810277] Sent 84.68 MB of payload data to client #85.
+[INFO][13:38:13]: [Server #1810277] Selecting client #49 for training.
+[INFO][13:38:13]: [Server #1810277] Sending the current model to client #49.
+[INFO][13:38:13]: [Server #1810277] Sent 42.74 MB of payload data to client #49.
+[INFO][13:38:13]: [Server #1810277] Selecting client #22 for training.
+[INFO][13:38:13]: [Server #1810277] Sending the current model to client #22.
+[INFO][13:38:13]: [Server #1810277] Sent 21.22 MB of payload data to client #22.
+[INFO][13:38:27]: [Server #1810277] Received 42.81 MB of payload data from client #61.
+[INFO][13:38:27]: [Server #1810277] Advancing the wall clock time to 1749533612.15.
+[INFO][13:38:28]: [Server #1810277] Received 21.26 MB of payload data from client #22.
+[INFO][13:38:28]: [Server #1810277] Advancing the wall clock time to 1749533616.09.
+[INFO][13:38:29]: [Server #1810277] Received 42.81 MB of payload data from client #49.
+[INFO][13:38:29]: [Server #1810277] Advancing the wall clock time to 1749533616.87.
+[INFO][13:38:31]: [Server #1810277] Received 84.77 MB of payload data from client #91.
+[INFO][13:38:31]: [Server #1810277] Advancing the wall clock time to 1749533617.53.
+[INFO][13:38:32]: [Server #1810277] Received 84.77 MB of payload data from client #85.
+[INFO][13:38:32]: [Server #1810277] Advancing the wall clock time to 1749533618.23.
+[INFO][13:38:32]: [Server #1810277] Selecting client #7 for training.
+[INFO][13:38:32]: [Server #1810277] Sending the current model to client #7.
+[INFO][13:38:32]: [Server #1810277] Sent 21.22 MB of payload data to client #7.
+[INFO][13:38:32]: [Server #1810277] Selecting client #10 for training.
+[INFO][13:38:33]: [Server #1810277] Sending the current model to client #10.
+[INFO][13:38:33]: [Server #1810277] Sent 21.22 MB of payload data to client #10.
+[INFO][13:38:33]: [Server #1810277] Selecting client #76 for training.
+[INFO][13:38:33]: [Server #1810277] Sending the current model to client #76.
+[INFO][13:38:33]: [Server #1810277] Sent 84.68 MB of payload data to client #76.
+[INFO][13:38:33]: [Server #1810277] Selecting client #64 for training.
+[INFO][13:38:33]: [Server #1810277] Sending the current model to client #64.
+[INFO][13:38:33]: [Server #1810277] Sent 42.74 MB of payload data to client #64.
+[INFO][13:38:33]: [Server #1810277] Selecting client #21 for training.
+[INFO][13:38:33]: [Server #1810277] Sending the current model to client #21.
+[INFO][13:38:33]: [Server #1810277] Sent 21.22 MB of payload data to client #21.
+[INFO][13:38:46]: [Server #1810277] Received 21.26 MB of payload data from client #7.
+[INFO][13:38:46]: [Server #1810277] Advancing the wall clock time to 1749533618.23.
+[INFO][13:38:46]: [Server #1810277] Received 21.26 MB of payload data from client #10.
+[INFO][13:38:46]: [Server #1810277] Advancing the wall clock time to 1749533618.23.
+[INFO][13:38:48]: [Server #1810277] Received 21.26 MB of payload data from client #21.
+[INFO][13:38:48]: [Server #1810277] Advancing the wall clock time to 1749533618.23.
+[INFO][13:38:49]: [Server #1810277] Received 42.81 MB of payload data from client #64.
+[INFO][13:38:49]: [Server #1810277] Advancing the wall clock time to 1749533618.23.

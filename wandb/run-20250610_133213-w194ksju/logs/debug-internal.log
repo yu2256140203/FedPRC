@@ -1,0 +1,7 @@
+{"time":"2025-06-10T13:32:13.267714769+08:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/dyx/yjl/plato/FedPRC/wandb/run-20250610_133213-w194ksju/logs/debug-core.log"}
+{"time":"2025-06-10T13:32:13.864301169+08:00","level":"INFO","msg":"created new stream","id":"w194ksju"}
+{"time":"2025-06-10T13:32:13.864337453+08:00","level":"INFO","msg":"stream: started","id":"w194ksju"}
+{"time":"2025-06-10T13:32:13.864374724+08:00","level":"INFO","msg":"handler: started","stream_id":"w194ksju"}
+{"time":"2025-06-10T13:32:13.864378249+08:00","level":"INFO","msg":"sender: started","stream_id":"w194ksju"}
+{"time":"2025-06-10T13:32:13.864414468+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"w194ksju"}
+{"time":"2025-06-10T13:32:14.195953256+08:00","level":"INFO","msg":"Starting system monitor"}

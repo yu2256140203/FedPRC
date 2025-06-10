@@ -87,7 +87,7 @@ parameters:
     first_layer: conv1
     ranks_round: 5 #重要性评价间隔
     proxy_data_rate: 0.2
-    loss_rate: [1,1]
+    loss_rate: [0.8,0.2]
     hsn_outputs: hsn_outputs/Resnet34_CIFAR10/hsn_noiid_0.6_ExponentialLR_2.txt
     FlexFL_exp: False
     unuse_hsn: False

@@ -237,13 +237,28 @@ def combine_importance(importance_dict, hsn_outputs, device, conv_names):
 
 
 class MaskedResNet(nn.Module):
-    def __init__(self, base_model, probab_masks):
+    def __init__(self, base_model, hsn, important,probab_masks):
         super().__init__()
         self.base_model = base_model
         self.probab_masks = probab_masks
+        self.hsn = hsn
         self.conv_names = self.probab_masks.keys()
+        self.important = important
 
     def forward(self, x, update=False):
+        device = next(self.base_model.parameters()).device
+        self.hsn_outputs,reg_loss = self.hsn()
+        final_importance = combine_importance(importance_dict=self.important, hsn_outputs=self.hsn_outputs, device=device, conv_names=self.conv_names)
+        self.probab_masks  = {}  # 初始化概率掩码字典
+        T = 1.0  
+        tau = 0.5 # 阈值（可调整）
+        for layer_name, imp in final_importance.items():
+            if isinstance(imp, torch.Tensor):
+                imp_tensor = imp.to(device)
+            else:
+                imp_tensor = torch.tensor(imp, device=device, dtype=torch.float)
+            self.probab_masks[layer_name] = torch.sigmoid(imp_tensor * T - tau)
+
         def hook_fn(module, inputs, output, name):
             if output.ndim == 4:  # 表示形状是 (50, 512, 2, 2)
                 mask_expanded = self.probab_masks[name].reshape(1, -1, 1, 1).clone()

@@ -17,6 +17,10 @@ import os
 from prune import get_channel_indices_unuse_hsn,client_state_dict,prune_state_dict,reverse_prune_rates,get_channel_indices,aggregate_submodel_states,prune_mapping_with_global_threshold_and_binary_indices,get_model_param_output_channels
 from channel_evaluation import HyperStructureNetwork,combine_importance,MaskedResNet,ChannelImportanceEvaluator
 from torch.utils.data import Subset
+import wandb
+
+
+
 class server(fedavg.Server):
     """Federated Learning - Pruning for Resource-Constrained."""
 
@@ -29,6 +33,10 @@ class server(fedavg.Server):
     ):
         # pylint:disable=too-many-arguments
         super().__init__(model, datasource, algorithm, trainer)
+
+        #名字与hsn_outputs相同
+        wandb.init(project="FedPRC_ResNet34_CIFAR10",name=Config.parameters.hsn_outputs.split("/", 1)[1].rsplit(".", 1)[0].replace("/", "_"), config=Config())
+
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = model
         self.server_importance_dicts = {name: [0.0] * module.out_channels for name, module in model().named_modules() 
@@ -44,7 +52,7 @@ class server(fedavg.Server):
         self.client_full_model_global_ranks = [None for _ in range(Config().clients.total_clients)]
         #客户端的每个通道对于完整模型的重要性排名
         self.clients_mapping_indices = [None for _ in range(Config().clients.total_clients)]
-        self.probab_masks = [None for _ in range(Config().clients.total_clients)]
+        self.probab_masks = None
 
         # self.current_linked_client_ids = None # 当前轮次的客户端id，但是有序的，按照通信顺序来的
         self.rates = [0 for _ in range(Config().clients.total_clients)]
@@ -189,7 +197,7 @@ class server(fedavg.Server):
             pruned_mapping,binary_masks, probab_masks, binary_indices, channels_info_sorted, total_param, target_keep  =prune_mapping_with_global_threshold_and_binary_indices(initial_mapping=self.init_mapping,
             final_importance=self.client_full_model_global_rank, model=self.model(),target_ratio=rate * rate, device=self.device,dict_modules=self.dict_modules,modules_indices=self.modules_indices)
             self.clients_mapping_indices[self.selected_client_id-1 ] = pruned_mapping
-            self.probab_masks[self.selected_client_id-1 ] = probab_masks
+            self.probab_masks = probab_masks
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1 ]
         server_response["prune_rates"] = reverse_prune_rates(server_response["mapping_indices"], dict_modules=self.dict_modules,modules_indices = self.modules_indices)
         if str(rate) not in self.current_mapping.keys():
@@ -278,7 +286,7 @@ class server(fedavg.Server):
                 # if self.probab_masks[payload["client_id"] - 1] is not None and idx == len(weights_received) - 1:
                 #     #如果是最后一项，释放掉计算图
                 # self.update_hsn(self.deltas[0], self.probab_masks[payload["client_id"] - 1])
-                self.update_hsn(self.probab_masks[payload["client_id"] - 1])
+                self.update_hsn(self.probab_masks)
                 break
 
                     
@@ -337,7 +345,7 @@ class server(fedavg.Server):
         # print(probab_masks["layer1.0.conv1"].grad_fn)
         #    full_state 为原始的客户端参数（通常为一个字典），binary_masks 为每层 mask
         # new_client_state = client_state_dict(self.algorithm.model, probab_masks)
-        model = MaskedResNet(base_model=self.algorithm.model,probab_masks=probab_masks)
+        model = MaskedResNet(base_model=self.algorithm.model,hsn=self.hsn,important=self.server_importance_dicts,probab_masks=probab_masks)
         model.cuda()
         criterion = torch.nn.CrossEntropyLoss()
         self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1*(0.9 ** (self.current_round/Config().parameters.ranks_round)))
@@ -352,10 +360,13 @@ class server(fedavg.Server):
             log_probs = model(images)
             # print(log_probs.shape)
             # print(labels.shape)
-            loss = criterion(log_probs, labels) * Config().parameters.loss_rate[0]
+            self.current_hsn_output,self.reg_loss = self.hsn()
+            loss = criterion(log_probs, labels) * Config().parameters.loss_rate[0]+Config().parameters.loss_rate[1] * self.reg_loss
             self.hyper_optimizer.zero_grad()
             if batch_idx != len(self.proxy_data_trainloader) - 1:
-                loss.backward(retain_graph=True)
+                # loss.backward(retain_graph=True)
+                loss.backward()
+
             else:
                 loss.backward()
             self.hyper_optimizer.step()
@@ -363,10 +374,10 @@ class server(fedavg.Server):
             del log_probs,loss
         
         _,self.reg_loss = self.hsn()
-        self.hyper_optimizer.zero_grad()
-        total_loss_for_backward = Config().parameters.loss_rate[1] * self.reg_loss
-        total_loss_for_backward.backward()
-        self.hyper_optimizer.step()
+        # self.hyper_optimizer.zero_grad()
+        # total_loss_for_backward = Config().parameters.loss_rate[1] * self.reg_loss
+        # total_loss_for_backward.backward()
+        # self.hyper_optimizer.step()
 
         # self.scheduler.step()
         
@@ -483,6 +494,10 @@ class server(fedavg.Server):
             self.accuracy = self.trainer.custom_server_test(self.testset,self.trainer.model)
             self.current_mapping = {}#清空等待下一轮
             self.current_prune_rates = {}
+            # 假设在训练变量中 round 对应当前训练轮次
+            logged_items = self.get_logged_items() 
+            wandb.log(logged_items)
+
             # self.accuracy = self.trainer.custom_server_test(self.testset)
 
         if hasattr(Config().trainer, "target_perplexity"):
