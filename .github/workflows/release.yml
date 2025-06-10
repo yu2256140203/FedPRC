@@ -2,8 +2,8 @@ name: Release Automation
 
 on:
   push:
-    tags:
-      - 'v*'  # 当符合 v* 模式的标签被推送时触发
+    branches:
+      - main
 
 jobs:
   release:
