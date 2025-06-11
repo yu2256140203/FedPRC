@@ -116,24 +116,25 @@ class ChannelImportanceEvaluator:
             count = scores["count"]
             A_avg = scores["A_sum"] / count       # Tensor, 形状 (C,)
             B_avg = scores["B_sum"] / count       # Tensor, 形状 (C,)
-            gamma = 0.2
+            # gamma = 0.2
 
-            # 做 γ 幂运算
-            A_transformed = torch.pow(A_avg, gamma)
-            B_transformed = torch.pow(B_avg, gamma)
+            # # 做 γ 幂运算
+            # A_transformed = torch.pow(A_avg, gamma)
+            # B_transformed = torch.pow(B_avg, gamma)
 
-            # 对 A_transformed 做首轮 Z‐Score
-            mean_A = A_transformed.mean()
-            std_A = A_transformed.std() + 1e-6
-            norm_A = (A_transformed - mean_A) / std_A
+            # # 对 A_transformed 做首轮 Z‐Score
+            # mean_A = A_transformed.mean()
+            # std_A = A_transformed.std() + 1e-6
+            # norm_A = (A_transformed - mean_A) / std_A
 
-            # 对 B_transformed 做首轮 Z‐Score
-            mean_B = B_transformed.mean()
-            std_B = B_transformed.std() + 1e-6
-            norm_B = (B_transformed - mean_B) / std_B
+            # # 对 B_transformed 做首轮 Z‐Score
+            # mean_B = B_transformed.mean()
+            # std_B = B_transformed.std() + 1e-6
+            # norm_B = (B_transformed - mean_B) / std_B
 
-            # 乘起来作为“综合重要性”
-            importance_raw = norm_A * norm_B  # Tensor, 形状 (C,)
+            # # 乘起来作为“综合重要性”
+            # importance_raw = norm_A * norm_B  # Tensor, 形状 (C,)
+            importance_raw = A_avg * B_avg
 
             # 再做一次 Z‐Score，使每个层输出的通道分数均值为 0，方差为 1
             mean_imp = importance_raw.mean()

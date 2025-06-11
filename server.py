@@ -128,10 +128,10 @@ class server(fedavg.Server):
                 #初始的超网络输出：
                 self.current_hsn_output,self.reg_loss = self.hsn()
                 print(self.current_hsn_output)
-        # if Config().parameters.momentum == 0:
-        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
-        # else:
-        #     self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
+        if Config().parameters.momentum == 0:
+            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1)
+        else:
+            self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1,momentum=Config().parameters.momentum)
         # self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), 
         #                     lr=0.1,
         #                     momentum=0.5, 
@@ -257,7 +257,7 @@ class server(fedavg.Server):
 
                 
                 # # 更新 server_importance_dicts 的值为计算后的 avg_tensor
-                # self.server_importance_dicts[key] = avg_tensor  + self.server_importance_dicts[key]
+                # self.server_importance_dicts[key] = avg_tensor
                                 # 更新 server_importance_dicts 的值为计算后的 avg_tensor
                 # 将原来的 server_importance_dicts[key] 转换为 tensor
                 old_value_tensor = torch.tensor(self.server_importance_dicts[key], device=self.device)
@@ -265,6 +265,12 @@ class server(fedavg.Server):
                 old = 1-avg
                 # 保证两边都是 Tensor 后进行计算：一半用计算得到的 avg_tensor，一半保留原来的值
                 self.server_importance_dicts[key] = avg * avg_tensor + old * old_value_tensor
+                mean_imp = self.server_importance_dicts[key].mean()
+                std_imp = self.server_importance_dicts[key].std() + 1e-6
+                self.server_importance_dicts[key] = (self.server_importance_dicts[key] - mean_imp) / std_imp  # Tensor, (C,)
+
+                self.server_importance_dicts[key] = self.server_importance_dicts[key].detach().cpu().numpy()
+               
                 print("当前完成重要性聚合")
         print("当前完成聚合")
         
@@ -348,7 +354,7 @@ class server(fedavg.Server):
         model = MaskedResNet(base_model=self.algorithm.model,hsn=self.hsn,important=self.server_importance_dicts,probab_masks=probab_masks)
         model.cuda()
         criterion = torch.nn.CrossEntropyLoss()
-        self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1*(0.9 ** (self.current_round/Config().parameters.ranks_round)))
+        # self.hyper_optimizer  = torch.optim.SGD(self.hsn.parameters(), lr=0.1*(0.9 ** (self.current_round/Config().parameters.ranks_round)))
         Predict_loss = 0.0
         
 
@@ -361,7 +367,8 @@ class server(fedavg.Server):
             # print(log_probs.shape)
             # print(labels.shape)
             self.current_hsn_output,self.reg_loss = self.hsn()
-            loss = criterion(log_probs, labels) * Config().parameters.loss_rate[0]+Config().parameters.loss_rate[1] * self.reg_loss
+            # loss = criterion(log_probs, labels) * Config().parameters.loss_rate[0]+Config().parameters.loss_rate[1] * self.reg_loss
+            loss = criterion(log_probs, labels) * Config().parameters.loss_rate[0]
             self.hyper_optimizer.zero_grad()
             if batch_idx != len(self.proxy_data_trainloader) - 1:
                 # loss.backward(retain_graph=True)
@@ -374,10 +381,10 @@ class server(fedavg.Server):
             del log_probs,loss
         
         _,self.reg_loss = self.hsn()
-        # self.hyper_optimizer.zero_grad()
-        # total_loss_for_backward = Config().parameters.loss_rate[1] * self.reg_loss
-        # total_loss_for_backward.backward()
-        # self.hyper_optimizer.step()
+        self.hyper_optimizer.zero_grad()
+        total_loss_for_backward = Config().parameters.loss_rate[1] * self.reg_loss
+        total_loss_for_backward.backward()
+        self.hyper_optimizer.step()
 
         # self.scheduler.step()
         
