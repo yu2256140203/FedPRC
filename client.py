@@ -106,6 +106,9 @@ class client(simple.Client):
         """Complete one round of training on this client."""
         self._load_payload(inbound_payload)
         report, outbound_payload = await self._train()
+        requires_grad = []
+        for param in self.trainer.model.parameters():
+            requires_grad.append(param.grad != None)
         #去掉本地BN
         # outbound_payload = self.filter_out_bn_params(outbound_payload)
         outbound_payload = {"acc":report.accuracy ,"outbound_payload":outbound_payload,"mapping_indices":self.mapping_indices,"client_id":self.client_id}
@@ -113,6 +116,7 @@ class client(simple.Client):
             outbound_payload["channel_importance_dict"] = self.channel_importance_dict
         else:
             outbound_payload["channel_importance_dict"] = None
+        outbound_payload["requires_grad"] = requires_grad
         outbound_payload["data_size"] = len(self.trainset)
         print(report.accuracy)
         if Config().is_edge_server():

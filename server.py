@@ -268,6 +268,8 @@ class server(fedavg.Server):
                 old = 1-avg
                 # 保证两边都是 Tensor 后进行计算：一半用计算得到的 avg_tensor，一半保留原来的值
                 self.server_importance_dicts[key] = avg * avg_tensor + old * old_value_tensor
+
+                
                 # mean_imp = self.server_importance_dicts[key].mean()
                 # std_imp = self.server_importance_dicts[key].std() + 1e-6
                 # self.server_importance_dicts[key] = (self.server_importance_dicts[key] - mean_imp) / std_imp  # Tensor, (C,)
