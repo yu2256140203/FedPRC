@@ -70,6 +70,24 @@ def get_model_param_output_channels(model, dummy_input=None):
     
     return ordered_param_channel_dict
 
+def transfer_optimizer_to_new_model(old_optimizer, new_model):
+    """
+    将优化器的超参数状态迁移到新模型上
+    """
+    # 获取原优化器的配置
+    optimizer_class = old_optimizer.__class__
+    param_groups = old_optimizer.param_groups
+    
+    # 提取超参数（排除参数本身）
+    hyperparams = {}
+    for key, value in param_groups[0].items():
+        if key != 'params':
+            hyperparams[key] = value
+    
+    # 创建新的优化器
+    new_optimizer = optimizer_class(new_model.parameters(), **hyperparams)
+    
+    return new_optimizer
 
 # 示例用法：
 if __name__ == '__main__':

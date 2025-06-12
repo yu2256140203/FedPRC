@@ -56,7 +56,7 @@ trainer:
     epochs: 10
     batch_size: 50
     optimizer: SGD
-    lr_scheduler: LambdaLR
+    lr_scheduler: ExponentialLR
 
     # The machine learning model
     model_name: resnet
@@ -78,14 +78,13 @@ parameters:
         weight_decay: 0.0001
 
     learning_rate:
-        gamma: 0.1
-        milestone_steps: 80ep,120ep
+        gamma: 0.998
     rates: [0.5,0.71,1]
     Parameters_to_percent_of_clients: [4,3,3]
     importance_filters: [0.5,0.5] #先服务端，后客户端
     hidden_size: [64, 128, 256, 512]
     first_layer: conv1
-    ranks_round: 15 #重要性评价间隔
+    ranks_round: 5 #重要性评价间隔
     proxy_data_rate: 0.5
     # loss_rate: [0.8,0.2]
     loss_rate: [1,1]

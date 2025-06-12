@@ -14,10 +14,11 @@ import pickle
 import random
 import torch
 import os
-from prune import get_channel_indices_unuse_hsn,client_state_dict,prune_state_dict,reverse_prune_rates,get_channel_indices,aggregate_submodel_states,prune_mapping_with_global_threshold_and_binary_indices,get_model_param_output_channels
+from prune import restore_client_full_state,get_channel_indices_unuse_hsn,client_state_dict,prune_state_dict,reverse_prune_rates,get_channel_indices,aggregate_submodel_states,prune_mapping_with_global_threshold_and_binary_indices,get_model_param_output_channels
 from channel_evaluation import HyperStructureNetwork,combine_importance,MaskedResNet,ChannelImportanceEvaluator
 from torch.utils.data import Subset
 import wandb
+from utils.statistics import transfer_optimizer_to_new_model
 
 
 
@@ -73,6 +74,7 @@ class server(fedavg.Server):
         #随机的三种mapping
         self.current_mapping = {}
         self.current_prune_rates = {}
+        self.client_prune_rates = [None for _ in range(Config().clients.total_clients)]
 
         for client_idx in range(total_clients):
             if client_idx < (total_clients * parameters_to_clients_ratio[0]) // sum(parameters_to_clients_ratio):
@@ -200,6 +202,7 @@ class server(fedavg.Server):
             self.probab_masks = probab_masks
             server_response["mapping_indices"] = self.clients_mapping_indices[self.selected_client_id-1 ]
         server_response["prune_rates"] = reverse_prune_rates(server_response["mapping_indices"], dict_modules=self.dict_modules,modules_indices = self.modules_indices)
+        self.client_prune_rates[self.selected_client_id-1 ] = server_response["prune_rates"]
         if str(rate) not in self.current_mapping.keys():
             self.current_mapping[str(rate)] = server_response["mapping_indices"]
             self.current_prune_rates[str(rate)] = server_response["prune_rates"]
@@ -265,18 +268,30 @@ class server(fedavg.Server):
                 old = 1-avg
                 # 保证两边都是 Tensor 后进行计算：一半用计算得到的 avg_tensor，一半保留原来的值
                 self.server_importance_dicts[key] = avg * avg_tensor + old * old_value_tensor
-                mean_imp = self.server_importance_dicts[key].mean()
-                std_imp = self.server_importance_dicts[key].std() + 1e-6
-                self.server_importance_dicts[key] = (self.server_importance_dicts[key] - mean_imp) / std_imp  # Tensor, (C,)
+                # mean_imp = self.server_importance_dicts[key].mean()
+                # std_imp = self.server_importance_dicts[key].std() + 1e-6
+                # self.server_importance_dicts[key] = (self.server_importance_dicts[key] - mean_imp) / std_imp  # Tensor, (C,)
 
-                self.server_importance_dicts[key] = self.server_importance_dicts[key].detach().cpu().numpy()
+                # self.server_importance_dicts[key] = self.server_importance_dicts[key].detach().cpu().numpy()
                
-                print("当前完成重要性聚合")
+            print("当前完成重要性聚合")
         print("当前完成聚合")
         
         last_global_parameters = copy.deepcopy(self.algorithm.extract_weights())
         """Aggregates weights of models with different architectures."""
-        global_parameters,restored_models = self.algorithm.aggregation(weights_received)
+
+        KD_client_weights = []
+
+        for index,payload in enumerate(weights_received):
+            student_model = self.model()
+            student_model_state_dict = restore_client_full_state(full_state=last_global_parameters,sub_state_list=[payload["outbound_payload"]],mapping_indices_list=[payload["mapping_indices"]])
+            student_model.load_state_dict(student_model_state_dict)
+            teacher_model = self.model(self.client_prune_rates[payload["client_id"]-1])
+            teacher_model.load_state_dict(payload["outbound_payload"])
+            student_model = self.Model_KD(model=student_model,teacher_model=teacher_model,proxy_data_trainloader=self.proxy_data_trainloader)
+            KD_client_weights.append((copy.deepcopy(student_model.state_dict()),payload["data_size"]))
+        global_parameters = self.algorithm.aggregation(KD_client_weights)
+
         #获取更新超网络的deltas
         #yu 当前所有的客户端的mask应当是一致的，所以可以只调用一次超网络反向传播
         # if  Config().parameters.unuse_hsn != None and  Config().parameters.unuse_hsn != True and  self.current_round % Config().parameters.ranks_round == 0 and self.current_round != Config().parameters.ranks_round:
@@ -332,8 +347,64 @@ class server(fedavg.Server):
     
     def customize_server_payload(self, payload):
         #定制子模型
-        payload = self.algorithm.sub_weights(payload,self.clients_mapping_indices[self.selected_client_id-1])      
-        return super().customize_server_payload(payload)
+        payload = self.algorithm.sub_weights(payload,self.clients_mapping_indices[self.selected_client_id-1])
+        model = self.model(layer_prune_rates=self.client_prune_rates[self.selected_client_id-1])
+        model.load_state_dict(payload)
+        model = self.Model_KD(model,self.trainer.model,self.proxy_data_trainloader)
+        return model.state_dict()
+        # return payload
+
+        # return super().customize_server_payload(payload)
+    def Model_KD(self, model,teacher_model, proxy_data_trainloader, temperature=1.0, alpha=0.5, criterion=None):
+        """
+        Perform knowledge distillation using KL Divergence.
+        model: the student model
+        dataset: the dataset to be used for training
+        temperature: scaling factor for softening the probabilities (default 1.0)
+        alpha: weight factor for combining the hard and soft loss (default 0.5)
+        criterion: the loss function (default is cross entropy)
+        """
+        import torch.nn.functional as F
+        import time
+        start_time = time.time()
+        if criterion is None:
+            criterion = torch.nn.KLDivLoss()
+        teacher_model.cuda()
+        model.cuda()
+        model.train()  # set model to training mode
+        optimizer = self.trainer.get_optimizer(model)
+        lr_scheduler = self.trainer.get_lr_scheduler(Config().trainer, optimizer)
+        optimizer = self.trainer._adjust_lr(Config().trainer,lr_scheduler,optimizer)
+        total_loss = 0.0
+        correct = 0
+        total = 0
+
+        for inputs, targets in proxy_data_trainloader:
+            inputs, targets = inputs.cuda(), targets.cuda()
+
+            # Get teacher model's output (soft labels)
+            teacher_outputs = teacher_model(inputs)
+            teacher_probs = F.softmax(teacher_outputs / temperature, dim=1)  # Softened outputs
+
+            # Get student model's output (hard labels and features)
+            student_outputs = model(inputs)
+            student_probs = F.softmax(student_outputs / temperature, dim=1)  # Softened outputs
+
+            # Calculate the KD loss (KL Divergence)
+            soft_loss = F.kl_div(F.log_softmax(student_outputs / temperature, dim=1),
+                                teacher_probs, reduction='batchmean') * (temperature ** 2)
+
+
+            # Backpropagation
+            optimizer.zero_grad()
+            soft_loss.backward()
+            optimizer.step()  # Assuming model has an optimizer
+        end_time = time.time()
+
+
+        print(f"蒸馏完成，用时",end_time-start_time )
+
+        return model
     
 
     from typing import OrderedDict, List

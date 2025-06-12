@@ -63,23 +63,45 @@ class FedPRC_algorithm(fedavg.Algorithm):
 
         return local_parameters_list
 
+    # def aggregation(self, weights_received):
+    #     #有它，聚合参数，否则聚合变量
+    #     """
+    #     Aggregate weights of different complexities.
+    #     """
+
+    #     submodel_weights = []
+    #     mapping_indices_list = []
+    #     client_data_sizes = []
+    #     for payload in weights_received:
+    #         submodel_weights.append(payload["outbound_payload"])
+    #         mapping_indices_list.append(payload["mapping_indices"])
+    #         client_data_sizes.append(payload["data_size"])
+            
+    #     global_parameters,restored_states = aggregate_submodel_states(full_state=self.model.state_dict(),sub_state_list=submodel_weights,mapping_indices_list=mapping_indices_list,client_data_sizes=client_data_sizes)
+        
+    #     return global_parameters,restored_states
     def aggregation(self, weights_received):
         #有它，聚合参数，否则聚合变量
         """
         Aggregate weights of different complexities.
         """
+        client_weights = []
+        client_datas    = []
+        for client_weight,client_data in  weights_received:
+            client_weights.append(client_weight)
+            client_datas.append(client_data)
 
-        submodel_weights = []
-        mapping_indices_list = []
-        client_data_sizes = []
-        for payload in weights_received:
-            submodel_weights.append(payload["outbound_payload"])
-            mapping_indices_list.append(payload["mapping_indices"])
-            client_data_sizes.append(payload["data_size"])
-            
-        global_parameters,restored_states = aggregate_submodel_states(full_state=self.model.state_dict(),sub_state_list=submodel_weights,mapping_indices_list=mapping_indices_list,client_data_sizes=client_data_sizes)
-        
-        return global_parameters,restored_states
+        aggregated_state = {}
+        total_data = sum(client_datas)
+        full_state = self.model.state_dict()
+        for key in full_state.keys():
+            # 使用各客户端的数据量作为权重进行加权平均
+            agg_param = sum((client_datas[i] / total_data) * client_weights[i][key] 
+                            for i in range(len(client_weights)))
+            aggregated_state[key] = agg_param
+
+        return aggregated_state
+    
     def load_weights(self, weights):
         """Loads the model weights passed in as a parameter."""
         self.model.load_state_dict(weights, strict=False)#非严格性参数加载，避免有些参数有点多

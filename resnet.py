@@ -172,23 +172,26 @@ class ResNet(nn.Module):
             self.in_planes = block_inst.out_channels
         return nn.Sequential(*layers)
 
-    def forward(self, x):
+    def forward(self, x, kd=False):
         out = self.conv1(x)
         out = self.layer1(out)
         out = self.layer2(out)
         out = self.layer3(out)
         out = self.layer4(out)
         out = F.relu(self.bn4(self.scaler(out)))
+        # if kd == True:
+        #     out = {'features': out}
+        #     return out
         out = F.adaptive_avg_pool2d(out, 1)
         out = out.view(out.size(0), -1)
         out = self.linear(out)
         return out
     
-    def __call__(self, x=None):
-        if x == None:
+    def __call__(self, x=None,kd = False):
+        if x == None and kd == False:
             return self
         else:
-            return self.forward(x)
+            return self.forward(x,kd)
         
 
 # -----------------------------

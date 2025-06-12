@@ -519,6 +519,34 @@ def restore_pruned_state(full_state, pruned_state, mapping_indices):
 
 #     return aggregated_state, restored_states
 
+
+def restore_client_full_state(full_state, sub_state_list, mapping_indices_list):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    import copy    
+    global_parameters = copy.deepcopy(full_state)
+    for key,value in full_state.items():
+        global_parameters[key] = global_parameters[key].to(device=device)
+        value = value.to(device=device)
+        for index,client_state in enumerate(sub_state_list):
+                if key not in client_state.keys() or key not in mapping_indices_list[index].keys():
+                    continue
+                client_state[key] = client_state[key].to(device=device)
+                if value.dim() == 4 or value.dim()==2:
+                    
+                    in_idx, out_idx = mapping_indices_list[index][key]
+                    in_idx_tensor = torch.tensor(in_idx, dtype=torch.long, device=device)
+                    out_idx_tensor = torch.tensor(out_idx, dtype=torch.long, device=device)
+                    # 假设参数 shape 为 (out_channels, in_channels, ...)，利用高级索引覆盖对应位置
+                    global_parameters[key][out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] = client_state[key].to(device=device)
+                elif value.dim()==1:
+                    idx_tensor = torch.tensor(mapping_indices_list[index][key], dtype=torch.long, device=device)
+                    global_parameters[key][idx_tensor] = client_state[key]
+                else:
+                    print("ERROR!当前有参数没有恢复，当前参数为:",key)
+
+    return global_parameters
+
+
 def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,client_data_sizes):
     """
     聚合多个子模型参数。
