@@ -282,17 +282,18 @@ class server(fedavg.Server):
         last_global_parameters = copy.deepcopy(self.algorithm.extract_weights())
         """Aggregates weights of models with different architectures."""
 
-        KD_client_weights = []
+        # KD_client_weights = []
 
-        for index,payload in enumerate(weights_received):
-            student_model = self.model()
-            student_model_state_dict = restore_client_full_state(full_state=last_global_parameters,sub_state_list=[payload["outbound_payload"]],mapping_indices_list=[payload["mapping_indices"]])
-            student_model.load_state_dict(student_model_state_dict)
-            teacher_model = self.model(self.client_prune_rates[payload["client_id"]-1])
-            teacher_model.load_state_dict(payload["outbound_payload"])
-            student_model = self.Model_KD(model=student_model,teacher_model=teacher_model,proxy_data_trainloader=self.proxy_data_trainloader)
-            KD_client_weights.append((copy.deepcopy(student_model.state_dict()),payload["data_size"]))
-        global_parameters = self.algorithm.aggregation(KD_client_weights)
+        # for index,payload in enumerate(weights_received):
+        #     student_model = self.model()
+        #     student_model_state_dict = restore_client_full_state(full_state=last_global_parameters,sub_state_list=[payload["outbound_payload"]],mapping_indices_list=[payload["mapping_indices"]])
+        #     student_model.load_state_dict(student_model_state_dict)
+        #     teacher_model = self.model(self.client_prune_rates[payload["client_id"]-1])
+        #     teacher_model.load_state_dict(payload["outbound_payload"])
+        #     student_model = self.Model_KD(model=student_model,teacher_model=teacher_model,proxy_data_trainloader=self.proxy_data_trainloader)
+        #     KD_client_weights.append((copy.deepcopy(student_model.state_dict()),payload["data_size"]))
+        # global_parameters = self.algorithm.aggregation(KD_client_weights)
+        global_parameters = self.algorithm.aggregation(weights_received)
 
         #获取更新超网络的deltas
         #yu 当前所有的客户端的mask应当是一致的，所以可以只调用一次超网络反向传播
@@ -350,11 +351,11 @@ class server(fedavg.Server):
     def customize_server_payload(self, payload):
         #定制子模型
         payload = self.algorithm.sub_weights(payload,self.clients_mapping_indices[self.selected_client_id-1])
-        model = self.model(layer_prune_rates=self.client_prune_rates[self.selected_client_id-1])
-        model.load_state_dict(payload)
-        model = self.Model_KD(model,self.trainer.model,self.proxy_data_trainloader)
-        return model.state_dict()
-        # return payload
+        # model = self.model(layer_prune_rates=self.client_prune_rates[self.selected_client_id-1])
+        # model.load_state_dict(payload)
+        # model = self.Model_KD(model,self.trainer.model,self.proxy_data_trainloader)
+        # return model.state_dict()
+        return payload
 
         # return super().customize_server_payload(payload)
     def Model_KD(self, model,teacher_model, proxy_data_trainloader, temperature=1.0, alpha=0.5, criterion=None):

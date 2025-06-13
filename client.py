@@ -106,9 +106,19 @@ class client(simple.Client):
         """Complete one round of training on this client."""
         self._load_payload(inbound_payload)
         report, outbound_payload = await self._train()
-        requires_grad = []
-        for param in self.trainer.model.parameters():
-            requires_grad.append(param.grad != None)
+
+        data, label = self.trainset[0]
+        data = data.to(self.device)
+        label = torch.tensor(label).to(self.device)
+        self.trainer.model.train()
+        output = self.trainer.model(data.unsqueeze(0))
+        criterion = nn.CrossEntropyLoss()
+        loss = criterion(output, label.unsqueeze(0))
+        loss.backward()
+        requires_grad = {}
+        for name, param in self.trainer.model.named_parameters():
+            requires_grad[name] = param.grad is not None
+        
         #去掉本地BN
         # outbound_payload = self.filter_out_bn_params(outbound_payload)
         outbound_payload = {"acc":report.accuracy ,"outbound_payload":outbound_payload,"mapping_indices":self.mapping_indices,"client_id":self.client_id}

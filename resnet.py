@@ -67,6 +67,8 @@ class Block(nn.Module):
         out = F.relu(self.bn1(self.scaler1(x)))
         # 修改点3：根据need_shortcut决定是否使用shortcut
         shortcut = self.shortcut(out) if self.need_shortcut else x
+        # shortcut = self.shortcut(out)
+
         out = self.conv1(out)
         out = F.relu(self.bn2(self.scaler2(out)))
         out = self.conv2(out)
@@ -117,6 +119,8 @@ class Bottleneck(nn.Module):
         out = F.relu(self.bn1(self.scaler1(x)))
         # 修改点3：根据need_shortcut决定是否使用shortcut
         shortcut = self.shortcut(out) if self.need_shortcut else x
+        # shortcut = self.shortcut(out)
+
         out = self.conv1(out)
         out = F.relu(self.bn2(self.scaler2(out)))
         out = self.conv2(out)

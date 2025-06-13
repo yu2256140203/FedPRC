@@ -547,7 +547,7 @@ def restore_client_full_state(full_state, sub_state_list, mapping_indices_list):
     return global_parameters
 
 
-def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,client_data_sizes):
+def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,client_data_sizes,requires_grads):
     """
     聚合多个子模型参数。
     对于每个子模型，先调用 restore_pruned_state 将其参数恢复到与 full_state 相同的尺寸（缺失部分默认使用原始全模型参数）。
@@ -570,12 +570,17 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,c
     #     aggregated_state[key] = agg_param
     import copy    
     global_parameters = copy.deepcopy(full_state)
+    # print(full_state.keys())
+    # print(mapping_indices_list[0].keys())
+    print(requires_grads[0].keys())
     for key,value in full_state.items():
         global_parameters[key] = global_parameters[key].to(device=device)
         value = value.to(device=device)
         count = torch.zeros(value.shape).to(device=device)
         for index,client_state in enumerate(sub_state_list):
-                if key not in client_state.keys() or key not in mapping_indices_list[index].keys():
+                # if key not in client_state.keys() or key not in mapping_indices_list[index].keys():
+                if requires_grads[index][key] == False or key not in client_state.keys():
+                    # print("当前跳过的key:",key)
                     continue
                 client_state[key] = client_state[key].to(device=device)
                 if value.dim() == 4 or value.dim()==2:
@@ -584,12 +589,12 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,c
                     in_idx_tensor = torch.tensor(in_idx, dtype=torch.long, device=device)
                     out_idx_tensor = torch.tensor(out_idx, dtype=torch.long, device=device)
                     # 假设参数 shape 为 (out_channels, in_channels, ...)，利用高级索引覆盖对应位置
-                    global_parameters[key][out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += client_state[key].to(device=device)
-                    count[out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += torch.ones(client_state[key].shape).to(device=device)
+                    global_parameters[key][out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += client_state[key].to(device=device)*client_data_sizes[index]
+                    count[out_idx_tensor.unsqueeze(1), in_idx_tensor.unsqueeze(0)] += torch.ones(client_state[key].shape).to(device=device)*client_data_sizes[index]
                 elif value.dim()==1:
                     idx_tensor = torch.tensor(mapping_indices_list[index][key], dtype=torch.long, device=device)
-                    global_parameters[key][idx_tensor] += client_state[key]
-                    count[idx_tensor] += torch.ones(client_state[key].shape).to(device=device)
+                    global_parameters[key][idx_tensor] += client_state[key]*client_data_sizes[index]
+                    count[idx_tensor] += torch.ones(client_state[key].shape).to(device=device)*client_data_sizes[index]
                 else:
                     print("ERROR!当前有参数没有聚合，当前参数为:",key)
         count = torch.where(count == 0, torch.ones(count.shape).to(device=device), count).to(device=device)
@@ -602,7 +607,7 @@ def aggregate_submodel_states(full_state, sub_state_list, mapping_indices_list,c
 
 
     # return global_parameters, restored_states
-    return global_parameters, None
+    return global_parameters
 
     
 

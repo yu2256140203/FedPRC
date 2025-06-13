@@ -225,6 +225,7 @@ def combine_importance(importance_dict, hsn_outputs, device, conv_names):
         model_imp = torch.tensor(importance_dict[name], device=device, dtype=torch.float)
         # 这里通过广播机制计算最终重要性
         final_imp = hsn_val * model_imp  
+        # print("当前对应关系:",name,hsn_val)
         # 将结果直接存入字典（不调用 detach、.cpu() 或 .numpy()）
         final_importance[name] = final_imp
         # def print_grad(grad):

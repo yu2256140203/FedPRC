@@ -80,7 +80,7 @@ class FedPRC_algorithm(fedavg.Algorithm):
     #     global_parameters,restored_states = aggregate_submodel_states(full_state=self.model.state_dict(),sub_state_list=submodel_weights,mapping_indices_list=mapping_indices_list,client_data_sizes=client_data_sizes)
         
     #     return global_parameters,restored_states
-    def aggregation(self, weights_received):
+    def aggregation_KD(self, weights_received):
         #有它，聚合参数，否则聚合变量
         """
         Aggregate weights of different complexities.
@@ -101,7 +101,27 @@ class FedPRC_algorithm(fedavg.Algorithm):
             aggregated_state[key] = agg_param
 
         return aggregated_state
-    
+    def aggregation(self, weights_received):
+        #有它，聚合参数，否则聚合变量
+        """
+        Aggregate weights of different complexities.
+        """
+
+        submodel_weights = []
+        mapping_indices_list = []
+        client_data_sizes = []
+        requires_grads = []
+        for payload in weights_received:
+            submodel_weights.append(payload["outbound_payload"])
+            mapping_indices_list.append(payload["mapping_indices"])
+            client_data_sizes.append(payload["data_size"])
+            requires_grads.append(payload["requires_grad"])
+            
+        global_parameters = aggregate_submodel_states(full_state=self.model.state_dict(),sub_state_list=submodel_weights,
+                                                                      mapping_indices_list=mapping_indices_list,client_data_sizes=client_data_sizes
+                                                                      ,requires_grads = requires_grads)
+        
+        return global_parameters
     def load_weights(self, weights):
         """Loads the model weights passed in as a parameter."""
         self.model.load_state_dict(weights, strict=False)#非严格性参数加载，避免有些参数有点多
