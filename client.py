@@ -108,10 +108,11 @@ class client(simple.Client):
         report, outbound_payload = await self._train()
 
         data, label = self.trainset[0]
-        data = data.to(self.device)
+        data = data.data.unsqueeze(0).to(self.device)
         label = torch.tensor(label).to(self.device)
+        self.trainer.model.to(self.device)
         self.trainer.model.train()
-        output = self.trainer.model(data.unsqueeze(0))
+        output = self.trainer.model(data)
         criterion = nn.CrossEntropyLoss()
         loss = criterion(output, label.unsqueeze(0))
         loss.backward()
